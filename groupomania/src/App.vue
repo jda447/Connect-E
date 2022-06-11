@@ -1,35 +1,50 @@
 <template>
   <div id="app">
+    <form @submit = 'createPost'>
+    <label>Title</label>
+    <input type="text" v-model="title">
+    <label>Body</label>
+    <textarea v-model="body"></textarea>
+    <button type="submit">Post</button>
+    </form>
     <div v-for="(post, index) in posts" :key="index">
-     <Post :title="post.title" :body="post.body"></Post>
+     <UserPosts :title="post.title" :body="post.body"></UserPosts>
     </div>
   </div>
 </template>
 
 <script>
-import Post from './components/Post.vue'
+import UserPosts from './components/UserPosts.vue'
 
 export default {
   name: 'App',
   components: {
-    Post
+    UserPosts
   },
   data: () => ({
+    title: '',
+    body: '',
       posts: [
         {
-          title: 'This is post 1',
-          body: 'test post'
-        },
-                {
-          title: 'This is post 2',
-          body: 'test post'
-        },
-                {
-          title: 'This is post 3',
-          body: 'test post'
+          title: '',
+          body: ''
         }
       ]
-    })
+    }),
+    methods: {
+      createPost () {
+        this.title
+        this.body
+
+        this.posts.unshift({
+          title: this.title,
+          body: this.body
+        })
+
+        this.title = '',
+        this.body = ''
+      }
+    }
   }
 </script>
 
