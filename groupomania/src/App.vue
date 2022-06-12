@@ -5,7 +5,7 @@
     <input type="text" v-model="title">
     <label>Body</label>
     <textarea v-model="body"></textarea>
-    <button type="submit">Post</button>
+    <button type="submit" class="btn btn-primary">Post</button>
     </form>
     <div v-for="(post, index) in posts" :key="index">
      <UserPosts :title="post.title" :body="post.body"></UserPosts>
