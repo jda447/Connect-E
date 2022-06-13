@@ -2,12 +2,12 @@
   <div id="app">
     <NavBar></NavBar>
     <form @submit.prevent= 'createPost'>
-    <div><label>Write something...</label></div>
+    <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pen']" /></label></div>
     <div><textarea v-model="body"></textarea></div>
     <div><button type="submit" class="btn btn-primary mb-5">Post</button></div>
     </form>
     <div v-for="(post, index) in posts" :key="index">
-    <div v-if=post.body class="border col-5 shadow-sm mx-auto">
+    <div v-if=post.body class="border col-5 shadow-sm mb-2 mx-auto">
      <UserPosts :body="post.body"></UserPosts></div>
     </div>
   </div>
