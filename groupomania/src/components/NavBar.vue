@@ -10,7 +10,7 @@ export default {
 </template>
 
 <style>
-	a {
-		text-decoration: none;
-	}
+  .navbar {
+    font-weight: bold;
+  }
 </style>

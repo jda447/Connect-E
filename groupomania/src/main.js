@@ -4,9 +4,9 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faPen);
+library.add(faPencil);
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
