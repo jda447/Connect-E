@@ -7,7 +7,8 @@
     <div><button type="submit" class="btn btn-primary mb-5">Post</button></div>
     </form>
     <div v-for="(post, index) in posts" :key="index">
-     <UserPosts :body="post.body"></UserPosts>
+    <div v-if=post.body class="border col-5 shadow-sm mx-auto">
+     <UserPosts :body="post.body"></UserPosts></div>
     </div>
   </div>
 </template>
