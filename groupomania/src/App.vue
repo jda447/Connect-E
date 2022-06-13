@@ -2,26 +2,30 @@
   <div id="app">
     <NavBar></NavBar>
     <form @submit.prevent= 'createPost'>
-    <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pen']" /></label></div>
+    <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
     <div><textarea v-model="body"></textarea></div>
     <div><button type="submit" class="btn btn-primary mb-5">Post</button></div>
     </form>
     <div v-for="(post, index) in posts" :key="index">
     <div v-if=post.body class="border col-5 shadow-sm mb-2 mx-auto">
-     <UserPosts :body="post.body"></UserPosts></div>
+    <UserPosts :body="post.body"></UserPosts></div>
     </div>
+    <FooTer></FooTer>
   </div>
 </template>
 
 <script>
-import UserPosts from './components/UserPosts.vue'
 import NavBar from './components/NavBar.vue'
+import UserPosts from './components/UserPosts.vue'
+import FooTer from './components/FooTer.vue'
+
 
 export default {
   name: 'App',
   components: {
+    NavBar,
     UserPosts,
-    NavBar
+    FooTer
   },
   data: () => ({
     body: '',
@@ -46,12 +50,9 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  border: solid 5px white;
-}
-.navbar {
-  font-weight: bold;
+  border: solid 10px white;
 }
 </style>
