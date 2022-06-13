@@ -1,47 +1,42 @@
 <template>
   <div id="app">
-    <form @submit = 'createPost'>
-    <label>Title</label>
-    <input type="text" v-model="title">
-    <label>Body</label>
-    <textarea v-model="body"></textarea>
-    <button type="submit" class="btn btn-primary">Post</button>
+    <NavBar></NavBar>
+    <form @submit.prevent= 'createPost'>
+    <div><label>Write something...</label></div>
+    <div><textarea v-model="body"></textarea></div>
+    <div><button type="submit" class="btn btn-primary mb-5">Post</button></div>
     </form>
     <div v-for="(post, index) in posts" :key="index">
-     <UserPosts :title="post.title" :body="post.body"></UserPosts>
+     <UserPosts :body="post.body"></UserPosts>
     </div>
   </div>
 </template>
 
 <script>
 import UserPosts from './components/UserPosts.vue'
+import NavBar from './components/NavBar.vue'
 
 export default {
   name: 'App',
   components: {
-    UserPosts
+    UserPosts,
+    NavBar
   },
   data: () => ({
-    title: '',
     body: '',
       posts: [
         {
-          title: '',
           body: ''
         }
       ]
     }),
     methods: {
       createPost () {
-        this.title
         this.body
 
         this.posts.unshift({
-          title: this.title,
           body: this.body
         })
-
-        this.title = '',
         this.body = ''
       }
     }
@@ -51,10 +46,11 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  border: solid 5px white;
+}
+.navbar {
+  font-weight: bold;
 }
 </style>
