@@ -1,10 +1,10 @@
 <template>
-  <nav class="navbar navbar-light bg-danger mb-3">
-    <router-link to="/about" class="btn btn-danger p-2 mx-3 col-1">
-      <font-awesome-icon :icon="['fas', 'user-large']" />
+  <nav class="navbar navbar-light bg-primary mb-3">
+    <router-link to="/" class="btn btn-primary p-2 mx-3 col-1">
+      <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
     <a class="navbar-brand mx-auto" href="#">Groupomania</a>
-      <div class="btn btn-danger mx-3 col-1">
+      <div class="btn btn-primary mx-3 col-1">
       <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
     </div>
   </nav>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-	name: 'NavBar'
+	name: 'ProfileNav'
 }
 </script>
 

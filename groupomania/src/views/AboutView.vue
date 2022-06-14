@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div id="app">
+    <ProfileNav></ProfileNav>
+    <FooTer></FooTer>
   </div>
 </template>
+
+<script>
+import ProfileNav from '../components/ProfileNav.vue'
+import FooTer from '../components/FooTer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    ProfileNav,
+    FooTer
+  }
+}
+</script>
