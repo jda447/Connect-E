@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <NavBar></NavBar>
-    <a class="profile col-3"><font-awesome-icon :icon="['fas', 'user-large']" /> Profile</a>
+    <ProfileBtn></ProfileBtn>
     <form @submit.prevent= 'createPost'>
     <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
     <div><textarea v-model="body"></textarea></div>
@@ -17,6 +17,7 @@
 
 <script>
 import NavBar from './components/NavBar.vue'
+import ProfileBtn from './components/ProfileBtn.vue'
 import UserPosts from './components/UserPosts.vue'
 import FooTer from './components/FooTer.vue'
 
@@ -25,6 +26,7 @@ export default {
   name: 'App',
   components: {
     NavBar,
+    ProfileBtn,
     UserPosts,
     FooTer
   },
@@ -55,9 +57,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   border: solid 10px white;
-}
-.profile {
-  color: #1c3a82;
-  margin-right: 575px;
 }
 </style>
