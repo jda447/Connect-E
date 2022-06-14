@@ -1,59 +1,30 @@
 <template>
-  <div id="app">
-    <NavBar></NavBar>
-    <form @submit.prevent= 'createPost'>
-    <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
-    <div><textarea v-model="body"></textarea></div>
-    <div><button type="submit" class="btn btn-primary px-4 mb-5"><font-awesome-icon :icon="['fas', 'message']" /></button></div>
-    </form>
-    <div v-for="(post, index) in posts" :key="index">
-    <div v-if=post.body class="border col-5 shadow-sm mb-2 mx-auto">
-    <UserPosts :body="post.body"></UserPosts></div>
-    </div>
-    <FooTer></FooTer>
-  </div>
+  <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav>
+  <router-view/>
 </template>
-
-<script>
-import NavBar from './components/NavBar.vue'
-import UserPosts from './components/UserPosts.vue'
-import FooTer from './components/FooTer.vue'
-
-export default {
-  name: 'App',
-  components: {
-    NavBar,
-    UserPosts,
-    FooTer
-  },
-  data: () => ({
-    body: '',
-      posts: [
-        {
-          body: ''
-        }
-      ]
-    }),
-    methods: {
-      createPost () {
-        this.body
-
-        this.posts.unshift({
-          body: this.body
-        })
-        this.body = ''
-      }
-    }
-  }
-</script>
 
 <style>
 #app {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
-  border: solid 10px white;
 }
-form {
-  text-align: center
+
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

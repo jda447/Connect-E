@@ -15,7 +15,8 @@ library.add(faMessage);
 library.add(faRightFromBracket);
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import router from './router'
 
-createApp(App)
+createApp(App).use(router)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
