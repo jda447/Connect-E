@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <HomeNav></HomeNav>
     <form @submit.prevent= 'createPost'>
     <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
     <div><textarea v-model="body"></textarea></div>
@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import NavBar from '../components/NavBar.vue'
+import HomeNav from '../components/HomeNav.vue'
 import UserPosts from '../components/UserPosts.vue'
 import FooTer from '../components/FooTer.vue'
 
 export default {
   name: 'App',
   components: {
-    NavBar,
+    HomeNav,
     UserPosts,
     FooTer
   },
