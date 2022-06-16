@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-light bg-primary mb-3">
-    <router-link to="/" class="btn btn-primary p-2 mx-3 col-1">
+    <router-link to="/messages" class="btn btn-primary p-2 mx-3 col-1">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
     <a class="navbar-brand mx-auto" href="#">Groupomania</a>
