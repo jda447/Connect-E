@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import SignIn from '../views/SignIn.vue'
 import LogIn from '../views/LogIn.vue'
 import Profile from '../views/Profile.vue'
+import EditProfile from '../views/EditProfile.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: Profile
+  },
+  {
+    path: '/edit-profile',
+    name: 'edit-profile',
+    component: EditProfile
   },
   {
     path: '/messages',

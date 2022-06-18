@@ -7,10 +7,10 @@
             <h1 class="m-5">Log-in</h1>
             <form>
             <div class="form-group m-5">
-                <input type="email" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Enter your e-mail Address">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
             </div>
             <div class="form-group m-5">
-                <input type="password" class="form-control" id="password" placeholder="Enter your Password">
+                <input type="password" class="form-control" id="password" placeholder="Enter your Password" required>
             </div>
             <button type="submit" class="btn btn-warning">Submit</button>
             </form>
