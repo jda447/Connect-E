@@ -1,10 +1,7 @@
 <template>
   <div id="app">
     <ProfileNav></ProfileNav>
-    <div><label class="m2">Profile Picture:</label></div>
-    <div><label class="m2">User Name:</label></div>
-    <div><label class="m2">Company Position:</label></div>
-    <router-link to="/edit-profile" class="btn btn-primary m-5">Edit Profile</router-link>
+    <div><label class="m2">Edit Profile</label></div>
     <FooTer></FooTer>
   </div>
 </template>
@@ -23,5 +20,5 @@ export default {
 </script>
 
 <style>
-  
+
 </style>

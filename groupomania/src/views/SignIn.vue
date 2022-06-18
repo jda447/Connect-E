@@ -7,7 +7,7 @@
             <h1 class="m-5">Sign-in</h1>
             <form>
             <div class="form-group m-5">
-                <input type="email" class="form-control" id="userName" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
             </div>
             <div class="form-group m-5">
                 <input type="password" class="form-control" id="password" placeholder="Choose a Password" required>
@@ -39,5 +39,4 @@ export default {
   color: #2c3e50;
   border: solid 10px white;
 }
-
 </style>
