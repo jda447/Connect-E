@@ -1,10 +1,25 @@
 <template>
   <div id="app">
     <ProfileNav></ProfileNav>
-    <div><label class="m2">Profile Picture:</label></div>
-    <div><label class="m2">User Name:</label></div>
-    <div><label class="m2">Company Position:</label></div>
-    <div v-on:click="isHidden = !isHidden" class="btn btn-primary m-5">Edit Profile</div>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+        <img src="">
+        </div>
+        <div class="col">
+          <div><label class="my-3">Name:</label></div>
+          <div><label class="my-3">Position:</label></div>
+          <div><label class="my-3">Hobbies:</label></div>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col">
+          <div v-on:click="isHidden = !isHidden" class="btn btn-primary col">Edit Profile</div>
+        </div>
+      </div>
+    </div>
     <div v-if="isHidden"><EditProfileForm></EditProfileForm></div>
     <FooTer></FooTer>
   </div>
@@ -42,5 +57,8 @@ export default {
 </script>
 
 <style>
-  
+  img {
+  height: 175px;
+  width: 200px;
+  }
 </style>

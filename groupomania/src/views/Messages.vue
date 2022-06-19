@@ -4,7 +4,7 @@
     <form @submit.prevent= 'createPost'>
     <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
     <div><textarea v-model="body"></textarea></div>
-    <div><button type="submit" class="btn btn-primary px-4 mb-5"><font-awesome-icon :icon="['fas', 'message']" /></button></div>
+    <div><button type="submit" class="btn btn-success px-4 mb-5"><font-awesome-icon :icon="['fas', 'message']" /></button></div>
     </form>
     <div v-for="(post, index) in posts" :key="index">
     <div v-if=post.body class="border col-5 shadow-sm mb-2 mx-auto">
