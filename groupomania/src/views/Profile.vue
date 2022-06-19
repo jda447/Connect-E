@@ -5,18 +5,7 @@
     <div><label class="m2">User Name:</label></div>
     <div><label class="m2">Company Position:</label></div>
     <div v-on:click="isHidden = !isHidden" class="btn btn-primary m-5">Edit Profile</div>
-    <div v-if="isHidden">
-    <div class="p5"><label>Edit Profile Picture: </label>
-    <input type="file" @change="onFileSelected">
-    </div>
-    <div class="p5"><label>Edit User Name: </label>
-    <input type="text" @change="onFileSelected">
-    </div>
-    <div class="p5"><label>Edit Company: </label>
-    <input type="text" @change="onFileSelected">
-    </div>
-    <button @click="onUpload" class="btn btn-success mt-4">Upload</button>
-    </div>
+    <div v-if="isHidden"><EditProfileForm></EditProfileForm></div>
     <FooTer></FooTer>
   </div>
 </template>
@@ -24,12 +13,14 @@
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
 import FooTer from '../components/FooTer.vue'
+import EditProfileForm from '../components/EditProfileForm.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileNav,
-    FooTer
+    FooTer,
+    EditProfileForm
   },
   data () {
     return {
