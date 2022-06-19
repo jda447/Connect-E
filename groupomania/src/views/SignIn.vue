@@ -6,10 +6,10 @@
           <div  class="text-center">
             <h1 class="m-5">Sign-in</h1>
             <form>
-            <div class="form-group m-5">
+            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
                 <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
             </div>
-            <div class="form-group m-5">
+            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
                 <input type="password" class="form-control" id="password" placeholder="Choose a Password" required>
             </div>
             <button type="submit" class="btn btn-info">Submit</button>

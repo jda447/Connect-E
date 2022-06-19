@@ -6,17 +6,17 @@
         <div class="col">
         <img src="">
         </div>
-        <div class="col">
+        <div class="col"> 
           <div><label class="my-3">Name:</label></div>
           <div><label class="my-3">Position:</label></div>
           <div><label class="my-3">Hobbies:</label></div>
         </div>
       </div>
     </div>
-    <div class="container mt-4">
+    <div class="container mt-2">
       <div class="row">
         <div class="col">
-          <div v-on:click="isHidden = !isHidden" class="btn btn-primary col">Edit Profile</div>
+          <div v-on:click="isHidden = !isHidden" class="btn btn-primary">Edit Profile</div>
         </div>
       </div>
     </div>
@@ -58,7 +58,7 @@ export default {
 
 <style>
   img {
-  height: 175px;
-  width: 200px;
+  height: 160px;
+  width: 180px;
   }
 </style>
