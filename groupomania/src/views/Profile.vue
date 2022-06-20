@@ -3,10 +3,10 @@
     <ProfileNav></ProfileNav>
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col col-md-4 col-lg-3">
         <img src="">
         </div>
-        <div class="col"> 
+        <div class="col col-md-4 col-lg-3"> 
           <div><label class="my-3">Name:</label></div>
           <div><label class="my-3">Position:</label></div>
           <div><label class="my-3">Hobbies:</label></div>
@@ -39,18 +39,7 @@ export default {
   },
   data () {
     return {
-      selectedFile: null
-    },
-    {
       isHidden: false
-    }
-  },
-  methods: {
-    onFileSelected(event) {
-      this.selectedFile = event.target.files[0]
-    },
-    onUpload() {
-
     }
   }
 }
@@ -59,6 +48,6 @@ export default {
 <style>
   img {
   height: 160px;
-  width: 180px;
+  width: 220px;
   }
 </style>
