@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <div class="mb-2">
-            <label class="px-3" for="customFile">Profile Picture:</label>
+            <label class="px-3" for="customFile"></label>
             <input type="file" class="custom-file-input" id="customFile">
           </div>
           <div class="mb-2"><label class="px-3">Name: </label>
