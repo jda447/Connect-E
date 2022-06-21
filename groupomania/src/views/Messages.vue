@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <HomeNav></HomeNav>
-    <form @submit.prevent= 'createPost'>
-    <div><label class="m-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label></div>
-    <div><textarea v-model="body"></textarea></div>
-    <div><button type="submit" class="btn btn-success px-4 mb-5"><font-awesome-icon :icon="['fas', 'message']" /></button></div>
-    </form>
-    <div v-for="(post, index) in posts" :key="index">
-    <div v-if=post.body class="border col-5 shadow-sm mb-2 mx-auto">
-    <UserPosts :body="post.body"></UserPosts></div>
-    </div>
+      <form @submit.prevent= 'createPost'>
+        <label class="mx-4 mb-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label><br>
+          <textarea v-model="body"></textarea>
+        <button type="submit" class="btn btn-success px-4 mb-5 mx-4"><font-awesome-icon :icon="['fas', 'message']" /></button>
+      </form>
+      <div v-for="(post, index) in posts" :key="index">
+        <div v-if=post.body class="border col-5 shadow-sm mb-2 px-2 pt-1 mx-auto">
+          <UserPosts :body="post.body"></UserPosts>
+        </div>
+      </div>
     <FooTer></FooTer>
   </div>
 </template>
