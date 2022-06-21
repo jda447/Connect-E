@@ -5,15 +5,15 @@
         <div class="col-xs-12">
           <div  class="text-center">
             <h1 class="m-5">Log-in</h1>
-            <form>
-            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
-            </div>
-            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
-                <input type="password" class="form-control" id="password" placeholder="Enter your Password" required>
-            </div>
-            <button type="submit" class="btn btn-warning">Submit</button>
-            </form>
+              <form>
+                <div class="form-group col-8 col-lg-4 m-5 mx-auto">
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
+                </div>
+                <div class="form-group col-8 col-lg-4 m-5 mx-auto">
+                  <input type="password" class="form-control" id="password" placeholder="Enter your Password" required>
+                </div>
+                <button type="submit" class="btn btn-warning">Submit</button>
+              </form>
           </div>
         </div>
       </div>
