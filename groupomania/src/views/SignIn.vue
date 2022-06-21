@@ -12,7 +12,7 @@
             <div class="form-group col-8 col-lg-4 m-5 mx-auto">
                 <input type="password" class="form-control" id="password" placeholder="Choose a Password" required>
             </div>
-            <button type="submit" class="btn btn-info">Submit</button>
+            <button type="submit" class="submit btn btn-info">Submit</button>
             </form>
           </div>
         </div>
@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
