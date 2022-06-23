@@ -3,7 +3,7 @@
     <HomeNav></HomeNav>
       <form @submit.prevent= 'createPost'>
         <label class="mx-4 mb-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label><br>
-          <textarea v-model="body"></textarea>
+          <textarea v-model="body" class="p-2"></textarea>
         <button type="submit" class="btn btn-success px-4 mb-5 mx-4"><font-awesome-icon :icon="['fas', 'message']" /></button>
       </form>
       <div v-for="(post, index) in posts" :key="index">
