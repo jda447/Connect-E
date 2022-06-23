@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <ProfileNav></ProfileNav>
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
@@ -17,22 +16,22 @@
 </template>
 
 <script>
-import ProfileNav from '../components/ProfileNav.vue'
 import FooTer from '../components/FooTer.vue'
 
 export default {
   name: 'App',
   components: {
-    ProfileNav,
     FooTer
   }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
   border: solid 10px white;
+  height: 92vh;
+  background-image: linear-gradient(to bottom right, #5bc0de, white, white, white, #f0ad4e);
 }
 </style>

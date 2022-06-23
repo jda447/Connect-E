@@ -16,6 +16,6 @@ export default {
   background-color: rgba(0, 0, 0, 0.1);
    position:absolute;
    bottom:0;
-   width: 95%;
+   width: 97%;
 }
 </style>

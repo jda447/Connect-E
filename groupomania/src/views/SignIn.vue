@@ -35,11 +35,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
   border: solid 10px white;
+  background-image: linear-gradient(to bottom right, #5bc0de, white, white, white);
 }
 
 .submitSignIn {
