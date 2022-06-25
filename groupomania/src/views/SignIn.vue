@@ -20,18 +20,12 @@
         </div>
       </div>
     </div>
-    <FooTer></FooTer>
   </div>
 </template>
 
 <script>
-import FooTer from '../components/FooTer.vue'
-
 export default {
   name: 'App',
-  components: {
-    FooTer
-  }
 }
 </script>
 

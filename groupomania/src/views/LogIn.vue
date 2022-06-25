@@ -20,18 +20,12 @@
         </div>
       </div>
     </div>
-    <FooTer></FooTer>
   </div>
 </template>
 
 <script>
-import FooTer from '../components/FooTer.vue'
-
 export default {
   name: 'App',
-  components: {
-    FooTer
-  }
 }
 </script>
 
@@ -40,7 +34,7 @@ export default {
     font-family: Helvetica, Arial, sans-serif;
     color: #2c3e50;
     border: solid 10px white;
-    height: 92vh;
+    min-height: 100vh;
     background-image: linear-gradient(to top left, #f0ad4e, white, white, white);
 }
 
