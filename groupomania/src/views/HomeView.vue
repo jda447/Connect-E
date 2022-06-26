@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div  class="text-center">
-            <div class="m-5"><h1>Groupomania</h1></div>
+            <div class="mt-5"><img src="@/assets/icon-left-font-monochrome-white-vignette-widescreen-tint.png"/></div>
               <router-link to="/sign-in" class="btn btn-outline-info btn-lg m-5">Sign-in</router-link>
               <router-link to="/log-in" class="btn btn-outline-warning btn-lg m-5">Log-in</router-link>
           </div>
@@ -26,6 +26,6 @@ export default {
   color: #2c3e50;
   border: solid 10px white;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #5bc0de, white, white, white, #f0ad4e);
+  background-image: linear-gradient(to bottom right, #5bc0de, black, black, black, #f0ad4e);
 }
 </style>
