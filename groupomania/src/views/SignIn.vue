@@ -2,45 +2,6 @@
   <div id="app">
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
-    <!-- <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-      <h1 class="text-center m-5">Sign-in</h1>
-      <div>
-        <label for="validationServerUsername" class="form-label">Email address</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
-          <input type="email" class="form-control is-invalid" id="email" placeholder="Enter your e-mail Address" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please enter your email address
-          </div>
-        </div>
-      </div>
-      <div>
-        <label for="validationServer02" class="form-label">Password</label>
-        <input type="password" class="form-control is-invalid" id="password" placeholder="Choose a Password" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please choose a password
-          </div>
-        </div>
-      <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-          <label class="form-check-label" for="invalidCheck3">
-            Agree to terms and conditions
-          </label>
-          <div id="invalidCheck3Feedback" class="invalid-feedback">
-            You must agree before submitting.
-          </div>
-        </div>
-      </div>
-      <div class="text-center">
-        <button class="btn btn-info m-3" type="submit">Submit</button>
-      </div> -->
       <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
         <h1 class="text-center m-5">Sign-in</h1>
         <div class="form-wrap container">
@@ -52,6 +13,14 @@
                 v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
                 v-on:blur="emailBlurred = true">
               <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="mb-1">Password</label>
+              <input 
+                v-model="password" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                v-on:blur="passwordBlurred = true">
+              <div class="invalid-feedback">A valid password is required</div>
             </div>           
             <div class="form-group text-center m-4">
               <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-success ">Submit</a>
@@ -73,7 +42,10 @@ export default {
     return {
       email : "", 
       emailBlurred : false,
-      valid : false, 
+      password : "", 
+      passwordBlurred : false,
+      emailValid : false,
+      passwordValid : false,
       submitted : false
     }
   },
@@ -81,16 +53,24 @@ export default {
     validate : function(){
       this.emailBlurred = true;
       if( this.validEmail(this.email)){
-          this.valid = true;
+          this.emailValid = true;
+      }
+      this.passwordBlurred = true;
+      if( this.validPassword(this.password)){
+        this.passwordValid = true;
       }
     },
     validEmail : function(email) {
       var re = /(.+)@(.+){2,}\.(.+){2,}/;
       return re.test(email.toLowerCase());
     },
+    validPassword : function(password) {
+      var re = /(.+)@(.+){2,}\.(.+){2,}/;
+      return re.test(password.toLowerCase());
+    },
     submit : function(){                   
       this.validate();     
-      if(this.valid){
+      if(this.emailValid && this.passwordValid){
         //submit data to server here
         this.submitted = true;
       }
