@@ -2,7 +2,7 @@
   <div id="app">
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
-    <div class="container">
+    <!-- <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <div  class="text-center">
@@ -19,7 +19,48 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+    
+    <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+      <h1 class="text-center m-5">Sign-in</h1>
+      <div>
+        <label for="validationServerUsername" class="form-label">Email address</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+          <input type="email" class="form-control is-invalid" id="email" placeholder="Enter your e-mail Address" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter your email address
+          </div>
+        </div>
+      </div>
+      <div>
+        <label for="validationServer02" class="form-label">Password</label>
+        <input type="password" class="form-control is-valid" id="password" placeholder="Enter your Password" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Please enter your password
+          </div>
+        </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
+          <label class="form-check-label" for="invalidCheck3">
+            Agree to terms and conditions
+          </label>
+          <div id="invalidCheck3Feedback" class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button class="btn btn-info m-3" type="submit">Submit</button>
+      </div>
+    </form>
   </div>
 </template>
 
