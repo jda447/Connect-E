@@ -39,7 +39,7 @@
         </div>
       </div>
       <div class="text-center">
-        <button class="btn btn-info m-3" type="submit">Submit</button>
+        <button class="btn btn-warning m-3" type="submit">Submit</button>
       </div>
     </form>
   </div>
@@ -54,10 +54,10 @@ export default {
 <style lang="scss" scoped>
   #app {
     font-family: Helvetica, Arial, sans-serif;
-    color: white;
+    color: #DBE2E9;
     border: solid 10px white;
     min-height: 100vh;
-    background-image: linear-gradient(to top left, #f0ad4e, black, black, black);
+    background-image: linear-gradient(to top left, #f0ad4e, #4d4813, black, black);
 }
 
 .submitLogIn {
