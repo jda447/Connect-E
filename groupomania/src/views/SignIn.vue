@@ -2,25 +2,6 @@
   <div id="app">
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
-    <!-- <div class="container">
-      <div class="row">
-        <div class="col-xs-12">
-          <div  class="text-center">
-            <h1>Sign-in</h1>
-            <form>
-            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your e-mail Address" required>
-            </div>
-            <div class="form-group col-8 col-lg-4 m-5 mx-auto">
-                <input type="password" class="form-control" id="password" placeholder="Choose a Password" required>
-            </div>
-            <button type="submit" class="submitSignIn btn btn-info">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    
     <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
       <h1 class="text-center m-5">Sign-in</h1>
       <div>
@@ -38,12 +19,12 @@
       </div>
       <div>
         <label for="validationServer02" class="form-label">Password</label>
-        <input type="password" class="form-control is-valid" id="password" placeholder="Enter your Password" required>
+        <input type="password" class="form-control is-invalid" id="password" placeholder="Choose a Password" required>
           <div class="valid-feedback">
             Looks good!
           </div>
           <div class="invalid-feedback">
-            Please enter your password
+            Please choose a password
           </div>
         </div>
       <div class="col-12">
