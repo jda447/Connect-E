@@ -2,7 +2,7 @@
   <div id="app">
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
-    <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+    <!-- <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
       <h1 class="text-center m-5">Sign-in</h1>
       <div>
         <label for="validationServerUsername" class="form-label">Email address</label>
@@ -40,7 +40,28 @@
       </div>
       <div class="text-center">
         <button class="btn btn-info m-3" type="submit">Submit</button>
-      </div>
+      </div> -->
+      <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+        <h1 class="text-center m-5">Sign-in</h1>
+        <div class="form-wrap container">
+          <div v-if="!submitted">
+            <div class="form-group">
+              <label for="email" class="mb-1">Email address</label>
+              <input 
+                v-model="email" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
+                v-on:blur="emailBlurred = true">
+              <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
+            </div>           
+            <div class="form-group text-center m-4">
+              <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-success ">Submit</a>
+            </div>    
+          </div>
+          <div v-else class="alert alert-success" role="alert">
+            <h5>Thank you</h5>
+            <p>Sign-in successful!</p>
+          </div>
+        </div>
     </form>
   </div>
 </template>
@@ -48,6 +69,33 @@
 <script>
 export default {
   name: 'App',
+  data: function () {
+    return {
+      email : "", 
+      emailBlurred : false,
+      valid : false, 
+      submitted : false
+    }
+  },
+  methods : {
+    validate : function(){
+      this.emailBlurred = true;
+      if( this.validEmail(this.email)){
+          this.valid = true;
+      }
+    },
+    validEmail : function(email) {
+      var re = /(.+)@(.+){2,}\.(.+){2,}/;
+      return re.test(email.toLowerCase());
+    },
+    submit : function(){                   
+      this.validate();     
+      if(this.valid){
+        //submit data to server here
+        this.submitted = true;
+      }
+    }
+  }
 }
 </script>
 

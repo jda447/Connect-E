@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-12">
           <div  class="text-center">
-            <div class="mt-5"><img src="@/assets/icon-left-font-monochrome-vignette2.png"/></div>
+            <div class="mt-5"><img src="@/assets/icon-left-font-monochrome-resized.png"/></div>
               <router-link to="/sign-in" class="btn btn-outline-info btn-lg m-5">Sign-in</router-link>
               <router-link to="/log-in" class="btn btn-outline-warning btn-lg m-5">Log-in</router-link>
           </div>
