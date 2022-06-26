@@ -54,10 +54,10 @@ export default {
 <style lang="scss" scoped>
 #app {
   font-family: Helvetica, Arial, sans-serif;
-  color: white;
+  color: #DBE2E9;
   border: solid 10px white;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #5bc0de, black, black, black);
+  background-image: linear-gradient(to bottom right, #5bc0de, #1b425a, black, black);
 }
 
 .submitSignIn {
