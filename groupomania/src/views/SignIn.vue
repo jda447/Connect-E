@@ -14,7 +14,7 @@
                 v-on:blur="emailBlurred = true">
               <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
             </div>
-            <div class="form-group">
+            <div class="form-group mt-3">
               <label for="password" class="mb-1">Password</label>
               <input 
                 v-model="password" 
@@ -61,11 +61,11 @@ export default {
       }
     },
     validEmail : function(email) {
-      var re = /(.+)@(.+){2,}\.(.+){2,}/;
+      let re = /(.+)@(.+){2,}\.(.+){2,}/;
       return re.test(email.toLowerCase());
     },
     validPassword : function(password) {
-      var re = /(.+)@(.+){2,}\.(.+){2,}/;
+      let re = /(.+)@(.+){2,}\.(.+){2,}/;
       return re.test(password.toLowerCase());
     },
     submit : function(){                   
