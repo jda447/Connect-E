@@ -3,7 +3,7 @@
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
       <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-        <h1 class="text-center m-5">Sign-in</h1>
+        <h1 class="text-center m-5">Sign-up</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">
             <div class="form-group">
@@ -29,7 +29,7 @@
           </div>
           <div v-else class="alert alert-success" role="alert">
             <h5>Thank you</h5>
-            <p>Sign-in successful!</p>
+            <p>Sign-up successful!</p>
           </div>
         </div>
     </form>

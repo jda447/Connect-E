@@ -2,45 +2,36 @@
   <div id="app">
     <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
     </router-link>
-    <form class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-      <h1 class="text-center m-5">Log-in</h1>
-      <div>
-        <label for="validationServerUsername" class="form-label">Email address</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="inputGroupPrepend3">@</span>
-          <input type="email" class="form-control is-invalid" id="email" placeholder="Enter your e-mail Address" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback" required>
-          <div class="valid-feedback">
-            Looks good!
+      <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+        <h1 class="text-center m-5">Log-in</h1>
+        <div class="form-wrap container">
+          <div v-if="!submitted">
+            <div class="form-group">
+              <label for="email" class="mb-1">Email address</label>
+              <input placeholder="Please enter your email address"
+                v-model="email" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
+                v-on:blur="emailBlurred = true">
+              <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
+            </div>
+            <div class="form-group mt-3">
+              <label for="password" class="mb-1">Password</label>
+              <input placeholder="Please enter your password"
+                v-model="password" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                v-on:blur="passwordBlurred = true">
+                <h6>Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
+              <div class="invalid-feedback">A valid password is required</div>
+            </div>           
+            <div class="form-group text-center m-4">
+              <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-warning ">Submit</a>
+            </div>    
           </div>
-          <div class="invalid-feedback">
-            Please enter your email address
-          </div>
-        </div>
-      </div>
-      <div>
-        <label for="validationServer02" class="form-label">Password</label>
-        <input type="password" class="form-control is-valid" id="password" placeholder="Enter your Password" required>
-          <div class="valid-feedback">
-            Looks good!
-          </div>
-          <div class="invalid-feedback">
-            Please enter your password
-          </div>
-        </div>
-      <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-          <label class="form-check-label" for="invalidCheck3">
-            Agree to terms and conditions
-          </label>
-          <div id="invalidCheck3Feedback" class="invalid-feedback">
-            You must agree before submitting.
+          <div v-else class="alert alert-success" role="alert">
+            <h5>Thank you</h5>
+            <p>Sign-up successful!</p>
           </div>
         </div>
-      </div>
-      <div class="text-center">
-        <button class="btn btn-warning m-3" type="submit">Submit</button>
-      </div>
     </form>
   </div>
 </template>
@@ -48,6 +39,44 @@
 <script>
 export default {
   name: 'App',
+  data: function () {
+    return {
+      email : "", 
+      emailBlurred : false,
+      password : "", 
+      passwordBlurred : false,
+      emailValid : false,
+      passwordValid : false,
+      submitted : false
+    }
+  },
+  methods : {
+    validate : function(){
+      this.emailBlurred = true;
+      if( this.validEmail(this.email)){
+          this.emailValid = true;
+      }
+      this.passwordBlurred = true;
+      if( this.validPassword(this.password)){
+        this.passwordValid = true;
+      }
+    },
+    validEmail : function(email) {
+      let re = /(.+)@(.+){2,}\.(.+){2,}/;
+      return re.test(email);
+    },
+    validPassword : function(password) {
+      let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+      return re.test(password);
+    },
+    submit : function(){                   
+      this.validate();     
+      if(this.emailValid && this.passwordValid){
+        //submit data to server here
+        this.submitted = true;
+      }
+    }
+  }
 }
 </script>
 
