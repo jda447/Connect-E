@@ -3,7 +3,7 @@
     <router-link to="/profile" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <a class="navbar-brand mx-auto" href="#">Messages</a>
+    <a class="navbar-brand text-large mx-auto" href="#">Messages</a>
       <div class="signOutNavBtn mx-3">
       <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
     </div>
@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
@@ -42,5 +43,10 @@ export default {
     transition: transform 250ms;
     color: white;
 	}
+}
+
+.navbar-brand {
+  font-family: Pacifico;
+  font-size: 175%;
 }
 </style>

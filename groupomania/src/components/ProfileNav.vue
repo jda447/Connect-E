@@ -17,6 +17,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
@@ -41,4 +43,11 @@ export default {
     color: white;
 	}
 }
+
+.navbar-brand {
+  font-family: Pacifico;
+  font-size: 175%;
+}
+
+
 </style>
