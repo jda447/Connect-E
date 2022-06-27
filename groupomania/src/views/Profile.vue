@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ProfileNav></ProfileNav>
-      <div class="mx-auto col-4 col-md-4 col-lg-3 my-3">
+      <div class="mx-auto col-4 col-md-4 col-lg-2 my-3">
         <img src="@/assets/rollsafe.jpg" class="img-fluid" alt="Responsive image">
       </div>
       <div class="text-center labels">
