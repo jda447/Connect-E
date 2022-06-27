@@ -1,9 +1,9 @@
 <template>
-  <nav class="navbar navbar-light bg-danger navbarGradient mb-3">
+  <nav class="navbar navbar-light navbarGradient mb-3">
     <router-link to="/profile" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <a class="navbar-brand text-large mx-auto" href="#">Messages</a>
+    <a class="navbar-brand text-large mx-auto" href="#">Edit Profile</a>
       <div class="signOutNavBtn mx-3">
       <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
     </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-	name: 'HomeNav'
+	name: 'EditProfileNav'
 }
 </script>
 
@@ -25,11 +25,11 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-image: linear-gradient(to bottom, #ff2c2c, white);
+  background-image: linear-gradient(to bottom, #a0b6f5, white);
   }
 
 .profileNavBtn {
-  color: #6a2927;
+  color: #566284;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
@@ -38,7 +38,7 @@ export default {
 }
 
 .signOutNavBtn {
-  color: #6a2927;
+  color: #566284;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;

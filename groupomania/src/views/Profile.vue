@@ -16,11 +16,10 @@
       <div class="container mt-2">
         <div class="row">
           <div class="col">
-            <div v-on:click="isHidden = !isHidden" class="btn btn-primary btn-lg">Edit</div>
+            <router-link to="/edit-profile" class="btn btn-primary btn-lg">Edit</router-link>
           </div>
         </div>
       </div>
-      <div v-if="isHidden"><EditProfileForm></EditProfileForm></div>
     <FooTer></FooTer>
   </div>
 </template>
@@ -28,19 +27,12 @@
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
 import FooTer from '../components/FooTer.vue'
-import EditProfileForm from '../components/EditProfileForm.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileNav,
-    FooTer,
-    EditProfileForm
-  },
-  data () {
-    return {
-      isHidden: false
-    }
+    FooTer
   }
 }
 </script>
@@ -48,15 +40,15 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-  #app {
-    font-family: Helvetica, Arial, sans-serif;
-    color: #2c3e50;
-    border: solid 10px white;
-    font-family: Pacifico;
-  }
+#app {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #2c3e50;
+  border: solid 10px white;
+  font-family: Pacifico;
+}
 
-  img {
-    height: 160px;
-    width: 220px;
-  }
+img {
+  height: 160px;
+  width: 220px;
+}
 </style>
