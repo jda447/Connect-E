@@ -24,7 +24,7 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-image: linear-gradient(to bottom, #d9534f, white);
+  background-image: linear-gradient(to bottom, #ff2c2c, white);
   }
 
 .profileNavBtn {
