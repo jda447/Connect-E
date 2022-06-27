@@ -1,24 +1,16 @@
 <template>
   <div id="app">
     <ProfileNav></ProfileNav>
-      <div class="container">
-        <div class="row">
-          <div class="col col-md-4 col-lg-3">
-            <img src="">
-          </div>
-          <div class="col col-md-4 col-lg-3 infoLabels"> 
-            <div><label class="my-3">Name:</label></div>
-            <div><label class="my-3">Position:</label></div>
-            <div><label class="my-3">Hobbies:</label></div>
-          </div>
-        </div>
+      <div class="mx-auto col-4 col-md-4 col-lg-3 my-3">
+        <img src="@/assets/rollsafe.jpg" class="img-fluid" alt="Responsive image">
       </div>
-      <div class="container mt-2">
-        <div class="row">
-          <div class="col">
-            <router-link to="/edit-profile" class="btn btn-primary btn-lg">Edit</router-link>
-          </div>
-        </div>
+      <div class="text-center labels">
+        <div><label class="my-2">Name:</label></div>
+        <div><label class="my-2">Position:</label></div>
+        <div><label class="my-2">Hobbies:</label></div>
+      </div>
+      <div class="text-center">
+        <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
       </div>
     <FooTer></FooTer>
   </div>
@@ -37,7 +29,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
@@ -47,8 +39,16 @@ export default {
   font-family: Pacifico;
 }
 
-img {
-  height: 160px;
-  width: 220px;
+.labels {
+  color: #0275d8;
+}
+
+.btn-primary {
+  background-color: #0275d8;
+  color: white;
+  &:hover {
+    background-color: white;
+    color: #0275d8;
+  }
 }
 </style>
