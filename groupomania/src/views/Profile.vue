@@ -46,6 +46,13 @@ export default {
 </script>
 
 <style>
+  #app {
+    font-family: Helvetica, Arial, sans-serif;
+    color: #2c3e50;
+    border: solid 10px white;
+    /* background-image: linear-gradient(to top left, #0275d8, white, white, white); */
+  }
+
   img {
   height: 160px;
   width: 220px;
