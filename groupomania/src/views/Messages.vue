@@ -6,7 +6,7 @@
         <button type="submit" class="btn btn-success px-3 mb-5 mx-4">Send</button>
       </form>
       <div v-for="(post, index) in posts" :key="index">
-        <div v-if=post.body class="border col-5 shadow-sm mb-2 px-2 pt-1 mx-auto">
+        <div v-if=post.body class="border col-10 col-md-8 col-lg-6 shadow-sm mb-2 px-2 pt-1 mx-5">
           <UserPosts :body="post.body"></UserPosts>
         </div>
       </div>
@@ -47,7 +47,7 @@ export default {
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
@@ -58,7 +58,21 @@ export default {
 form {
   text-align: center
 }
+
+textarea {
+  resize: none;
+}
+
+.border {
+  width: fit-content;
+}
 .btn-success {
   font-family: Pacifico;
+  background-color: #4c9173;
+  color: white;
+  &:hover {
+    background-color: white;
+    color: #4c9173;
+  }
 }
 </style>
