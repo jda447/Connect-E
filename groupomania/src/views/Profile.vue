@@ -6,7 +6,7 @@
           <div class="col col-md-4 col-lg-3">
             <img src="">
           </div>
-          <div class="col col-md-4 col-lg-3"> 
+          <div class="col col-md-4 col-lg-3 infoLabels"> 
             <div><label class="my-3">Name:</label></div>
             <div><label class="my-3">Position:</label></div>
             <div><label class="my-3">Hobbies:</label></div>
@@ -16,7 +16,7 @@
       <div class="container mt-2">
         <div class="row">
           <div class="col">
-            <div v-on:click="isHidden = !isHidden" class="btn btn-primary">Edit Profile</div>
+            <div v-on:click="isHidden = !isHidden" class="btn btn-primary btn-lg">Edit</div>
           </div>
         </div>
       </div>
@@ -46,15 +46,17 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
   #app {
     font-family: Helvetica, Arial, sans-serif;
     color: #2c3e50;
     border: solid 10px white;
-    /* background-image: linear-gradient(to top left, #0275d8, white, white, white); */
+    font-family: Pacifico;
   }
 
   img {
-  height: 160px;
-  width: 220px;
+    height: 160px;
+    width: 220px;
   }
 </style>

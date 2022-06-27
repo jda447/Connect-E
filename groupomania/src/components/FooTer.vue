@@ -13,6 +13,7 @@ export default {
 
 <style>
 .footer {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: rgba(0, 0, 0, 0.1);
   border: solid 10px white;
   position: absolute;

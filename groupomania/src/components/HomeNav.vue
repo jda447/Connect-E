@@ -28,7 +28,7 @@ export default {
   }
 
 .profileNavBtn {
-  color: #a6403c;
+  color: #6a2927;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
@@ -37,7 +37,7 @@ export default {
 }
 
 .signOutNavBtn {
-  color: #a6403c;
+  color: #6a2927;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
