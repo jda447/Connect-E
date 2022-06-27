@@ -3,7 +3,7 @@
     <HomeNav></HomeNav>
       <form @submit.prevent= 'createPost'>
           <textarea v-model="body" class="p-2 mt-3"></textarea>
-        <button type="submit" class="btn btn-success px-3 mb-5 mx-4"><font-awesome-icon :icon="['fas', 'message']" /></button>
+        <button type="submit" class="btn btn-success px-3 mb-5 mx-4">Send</button>
       </form>
       <div v-for="(post, index) in posts" :key="index">
         <div v-if=post.body class="border col-5 shadow-sm mb-2 px-2 pt-1 mx-auto">
@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
@@ -55,5 +57,8 @@ export default {
 }
 form {
   text-align: center
+}
+.btn-success {
+  font-family: Pacifico;
 }
 </style>
