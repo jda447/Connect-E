@@ -28,7 +28,7 @@ export default {
   background-image: linear-gradient(to bottom, #0275d8, white);
 }
 .messagesNavBtn {
-    color: #025298;
+    color: #002b51;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
@@ -36,7 +36,7 @@ export default {
 	}
 }
 .signOutNavBtn {
-    color: #025298;
+    color: #002b51;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
