@@ -21,11 +21,21 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
   border: solid 10px white;
   min-height: 100vh;
   background-image: linear-gradient(to bottom right, #5bc0de, black, black, black, #f0ad4e);
+}
+
+.btn-outline-info {
+  font-family: Pacifico;
+}
+
+.btn-outline-warning {
+  font-family: Pacifico;
 }
 </style>

@@ -81,6 +81,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
   #app {
     font-family: Helvetica, Arial, sans-serif;
     color: #DBE2E9;
@@ -104,5 +106,13 @@ export default {
     transition: transform 500ms;
     border: solid 2px #CCC;
 	}
+}
+
+h1 {
+  font-family: Pacifico;
+}
+
+.btn-warning {
+  font-family: Pacifico;
 }
 </style>
