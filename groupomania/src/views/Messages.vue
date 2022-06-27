@@ -2,9 +2,8 @@
   <div id="app">
     <HomeNav></HomeNav>
       <form @submit.prevent= 'createPost'>
-        <label class="mx-4 mb-2">Write something... <font-awesome-icon :icon="['fas', 'pencil']" /></label><br>
           <textarea v-model="body" class="p-2"></textarea>
-        <button type="submit" class="btn btn-success px-4 mb-5 mx-4"><font-awesome-icon :icon="['fas', 'message']" /></button>
+        <button type="submit" class="btn btn-success px-3 mb-5 mx-4"><font-awesome-icon :icon="['fas', 'message']" /></button>
       </form>
       <div v-for="(post, index) in posts" :key="index">
         <div v-if=post.body class="border col-5 shadow-sm mb-2 px-2 pt-1 mx-auto">
