@@ -1,35 +1,36 @@
 <template>
   <div id="app">
-    <ProfileNav></ProfileNav>
       <div v-if="awesome">
+      <ProfileNav></ProfileNav>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-3">
           <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${previewImage})` }" @click="selectImage"> </div>
         </div>
       <div class="text-center labels">
-        <div><label class="my-1">Name:</label></div>
-        <div><label class="my-1">Position:</label></div>
-        <div><label class="my-1">Hobbies:</label></div>
+        <div><label class="my-2">Name:</label></div>
+        <div><label class="my-2">Position:</label></div>
+        <div><label class="my-2">Hobbies:</label></div>
       </div>
       <div class="text-center">
         <button @click="toggle" class="btn btn-primary btn-lg mt-3">Edit</button>
       </div>
       </div>
       <div v-else>
+      <EditProfileNav></EditProfileNav>
       <form>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-3">
+        <div class="mx-auto col-4 col-md-4 col-lg-2 mt-5">
           <input ref="fileInput" type="file" @input="pickFile">
         </div>
-        <div class="mb-2"><label class="px-3">Name: </label>
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Name</label>
           <input type="text">
         </div>
-        <div class="mb-2"><label class="px-3">Position: </label>
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Position</label>
           <input type="text">
         </div>
-        <div class="mb-2"><label class="px-3">Hobbies: </label>
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Hobbies</label>
           <input type="text">
         </div>
-        <div class="col px-3">
-        <button class="btn btn-success mt-2 px-3">Upload</button>
+        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-2">
+        <button class="btn btn-success px-3">Upload</button>
         </div>
       </form>
       <div class="text-center">
@@ -42,6 +43,7 @@
 
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
+import EditProfileNav from '../components/EditProfileNav.vue'
 // import EditProfileForm from '../components/EditProfileForm.vue'
 import FooTer from '../components/FooTer.vue'
 
@@ -49,6 +51,7 @@ export default {
   name: 'App',
   components: {
     ProfileNav,
+    EditProfileNav,
     // EditProfileForm,
     FooTer
   },
@@ -101,6 +104,16 @@ export default {
   &:hover {
     background-color: white;
     color: #0275d8;
+  }
+}
+
+.btn-success {
+  font-family: Pacifico;
+  background-color: #4c9173;
+  color: white;
+  &:hover {
+    background-color: white;
+    color: #4c9173;
   }
 }
 
