@@ -20,13 +20,21 @@
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 mt-5">
           <input ref="fileInput" type="file" @input="pickFile">
         </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label>Name</label>
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+          <label>Name</label>
           <input v-model="userName" class="userData" type="text" placeholder="Add your name" />
         </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label>Position</label>
-          <input v-model="userPosition" class="userData" placeholder="Add your position" type="text">
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+        <label>Position</label><br>
+        <select class="userData p-1" v-model="userPosition">
+          <option class="userData" disabled value="">Add your position</option>
+          <option class="userData">Customer Service</option>
+          <option class="userData">Manager</option>
+          <option class="userData">CEO</option>
+        </select>
         </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label>Hobbies</label>
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+          <label>Hobbies</label>
           <input v-model="userHobbies" class="userData" placeholder="Add your hobbies" type="text">
         </div>
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-2">
@@ -87,7 +95,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
-  // font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
   border: solid 10px white;
   font-family: Pacifico;
@@ -98,7 +105,6 @@ export default {
 }
 
 .userFont {
-  // font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: larger;
 }
@@ -117,7 +123,6 @@ export default {
 }
 
 .btn-success {
-  font-family: Pacifico;
   background-color: #4c9173;
   color: white;
   &:hover {
