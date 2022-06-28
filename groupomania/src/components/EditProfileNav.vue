@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-light navbarGradient mb-3">
-    <router-link to="/profile" class="profileNavBtn px-3 mx-3">
-      <font-awesome-icon :icon="['fas', 'user-large']" />
+    <router-link to="/messages" class="profileNavBtn px-3 mx-3">
+      <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
     <a class="navbar-brand text-large mx-auto" href="#">Edit Profile</a>
       <div class="signOutNavBtn mx-3">

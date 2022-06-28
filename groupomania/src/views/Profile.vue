@@ -1,33 +1,33 @@
 <template>
   <div id="app">
-      <div v-if="awesome">
+    <div v-if="userProfile">
       <ProfileNav></ProfileNav>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-3">
           <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${previewImage})` }" @click="selectImage"> </div>
         </div>
-      <div class="text-center labels">
-        <div><label class="my-2">Name:</label></div>
-        <div><label class="my-2">Position:</label></div>
-        <div><label class="my-2">Hobbies:</label></div>
+        <div class="text-center labels">
+          <div><label class="my-2">Name: {{ userName }}</label></div>
+          <div><label class="my-2">Position: {{ userPosition }}</label></div>
+          <div><label class="my-2">Hobbies: {{ userHobbies }}</label></div>
+        </div>
+        <div class="text-center">
+          <button @click="toggle" class="btn btn-primary btn-lg mt-3">Edit</button>
+        </div>
       </div>
-      <div class="text-center">
-        <button @click="toggle" class="btn btn-primary btn-lg mt-3">Edit</button>
-      </div>
-      </div>
-      <div v-else>
+    <div v-else>
       <EditProfileNav></EditProfileNav>
       <form>
         <div class="mx-auto col-4 col-md-4 col-lg-2 mt-5">
           <input ref="fileInput" type="file" @input="pickFile">
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Name</label>
-          <input type="text">
+          <input v-model="userName" type="text" placeholder="Enter your name" />
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Position</label>
-          <input type="text">
+          <input v-model="userPosition" type="text">
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2"><label class="text-center">Hobbies</label>
-          <input type="text">
+          <input v-model="userHobbies" placeholder="Add your hobbies" type="text">
         </div>
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-2">
         <button class="btn btn-success px-3">Upload</button>
@@ -44,7 +44,6 @@
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
 import EditProfileNav from '../components/EditProfileNav.vue'
-// import EditProfileForm from '../components/EditProfileForm.vue'
 import FooTer from '../components/FooTer.vue'
 
 export default {
@@ -52,21 +51,21 @@ export default {
   components: {
     ProfileNav,
     EditProfileNav,
-    // EditProfileForm,
     FooTer
   },
   data() {
     return {
-      awesome: true,
-      previewImage: null
+      userProfile: true,
+      previewImage: null,
+      message: ''
     }
-    },
+  },
   methods: {
     toggle() {
-      this.awesome = !this.awesome
+      this.userProfile = !this.userProfile
     },
     selectImage () {
-    this.$refs.fileInput.click()
+      this.$refs.fileInput.click()
     },
     pickFile () {
       let input = this.$refs.fileInput
