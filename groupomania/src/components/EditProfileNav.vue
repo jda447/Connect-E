@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-light navbarGradient mb-3">
+  <nav class="navbar navbarGradient mb-3">
     <router-link to="/messages" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
@@ -48,6 +48,7 @@ export default {
 
 .navbar-brand {
   font-family: Pacifico;
+  color: black;
   font-size: 175%;
 }
 </style>
