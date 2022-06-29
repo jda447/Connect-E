@@ -3,16 +3,22 @@
     <router-link to="/messages" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
-    <a class="navbar-brand mx-auto" href="#">Edit Profile</a>
-      <router-link to="/" class="signOutNavBtn px-3 mx-3">
+    <div class="navbar-brand mx-auto" href="#">Edit Profile</div>
+      <router-link to="/" class="signOutNavBtn px-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
   </nav>
+  <SignOutModal></SignOutModal>
 </template>
 
 <script>
+import SignOutModal from '../components/SignOutModal.vue'
+
 export default {
-	name: 'EditProfileNav'
+	name: 'EditProfileNav',
+    components: {
+    SignOutModal
+  }
 }
 </script>
 
