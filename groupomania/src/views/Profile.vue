@@ -2,7 +2,7 @@
   <div id="app">
     <div v-if="userProfile">
       <ProfileNav></ProfileNav>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-3">
+        <div class="mx-auto col-4 col-md-4 col-lg-2 my-1">
           <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${previewImage})` }" @click="selectImage"> </div>
         </div>
         <div class="text-center labels">
@@ -17,7 +17,7 @@
     <div v-else>
       <EditProfileNav></EditProfileNav>
       <form>
-        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 mt-5">
+        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 mt-2">
           <input ref="fileInput" type="file" @input="pickFile">
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
