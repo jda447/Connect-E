@@ -1,18 +1,23 @@
 <template>
-  <nav class="navbar navbar-light navbarGradient mb-3">
+  <nav class="navbar navbarGradient mb-3">
     <router-link to="/profile" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <a class="navbar-brand mx-auto" href="#">Messages</a>
-      <router-link to="/" class="signOutNavBtn px-3 mx-3">
+    <div class="navbar-brand mx-auto" href="#">Messages</div>
+      <router-link to="/" class="signOutNavBtn px-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
   </nav>
+  <SignOutModal></SignOutModal>
 </template>
 
 <script>
+import SignOutModal from '../components/SignOutModal.vue'
 export default {
-	name: 'HomeNav'
+	name: 'HomeNav',
+  components: {
+    SignOutModal
+  }
 }
 </script>
 
@@ -21,7 +26,6 @@ export default {
 
 #app {
   font-family: Helvetica, Arial, sans-serif;
-  color: #2c3e50;
   border: solid 10px white;
 }
 .navbarGradient {
@@ -48,6 +52,7 @@ export default {
 
 .navbar-brand {
   font-family: Pacifico;
+  color: black;
   font-size: 175%;
 }
 </style>
