@@ -1,12 +1,12 @@
 <template>
-  <nav class="navbar navbar-light bg-danger navbarGradient mb-3">
+  <nav class="navbar navbar-light navbarGradient mb-3">
     <router-link to="/profile" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <a class="navbar-brand text-large mx-auto" href="#">Messages</a>
-      <div class="signOutNavBtn mx-3">
-      <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
-    </div>
+    <a class="navbar-brand mx-auto" href="#">Messages</a>
+      <router-link to="/" class="signOutNavBtn px-3 mx-3">
+        <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
+      </router-link>
   </nav>
 </template>
 
