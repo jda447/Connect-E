@@ -27,7 +27,7 @@
               <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-info ">Submit</a>
             </div>    
           </div>
-          <div v-else class="alert alert-success" role="alert">
+          <div v-else class="alert alert-success text-center mt-5" role="alert">
             <h5>Thank you</h5>
             <p>Sign-up successful!</p>
           </div>
