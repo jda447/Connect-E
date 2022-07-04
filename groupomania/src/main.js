@@ -18,7 +18,8 @@ library.add(faCircleArrowLeft);
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import router from './router'
+import store from './store'
 
-createApp(App).use(router)
+createApp(App).use(store).use(router)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
