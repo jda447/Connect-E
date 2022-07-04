@@ -1,64 +1,29 @@
 <template>
   <div id="app">
-    <div v-if="userProfile">
-      <ProfileNav></ProfileNav>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-1">
-          <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${previewImage})` }" @click="selectImage"> </div>
-        </div>
-        <div class="text-center labels">
-          <div><label class="my-2">Name: <span class="userFont"> {{ userName }} </span></label></div>
-          <div><label class="my-2">Position: <span class="userFont"> {{ userPosition }} </span></label></div>
-          <div><label class="my-2">Hobbies: <span class="userFont"> {{ userHobbies }} </span></label></div>
-        </div>
-        <div class="text-center">
-          <button @click="toggle" class="btn btn-primary btn-lg mt-3">Edit</button>
-        </div>
+    <ProfileNav></ProfileNav>
+      <div class="mx-auto col-4 col-md-4 col-lg-2 my-1">
+        <div class="imagePreviewWrapper" :style="{ 'background-image': `url(${previewImage})` }" @click="selectImage"> </div>
       </div>
-    <div v-else>
-      <EditProfileNav></EditProfileNav>
-      <form>
-        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 mt-2">
-          <input ref="fileInput" type="file" @input="pickFile">
-        </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-          <label>Name</label>
-          <input v-model="userName" class="userData" type="text" placeholder="Add your name" />
-        </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-        <label>Position</label><br>
-        <select class="userData p-1" v-model="userPosition">
-          <option class="userData" disabled value="">Add your position</option>
-          <option class="userData">Customer Service</option>
-          <option class="userData">Manager</option>
-          <option class="userData">CEO</option>
-        </select>
-        </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-          <label>Hobbies</label>
-          <input v-model="userHobbies" class="userData" placeholder="Add your hobbies" type="text">
-        </div>
-        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-2">
-        <button class="btn btn-success px-3">Upload</button>
-        </div>
-      </form>
+      <div class="text-center labels">
+        <div><label class="my-2">Name: <span class="userFont"> {{ userName }} </span></label></div>
+        <div><label class="my-2">Position: <span class="userFont"> {{ userPosition }} </span></label></div>
+        <div><label class="my-2">Hobbies: <span class="userFont"> {{ userHobbies }} </span></label></div>
+      </div>
       <div class="text-center">
-        <button @click="toggle" class="btn btn-primary btn-lg mt-3">Profile</button>
+        <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
       </div>
-    </div>
     <FooTer></FooTer>
   </div>
 </template>
 
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
-import EditProfileNav from '../components/EditProfileNav.vue'
 import FooTer from '../components/FooTer.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileNav,
-    EditProfileNav,
     FooTer
   },
   data() {
