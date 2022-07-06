@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+import store from './store'
 import App from './App.vue'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -19,6 +20,7 @@ library.add(faCircleArrowLeft);
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import router from './router'
 
-createApp(App).use(router)
+createApp(App).use(router).use(store)
   .component("font-awesome-icon", FontAwesomeIcon)
   .mount("#app");
+
