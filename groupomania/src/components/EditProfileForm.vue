@@ -61,8 +61,6 @@
   background-color: #0ca93b;
   color: white;
   &:hover {
-    background-color: white;
-    color: #0ca93b;
     transform: scale(1.2);
     transition: transform 500ms;
   }

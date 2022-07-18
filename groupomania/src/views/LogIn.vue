@@ -27,9 +27,11 @@
               <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-warning ">Submit</a>
             </div>    
           </div>
-          <div v-else class="alert alert-success" role="alert">
-            <h5>Thank you</h5>
-            <p>Sign-up successful!</p>
+          <div v-else class="alert alert-success mt-5" role="alert">
+            <div class="text-center">
+            <h5>Log-in successful!</h5>
+            <router-link to="/messages" class="btn btn-success my-2">Enter</router-link>
+            </div>
           </div>
         </div>
     </form>

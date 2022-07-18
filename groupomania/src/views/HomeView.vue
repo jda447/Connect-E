@@ -5,7 +5,7 @@
         <div class="col-xs-12">
           <div  class="text-center">
             <div class="mt-5"><img  class="col-8 col-lg-4" src="@/assets/icon-left-font-monochrome-resized.png"/></div>
-              <router-link to="/sign-in" class="btn btn-outline-info btn-lg m-5">Sign-up</router-link>
+              <router-link to="/sign-up" class="btn btn-outline-info btn-lg m-5">Sign-up</router-link>
               <router-link to="/log-in" class="btn btn-outline-warning btn-lg m-5">Log-in</router-link>
           </div>
         </div>
