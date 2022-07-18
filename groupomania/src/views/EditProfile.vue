@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <EditProfileNav></EditProfileNav>
-    <EditProfileForm @review-submitted="addReview"></EditProfileForm>
+    <EditProfileForm @info-submitted="addInfo"></EditProfileForm>
       <div class="text-center">
         <router-link to="/profile" class="btn btn-primary btn-lg mt-3">Profile</router-link>
       </div>
-      <ProfileInfo :reviews="reviews"></ProfileInfo>
+      <ProfileInfo :info="info"></ProfileInfo>
   </div>
 </template>
 
@@ -23,12 +23,12 @@ export default {
   },
   data() {
     return {
-      reviews: []
+      info: []
     };
   },
   methods: {
-    addReview (review) {
-      this.reviews.push(review)
+    addInfo (person) {
+      this.info.push(person)
     },
   }
 }

@@ -10,7 +10,7 @@
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
         <label>Position</label><br>
-        <select v-model="review" id="position" class="userData p-1" required>
+        <select v-model="position" id="position" class="userData p-1" required>
           <option class="userData" disabled value="">Add your position</option>
           <option class="userData">Customer Service</option>
           <option class="userData">Manager</option>
@@ -19,7 +19,7 @@
         </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
           <label>Hobbies</label>
-          <input v-model="rating" id="hobbies" class="userData" placeholder="Add your hobbies" type="text" required>
+          <input v-model="hobbies" id="hobbies" class="userData" placeholder="Add your hobbies" type="text" required>
         </div>
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-3">
         <button v:on-click="onSubmit" class="btn btn-success px-3" type="submit" value="Submit">Upload</button>
@@ -34,26 +34,23 @@
         data() {
     return {
         name: '',
-        review: '',
-        rating: null,
+        position: null,
+        hobbies: ''
       };
     },
     methods: {
       onSubmit () {
-        let productReview = {
+        let employeeInfo = {
             name: this.name,
-            review: this.review,
-            rating: this.rating
+            position: this.position,
+            hobbies: this.hobbies
         }
-        this.$emit('review-submitted', productReview)
+        this.$emit('info-submitted', employeeInfo)
 
         this.name = ''
-        this.review = ''
-        this.rating = null
-      },
-    //   updateForm () {
-    //     this.$emit
-    //   }
+        this.position = null
+        this.hobbies = ''
+      }
   }
 }
 </script>
@@ -66,6 +63,8 @@
   &:hover {
     background-color: white;
     color: #0ca93b;
+    transform: scale(1.2);
+    transition: transform 500ms;
   }
 }
 </style>
