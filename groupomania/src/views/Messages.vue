@@ -10,21 +10,18 @@
           <UserPosts :body="post.body"></UserPosts>
         </div>
       </div>
-    <FooTer></FooTer>
   </div>
 </template>
 
 <script>
 import HomeNav from '../components/HomeNav.vue'
 import UserPosts from '../components/UserPosts.vue'
-import FooTer from '../components/FooTer.vue'
 
 export default {
   name: 'App',
   components: {
     HomeNav,
-    UserPosts,
-    FooTer
+    UserPosts
   },
   data: () => ({
     body: '',
