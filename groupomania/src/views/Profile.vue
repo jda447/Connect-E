@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ProfileNav></ProfileNav>
-    <ProfileInfo :reviews="reviews"></ProfileInfo>
+    <ProfileInfo :info="info"></ProfileInfo>
       <div class="text-center">
         <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
       </div>
@@ -18,21 +18,10 @@ export default {
     ProfileNav,
     ProfileInfo
   },
-  data () {
-    return{
-      props: {
-        names: {
-          type: Array,
-          required: true
-        }
-      },
-    reviews: []
+  data() {
+    return {
+      info: []
     }
-  },
-  methods: {
-    addReview (review) {
-      this.reviews.push(review)
-    },
   }
 }
 </script>
