@@ -2,7 +2,7 @@
   <div id="app">
     <HomeNav></HomeNav>
       <form @submit.prevent= 'createPost'>
-          <textarea v-model="body" class="col-7 col-lg-5" rows='2'></textarea>
+          <textarea v-model="body" class="col-7 col-lg-5 p-2" rows='2'></textarea>
           <button type="submit" class="btn btn-success mb-5 mx-2">Send</button>
       </form>
       <div v-for="(post, index) in posts" :key="index">

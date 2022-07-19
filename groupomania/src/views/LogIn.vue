@@ -93,11 +93,11 @@ export default {
     background-image: linear-gradient(to top left, #f0ad4e, #4d4813, black, black);
 }
 
-.submitLogIn {
+.btn-warning {
   &:hover {
-    transform: scale(1.2);
-    transition: transform 500ms;
-    border: solid 2px #CCC;
+    transform: scale(1.1);
+    transition: transform 300ms;
+    text-decoration: underline;
 	}
 }
 
