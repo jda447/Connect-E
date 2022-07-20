@@ -3,6 +3,7 @@
     <ProfileNav></ProfileNav>
     <ProfileInfo :info="info"></ProfileInfo>
       <div class="text-center">
+        <p>{{ $store.getters.employeeDetails }}</p>
         <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
       </div>
   </div>
