@@ -1,5 +1,5 @@
 <template>
-    <div class="id">
+  <div id="app">
     <form class="editProfileForm" @submit.prevent="onSubmit">
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 mt-2">
           <input ref="fileInput" type="file" @input="pickFile">
