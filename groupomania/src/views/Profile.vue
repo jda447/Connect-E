@@ -3,7 +3,7 @@
     <ProfileNav></ProfileNav>
     <ProfileInfo :info="info"></ProfileInfo>
       <div class="text-center">
-        <p>{{ $store.getters.employeeDetails }}</p>
+        <p>{{ employeeDetails }}</p>
         <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
       </div>
   </div>
@@ -12,6 +12,7 @@
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
 import ProfileInfo from '../components/ProfileInfo.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
@@ -19,10 +20,13 @@ export default {
     ProfileNav,
     ProfileInfo
   },
-  data() {
-    return {
-      info: []
+  methods: {
+    addUserName() {
+      this.$store.commit('ADD_NAME')
     }
+  },
+  computed: {
+    ...mapGetters(['employeeDetails'])
   }
 }
 </script>
