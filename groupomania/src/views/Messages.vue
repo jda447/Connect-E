@@ -2,11 +2,13 @@
   <div id="app">
     <HomeNav></HomeNav>
       <form @submit.prevent= 'createPost'>
-          <textarea v-model="body" class="col-7 col-lg-5 p-2" rows='2'></textarea>
-          <button type="submit" class="btn btn-success mb-5 mx-2">Send</button>
+        <div class="input-group mb-3">
+          <input v-model="body" type="text" class="col ms-5 ps-2" aria-label="Message" aria-describedby="Message">
+            <button class="btn btn-success me-5" type="submit">Send</button>
+        </div>
       </form>
       <div v-for="(post, index) in posts" :key="index">
-        <div v-if=post.body class="border rounded-pill shadow-sm mb-2 px-3 pt-3 text-center mx-5">
+        <div v-if=post.body class="border shadow col mt-4 mb-2 px-3 pt-3 mx-5">
           <UserPosts :body="post.body"></UserPosts>
         </div>
       </div>
@@ -53,17 +55,10 @@ export default {
   border: solid 10px white;
 }
 
-form {
-  text-align: center
-}
+// .border {
+//   width: fit-content;
+// }
 
-textarea {
-  resize: none;
-}
-
-.border {
-  width: fit-content;
-}
 .btn-success {
   font-family: Pacifico;
   background-color: #4c9173;
