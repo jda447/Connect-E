@@ -8,14 +8,16 @@ export default createStore({
       hobbies: ''
   },
   mutations: {
-
+    ADD_NAME(state) {
+      state.name = this.name
+    }
   },
   actions: {
 
   },
   getters: {
-    employeeDetails (state) {
-      return `${state.name}`
+    employeeDetails: state => {
+        return `${state.name}-${state.position}-${state.hobbies}`
     }
   }
 })

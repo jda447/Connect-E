@@ -29,7 +29,7 @@ export default {
   methods: {
     addInfo (person) {
       this.info.push(person)
-    },
+    }
   }
 }
 </script>
