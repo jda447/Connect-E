@@ -1,26 +1,27 @@
 <template>
-    <div id="app">
-      <div class="text-center labels">
-        <div v-for="(person, index) in info" :key="index">
-        <label class="my-2">
-            Name: {{ person.name }} </label><br>
-        <label class="my-2">
-            Position: {{ person.position }} </label><br>
-        <label class="my-2">
-            Hobbies: {{ person.hobbies }} </label>
-        </div>
-      </div>
+  <div id="app">
+    <div class="text-center">
+      <label class="my-2">
+        Name: </label> {{ employeeName }}<br>
+      <label class="my-2">
+        Position: </label> {{ employeePosition }}<br>
+      <label class="my-2">
+        Hobbies: </label> {{ employeeHobbies }}
     </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'App',
-    props: {
-    info: {
-      type: Object,
-      required: true
-    }
+  computed: {
+    ...mapGetters(['employeeName', 'employeePosition', 'employeeHobbies'])
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

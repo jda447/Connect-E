@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <form class="editProfileForm mx-auto" @submit.prevent="onSubmit">
-      <div class="base-image-input mx-auto col" :style="{ 'background-image': `url(${imageData})` }" @click="chooseImage">
+      <div class="base-image-input mx-auto col-4 col-md-4 col-lg-2 my-2" :style="{ 'background-image': `url(${imageData})` }" @click="chooseImage">
         <span v-if="!imageData" class="placeholder">
           Choose an Image
         </span>
@@ -34,7 +34,7 @@
 <script>
 export default {
   name: 'App',
-    data() {
+  data() {
   return {
     imageData: null,
     name: '',
@@ -65,6 +65,9 @@ export default {
         hobbies: this.hobbies
       }
       this.$emit('info-submitted', employeeInfo)
+      this.$store.commit('ADD_NAME', this.name)
+      this.$store.commit('ADD_POSITION', this.position)
+      this.$store.commit('ADD_HOBBIES', this.hobbies)
 
       this.name = ''
       this.position = null
@@ -86,7 +89,6 @@ export default {
 }
 
 .base-image-input {
-  display: block;
   width: 200px;
   height: 200px;
   cursor: pointer;
