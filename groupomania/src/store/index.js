@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
 
-// Create a new store instance.
 export default createStore({
   state: {
       name: '',
@@ -8,16 +7,28 @@ export default createStore({
       hobbies: ''
   },
   mutations: {
-    ADD_NAME(state) {
-      state.name = this.name
+    ADD_NAME(state, name) {
+      state.name = name
+    },
+    ADD_POSITION(state, position) {
+      state.position = position
+    },
+    ADD_HOBBIES (state, hobbies) {
+      state.hobbies = hobbies
     }
   },
   actions: {
 
   },
   getters: {
-    employeeDetails: state => {
-        return `${state.name}-${state.position}-${state.hobbies}`
+    employeeName: state => {
+      return `${state.name}`
+    },
+    employeePosition: state => {
+      return `${state.position}`
+    },
+    employeeHobbies: state => {
+      return `${state.hobbies}`
     }
   }
 })
