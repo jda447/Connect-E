@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <HomeNav></HomeNav>
-      <div class="create-new">
+      <div class="text-center">
         <input type="text"
+        size="36"
         class="px-2"
         v-model="newPost"
         placeholder="Add a post" 
@@ -17,18 +18,6 @@
           :post="post">
         </UserPosts>
       </div>
-
-      <!-- <form @submit.prevent= 'createPost'>
-        <div class="input-group mb-3">
-          <input v-model="body" type="text" class="col ms-5 ps-2" aria-label="Message" aria-describedby="Message">
-            <button class="btn btn-success me-5" type="submit">Send</button>
-        </div>
-      </form>
-      <div v-for="(post, index) in posts" :key="index">
-        <div v-if=post.body class="border shadow col mt-4 mb-2 px-3 pt-3 mx-5">
-          <UserPosts :body="post.body"></UserPosts>
-        </div>
-      </div> -->
   </div>
 </template>
 
