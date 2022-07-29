@@ -5,27 +5,33 @@ export default createStore({
       posts: [],
       name: '',
       position: null,
-      hobbies: ''
+      hobbies: '',
+      counter: 0
   },
   mutations: {
-    ADD_POST (state, post) {
+    ADD_POST(state, post) {
       state.posts = [{content: post, done: false}, ...state.posts];
     },
-    REMOVE_POST (state, post) {
+    REMOVE_POST(state, post) {
       state.posts.splice(state.posts.indexOf(post), 1);
     },
-    ADD_NAME (state, name) {
+    ADD_NAME(state, name) {
       state.name = name
     },
-    ADD_POSITION (state, position) {
+    ADD_POSITION(state, position) {
       state.position = position
     },
-    ADD_HOBBIES (state, hobbies) {
+    ADD_HOBBIES(state, hobbies) {
       state.hobbies = hobbies
-    }
+    },
+    INCREASE_COUNTER(state) {
+      state.counter++
+    },
   },
   actions: {
-
+    INCREASE_COUNTER(context) {
+      context.commit('INCREASE_COUNTER')
+    },
   },
   getters: {
     employeeName: state => {

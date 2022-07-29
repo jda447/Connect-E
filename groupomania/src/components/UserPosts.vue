@@ -4,9 +4,13 @@
       <div @click="removePost" class="btn btn-outline btn-sm d-flex justify-content-end me-1">x
       </div>
       <div :class="`post ${post.done ? 'is-complete' : ''}`">
-      <div class="content mx-4 p-2 flex-grow-1 bd-highlight">{User Name}<br><hr/>
-        {{ post.content }}</div>
-        <div class="mt-auto p-2 d-flex align-items-end flex-column bd-highlight">Seen by 0</div>
+      <div class="content mx-4 flex-grow-1 bd-highlight">{User Name}<br>
+      <hr/>
+        {{ post.content }}
+        <div @click="$store.dispatch('INCREASE_COUNTER')" class="mt-auto p-1 d-flex align-items-end flex-column bd-highlight">
+          Seen by {{ $store.state.counter }}
+        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -20,7 +24,12 @@ export default {
   methods: {
     removePost() {
       this.$store.commit('REMOVE_POST', this.post)
-    }
+    },
+    // increaseCounter() {
+    //   this.$store.commit('increaseCounter')
+    //   this.counter++
+    //   console.log(this.$store.state.counter)
+    // },
   }
 }
 </script>
