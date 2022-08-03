@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <form class="editProfileForm mx-auto" @submit.prevent="onSubmit">
-      <div class="base-image-input mx-auto col-4 col-md-4 col-lg-2 my-2" :style="{ 'background-image': `url(${imageData})` }" @click="chooseImage">
-        <span v-if="!imageData" class="placeholder">
+      <div class="base-image-input rounded-circle mx-auto col-4 col-md-4 col-lg-2 my-2"
+      :style="{ 'background-image': `url(${imageData})` }"
+      @click="chooseImage">
+        <span v-if="!imageData" class="placeholder rounded-circle">
           Choose an Image
         </span>
-        <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
+        <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
       </div>
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
           <label>Name</label>

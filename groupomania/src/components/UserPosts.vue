@@ -4,7 +4,7 @@
       <div @click="removePost" class="btn btn-outline btn-sm d-flex justify-content-end me-1">
       x
       </div>
-      <div :class="`post ${post.done ? 'is-complete' : ''}`">
+      <div :class="`post`">
       <div class="userNameMsgs mx-4 flex-grow-1 bd-highlight">
         {{ $store.state.name }}
       <hr/>

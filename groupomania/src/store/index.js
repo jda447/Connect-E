@@ -19,7 +19,7 @@ export default createStore({
       state.hobbies = hobbies
     },
     ADD_POST(state, post) {
-      state.posts = [{content: post, done: false}, ...state.posts];
+      state.posts = [{content: post}, ...state.posts];
     },
     REMOVE_POST(state, post) {
       state.posts.splice(state.posts.indexOf(post), 1);
