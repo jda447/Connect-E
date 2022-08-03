@@ -2,7 +2,7 @@
   <div id="app">
     <ProfileNav></ProfileNav>
     <div class="text-center">
-      <ProfileInfo :info="info"></ProfileInfo>
+      <ProfileInfo></ProfileInfo>
       <router-link to="/edit-profile" class="btn btn-primary btn-lg mt-3">Edit</router-link>
     </div>
   </div>

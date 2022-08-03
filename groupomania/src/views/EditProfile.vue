@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <EditProfileNav></EditProfileNav>
-    <EditProfileForm @info-submitted="addInfo"></EditProfileForm>
+    <EditProfileForm></EditProfileForm>
       <div class="text-center">
         <router-link to="/profile" class="btn btn-primary btn-lg mt-3">Profile</router-link>
       </div>
@@ -17,10 +17,6 @@ export default {
   components: {
     EditProfileNav,
     EditProfileForm
-  },
-  data() {
-  },
-  methods: {
   }
 }
 </script>
