@@ -29,7 +29,7 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-color: #5585b5;
+  background-color: #0d3b66;
   }
 
 .profileNavBtn {

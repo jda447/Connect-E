@@ -31,7 +31,7 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-color: #53a8b6;
+  background-color: #155ea2;
 }
 .messagesNavBtn {
     color: #e7eaf6;

@@ -90,15 +90,20 @@ export default {
 <style lang="scss" scoped>
 .uploadBtn {
   font-family: Pacifico;
-  background-color: #5585b5;
+  background-color: #2688e3;
   color: white;
   &:hover {
     background-color: white;
-    color: #5585b5;
+    color: #2688e3;
     transform: scale(1.6);
     transition: transform 250ms;
   }
 }
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 
 .base-image-input {
   width: 200px;

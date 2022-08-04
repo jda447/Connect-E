@@ -31,7 +31,7 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-color: #79c2d0;
+  background-color: #2688e3;
   }
 
 .profileNavBtn {

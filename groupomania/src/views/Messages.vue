@@ -6,7 +6,7 @@
       size="36"
       class="px-2"
       v-model="newPost"
-      placeholder="Add a post" 
+      placeholder="Write something..." 
       @keypress.enter="addPost">
       <button class="btn paperPlane btn-sm mb-1 px-3" @click="addPost">
         <font-awesome-icon :icon="['fas', 'fa-paper-plane']" />
@@ -66,5 +66,9 @@ export default {
     background-color: #2c3e50;;
     color: white;
   }
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>

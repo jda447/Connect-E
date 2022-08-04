@@ -31,14 +31,18 @@ export default {
 }
 
 .editBtn {
-  background-color: #79c2d0;
+  background-color: #2688e3;
   color: white;
   font-family: Pacifico;
   &:hover {
     background-color: white;
-    color: #79c2d0;
+    color: #2688e3;
     transform: scale(1.6);
     transition: transform 250ms;
   }
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>

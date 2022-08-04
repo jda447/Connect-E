@@ -30,7 +30,7 @@
           <div v-else class="alert alert-success mt-5" role="alert">
             <div class="text-center">
             <h5>Log-in successful!</h5>
-            <router-link to="/messages" class="btn btn-success my-2">Enter</router-link>
+            <router-link to="/profile" class="btn btn-success my-2">Enter</router-link>
             </div>
           </div>
         </div>
@@ -104,9 +104,7 @@ export default {
 .btn-secondary {
   border-radius: 50%;
   &:hover {
-    transform: scale(1.2);
-    transition: transform 500ms;
-    border: solid 2px #CCC;
+    background-color: #fcfcfc;
 	}
 }
 

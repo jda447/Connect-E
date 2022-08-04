@@ -91,7 +91,7 @@ export default {
   color: #DBE2E9;
   border: solid 10px white;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #5bc0de, #1b425a, black, black);
+  background-image: linear-gradient(to bottom right, #2688e3, #17557c, black, black);
 }
 
 .btn-info {
@@ -105,9 +105,7 @@ export default {
 .btn-secondary {
   border-radius: 50%;
   &:hover {
-    transform: scale(1.2);
-    transition: transform 500ms;
-    border: solid 2px #CCC;
+    background-color: #fcfcfc;
 	}
 }
 
