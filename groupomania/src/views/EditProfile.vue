@@ -3,7 +3,7 @@
     <EditProfileNav></EditProfileNav>
     <EditProfileForm></EditProfileForm>
       <div class="text-center">
-        <router-link to="/profile" class="btn btn-primary btn-lg mt-3">Profile</router-link>
+        <router-link to="/profile" class="btn profileBtn btn-lg mt-3">Profile</router-link>
       </div>
   </div>
 </template>
@@ -26,16 +26,17 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   color: #2c3e50;
   border: solid 10px white;
-  // font-family: Pacifico;
 }
 
-.btn-primary {
+.profileBtn {
   font-family: Pacifico;
-  background-color: #0275d8;
+  background-color: #53a8b6;
   color: white;
   &:hover {
     background-color: white;
-    color: #0275d8;
+    color: #53a8b6;
+    transform: scale(1.6);
+    transition: transform 250ms;
   }
 }
 </style>

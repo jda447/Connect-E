@@ -29,11 +29,11 @@ export default {
   border: solid 10px white;
 }
 .navbarGradient {
-  background-image: linear-gradient(to bottom, #ff2c2c, white);
+  background-color: #5585b5;
   }
 
 .profileNavBtn {
-  color: #6a2927;
+  color: #e7eaf6;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
@@ -42,7 +42,7 @@ export default {
 }
 
 .signOutNavBtn {
-  color: #6a2927;
+  color: #e7eaf6;
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
@@ -52,7 +52,7 @@ export default {
 
 .navbar-brand {
   font-family: Pacifico;
-  color: black;
+  color: #e7eaf6;
   font-size: 175%;
 }
 </style>
