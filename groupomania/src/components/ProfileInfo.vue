@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+<div id="app">
+  <div v-if="employeeName && employeePosition && employeeHobbies" class="list text-center">
     <div class="card col-7 col-xs-10 mx-auto px-3">
       <img src="" class="card-img-top" alt="">
-      <div v-if="employeeName && employeePosition && employeeHobbies" class="list text-center">
         <div class="card-body">
           <li class="card-title fw-bold fs-4 mt-2 mb-3"> {{ employeeName }} </li>
           <li><label class="fw-bold">
