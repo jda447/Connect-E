@@ -8,8 +8,8 @@
       v-model="newPost"
       placeholder="Add a post" 
       @keypress.enter="addPost">
-      <button class="btn btn-success btn-sm mb-1 px-3" @click="addPost">
-        Send
+      <button class="btn paperPlane btn-sm mb-1 px-3" @click="addPost">
+        <font-awesome-icon :icon="['fas', 'fa-paper-plane']" />
       </button>
     </div>
 
@@ -58,13 +58,13 @@ export default {
   border: solid 10px white;
 }
 
-.btn-success {
+.paperPlane {
   font-family: Pacifico;
-  background-color: #4c9173;
-  color: white;
+  background-color: white;
+  color: #2c3e50;;
   &:hover {
-    background-color: white;
-    color: #4c9173;
+    background-color: #2c3e50;;
+    color: white;
   }
 }
 </style>

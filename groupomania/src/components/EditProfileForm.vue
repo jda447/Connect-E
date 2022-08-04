@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <form class="editProfileForm mx-auto" @submit.prevent="onSubmit">
+    <form class="editProfileForm" @submit.prevent="onSubmit">
+    <div class="container">
+      <div class="row">
+        <div class="col">
       <div class="base-image-input rounded-circle mx-auto col-4 col-md-4 col-lg-2 my-2"
       :style="{ 'background-image': `url(${imageData})` }"
       @click="chooseImage">
@@ -9,6 +12,8 @@
         </span>
         <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
       </div>
+    </div>
+    <div class="col">
         <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
           <label>Name</label>
           <input v-model="name" id="name" type="text" placeholder="Add your name" required/>
@@ -29,8 +34,11 @@
         <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-3">
         <button v:on-click="onSubmit" class="btn uploadBtn px-3" type="submit">Upload</button>
         </div>
-      </form>
+        </div>
+      </div>
     </div>
+    </form>
+  </div>
 </template>
 
 <script>

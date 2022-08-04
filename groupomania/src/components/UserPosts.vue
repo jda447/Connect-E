@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="mx-auto border shadow col-10 mt-2">
+    <div class="messageContainer mx-auto border shadow col-10 mt-2">
       <div @click="removePost" class="btn btn-outline btn-sm d-flex justify-content-end me-1">
       x
       </div>
@@ -35,6 +35,10 @@ export default {
 </script>
 
 <style scoped>
+
+.messageContainer {
+  background-color: #fafafa;
+}
 .btn-outline {
   font-weight: bolder;
 }
