@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <div class="text-center">
-      <label class="my-2">
-        Name: </label> {{ employeeName }}<br>
-      <label class="my-2">
-        Position: </label> {{ employeePosition }}<br>
-      <label class="my-2">
-        Hobbies: </label> {{ employeeHobbies }}
-    </div>
+    <ul v-if="employeeName && employeePosition && employeeHobbies" class="text-center">
+      <li><label class="fw-bold">
+        Name: </label> {{ employeeName }}</li><br>
+      <li><label class="fw-bold">
+        Position: </label> {{ employeePosition }}</li><br>
+      <li><label class="fw-bold">
+        Hobbies: </label> {{ employeeHobbies }}</li>
+    </ul>
   </div>
 </template>
 
@@ -23,5 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+ul {
+  list-style: none;
+}
 </style>
