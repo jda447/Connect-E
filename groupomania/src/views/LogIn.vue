@@ -90,7 +90,7 @@ export default {
     color: #DBE2E9;
     border: solid 10px white;
     min-height: 100vh;
-    background-image: linear-gradient(to top left, #f0ad4e, #4d4813, black, black);
+    background-image: linear-gradient(to top left, #fdc500, #8c6e00, black, black);
 }
 
 .btn-warning {

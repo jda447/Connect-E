@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <ul v-if="employeeName && employeePosition && employeeHobbies" class="text-center">
-      <li><label class="fw-bold">
-        Name: </label> {{ employeeName }}</li><br>
-      <li><label class="fw-bold">
-        Position: </label> {{ employeePosition }}</li><br>
-      <li><label class="fw-bold">
-        Hobbies: </label> {{ employeeHobbies }}</li>
-    </ul>
+    <div class="card col-7 col-xs-10 mx-auto px-3">
+      <img src="" class="card-img-top" alt="">
+      <div v-if="employeeName && employeePosition && employeeHobbies" class="list text-center">
+        <div class="card-body">
+          <li class="card-title fw-bold fs-4 mt-2 mb-3"> {{ employeeName }} </li>
+          <li><label class="fw-bold">
+            Position </label><br>{{ employeePosition }}</li><br>
+          <li class="mb-3"><label class="fw-bold">
+            Hobbies </label><br> {{ employeeHobbies }}</li>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,7 +27,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-ul {
+.card {
+  background-color: #fafafa;
+}
+
+.list {
   list-style: none;
+}
+
+.card-body {
+  padding: 0;
 }
 </style>

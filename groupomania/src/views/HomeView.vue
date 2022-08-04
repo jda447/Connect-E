@@ -28,7 +28,7 @@ export default {
   color: #2c3e50;
   border: solid 10px white;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #2688e3, black, black, black, #f0ad4e);
+  background-image: linear-gradient(to bottom right, #2688e3, black, black, black, #fdc500);
 }
 
 .btn-outline-info {
