@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbarGradient mb-3">
+  <nav class="navbar mb-3">
     <router-link to="/messages" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
@@ -30,9 +30,9 @@ export default {
   color: #2c3e50;
   border: solid 10px white;
 }
-.navbarGradient {
+.navbar {
   background-color: #2688e3;
-  }
+}
 
 .profileNavBtn {
   color: #e7eaf6;

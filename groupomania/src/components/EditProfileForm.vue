@@ -1,42 +1,42 @@
 <template>
   <div id="app">
     <form class="editProfileForm" @submit.prevent="onSubmit">
-    <div class="container">
-      <div class="row">
-        <div class="col">
-      <div class="base-image-input rounded-circle mx-auto col-4 col-md-4 col-lg-2 my-2"
-      :style="{ 'background-image': `url(${imageData})` }"
-      @click="chooseImage">
-        <span v-if="!imageData" class="placeholder rounded-circle">
-          Choose an Image
-        </span>
-        <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="base-image-input rounded-circle mx-auto col-4 col-md-4 col-lg-2 my-2"
+            :style="{ 'background-image': `url(${imageData})` }"
+            @click="chooseImage">
+              <span v-if="!imageData" class="placeholder rounded-circle">
+                Choose an Image
+              </span>
+              <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
+            </div>
+          </div>
+          <div class="col">
+            <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+              <label>Name</label>
+              <input v-model="name" id="name" type="text" placeholder="Add your name" required/>
+            </div>
+            <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+            <label>Position</label><br>
+            <select v-model="position" id="position" class="p-1" required>
+              <option disabled value="">Add your position</option>
+              <option>Customer Service</option>
+              <option>Manager</option>
+              <option>CEO</option>
+            </select>
+            </div>
+            <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
+              <label>Hobbies</label>
+              <input v-model="hobbies" id="hobbies" placeholder="Add your hobbies" type="text" required>
+            </div>
+            <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-3">
+            <button v:on-click="onSubmit" class="btn uploadBtn text-center px-3 mt-1" type="submit">Upload</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col">
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-          <label>Name</label>
-          <input v-model="name" id="name" type="text" placeholder="Add your name" required/>
-        </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-        <label>Position</label><br>
-        <select v-model="position" id="position" class="p-1" required>
-          <option disabled value="">Add your position</option>
-          <option>Customer Service</option>
-          <option>Manager</option>
-          <option>CEO</option>
-        </select>
-        </div>
-        <div class="mx-auto col-4 col-md-4 col-lg-2 my-2">
-          <label>Hobbies</label>
-          <input v-model="hobbies" id="hobbies" placeholder="Add your hobbies" type="text" required>
-        </div>
-        <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-3">
-        <button v:on-click="onSubmit" class="btn uploadBtn text-center px-3 mt-1" type="submit">Upload</button>
-        </div>
-        </div>
-      </div>
-    </div>
     </form>
   </div>
 </template>

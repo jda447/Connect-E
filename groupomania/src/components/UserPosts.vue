@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <div class="messageContainer mx-auto border shadow col-10 mt-2">
-      <div @click="removePost" class="btn btn-outline btn-sm d-flex justify-content-end me-1">
-      x
-      </div>
+      <button @click="removePost" class="btn btn-outline float-end btn-sm">
+        x
+      </button>
       <div :class="`post`">
-      <div class="userNameMsgs mx-4 flex-grow-1 bd-highlight">
+      <div class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">
         {{ $store.state.name }}
       <hr/>
       </div>
