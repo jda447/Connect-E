@@ -3,7 +3,7 @@
     <router-link to="/profile" class="profileNavBtn px-3 mx-3">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <div class="navbar-brand mx-auto" href="#">Messages</div>
+    <div class="navbar-brand mx-auto fw-bold" href="#">Groupomania</div>
       <router-link to="/" class="signOutNavBtn px-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
@@ -51,7 +51,7 @@ export default {
 }
 
 .navbar-brand {
-  font-family: Pacifico;
+  font-family: Ubuntu;
   color: #e7eaf6;
   font-size: 175%;
 }

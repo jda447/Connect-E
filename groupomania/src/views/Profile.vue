@@ -31,14 +31,15 @@ export default {
 }
 
 .editBtn {
-  background-color: #f9564f;
+  background-color: #0d3b66;
   color: white;
-  font-family: Pacifico;
+  font-family: Ubuntu;
   &:hover {
     background-color: white;
-    color: #f9564f;
+    color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 .btn:focus {

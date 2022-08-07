@@ -24,12 +24,12 @@ export default {
 <style lang="scss" scoped>
 #app {
   font-family: Helvetica, Arial, sans-serif;
-  color: #2c3e50;
+  color: #0d3b66;
   border: solid 10px white;
 }
 
 .profileBtn {
-  font-family: Pacifico;
+  font-family: Ubuntu;
   background-color: #0d3b66;
   color: white;
   &:hover {
@@ -37,6 +37,7 @@ export default {
     color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 

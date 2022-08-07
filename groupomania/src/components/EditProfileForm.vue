@@ -89,7 +89,7 @@ export default {
 
 <style lang="scss" scoped>
 .uploadBtn {
-  font-family: Pacifico;
+  font-family: Ubuntu;
   background-color: #f9564f;
   color: white;
   &:hover {
@@ -97,6 +97,7 @@ export default {
     color: #f9564f;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 .btn:focus {

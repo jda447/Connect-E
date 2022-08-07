@@ -3,7 +3,7 @@
     <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" />
     </router-link>
       <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-        <h1 class="text-center mt-5 mb-4">Sign-up</h1>
+        <h1 class="text-center mt-5 mb-3">Sign-up</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">
             <div class="form-group">
@@ -107,11 +107,8 @@ export default {
   }
 }
 
-.btn-secondary {
-  // border-radius: 50%;
-  // &:hover {
-  //   background-color: #fcfcfc;
-	// }
+hr {
+  color: #f9564f;
 }
 
 h1 {
