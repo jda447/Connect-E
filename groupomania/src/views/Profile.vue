@@ -25,18 +25,18 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
-  color: #2c3e50;
+  color: #0d3b66;
   border: solid 10px white;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 .editBtn {
-  background-color: #2688e3;
+  background-color: #f9564f;
   color: white;
   font-family: Pacifico;
   &:hover {
     background-color: white;
-    color: #2688e3;
+    color: #f9564f;
     transform: scale(1.6);
     transition: transform 250ms;
   }

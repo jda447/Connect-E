@@ -6,17 +6,15 @@
           <div class="my-5">
             <img class="col-8 col-md-6 col-lg-4" src="@/assets/icon-above-font-cropped.png"/>
           </div>
-            <router-link to="/sign-up" class="btn btnSignUp btn-lg m-4">Sign-up</router-link>
-            <router-link to="/log-in" class="btn btn-outline btnLogIn  btn-lg m-4">Log-in</router-link>
+            <router-link to="/sign-up" class="btn btnSignUp btn-lg shadow-none m-4">Sign-up</router-link>
+            <router-link to="/log-in" class="btn btnLogIn btn-lg shadow-none m-4">Log-in</router-link>
         </div>
       </div>
     </div>
-    <div class="footerWrapper">
-      <footer class="footer text-center mx-auto p-3">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" href="#">Groupomania.com</a>
-      </footer>
-    </div>
+    <footer class="footer text-center mx-auto p-3">
+      © 2022 Copyright:
+      <a class="text-reset fw-bold" href="#">Groupomania.com</a>
+    </footer>
   </div>
 </template>
 
@@ -31,21 +29,20 @@ export default {
 
 #app {
   font-family: Helvetica, Arial, sans-serif;
-  color: #2c3e50;
+  color: #0d3b66;
   border: solid 20px white;
   height: 100vh;
-  background-image: linear-gradient(to bottom, white, white, white, white, white);
 }
 
 .btnSignUp {
   font-family: Ubuntu, sans-serif;
-  background-color: #033270;
+  background-color: #0d3b66;
   color: white;
   text-decoration: none;
   font-weight: bold;
     &:hover {
     background-color: white;
-    color: #033270;
+    color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
   }
@@ -53,21 +50,17 @@ export default {
 
 .btnLogIn {
   font-family: Ubuntu, sans-serif;
-  background-color: #033270;
+  background-color: #0d3b66;
   color: white;
   text-decoration: none;
   font-weight: bold;
     &:hover {
     background-color: white;
-    color: #033270;
+    color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
   }
 }
-
-// .footerWrapper {
-  
-// }
 
 .footer {
   background-color: rgba(0, 0, 0, 0.1);

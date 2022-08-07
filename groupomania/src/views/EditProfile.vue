@@ -30,11 +30,11 @@ export default {
 
 .profileBtn {
   font-family: Pacifico;
-  background-color: #155ea2;
+  background-color: #0d3b66;
   color: white;
   &:hover {
     background-color: white;
-    color: #155ea2;
+    color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
   }

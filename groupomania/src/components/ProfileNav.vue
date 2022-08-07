@@ -27,11 +27,11 @@ export default {
 
 #app {
   font-family: Helvetica, Arial, sans-serif;
-  color: #2c3e50;
+  color: #0d3b66;
   border: solid 10px white;
 }
 .navbarGradient {
-  background-color: #155ea2;
+  background-color: #0d3b66;
 }
 .messagesNavBtn {
     color: #e7eaf6;

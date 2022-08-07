@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <router-link to="/" class="btn btn-secondary btn-outline-light btn-floating m-3"><font-awesome-icon :icon="['fas', 'circle-arrow-left']" />
+    <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" />
     </router-link>
       <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-        <h1 class="text-center mt-5">Log-in</h1>
+        <h1 class="text-center mt-5 mb-4">Log-in</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">
             <div class="form-group">
@@ -24,7 +24,7 @@
               <div class="invalid-feedback">A valid password is required</div>
             </div>           
             <div class="form-group text-center m-4">
-              <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btn-warning ">Submit</a>
+              <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btnLogInSubmit shadow-none">Submit</a>
             </div>    
           </div>
           <div v-else class="alert alert-success mt-5" role="alert">
@@ -87,18 +87,23 @@ export default {
 
   #app {
     font-family: Helvetica, Arial, sans-serif;
-    color: #DBE2E9;
+    color: #0d3b66;
     border: solid 10px white;
     min-height: 100vh;
-    background-image: linear-gradient(to top left, #fdc500, #8c6e00, black, black);
 }
 
-.btn-warning {
-  &:hover {
-    transform: scale(1.1);
-    transition: transform 300ms;
-    text-decoration: underline;
-	}
+.btnLogInSubmit {
+  font-family: Ubuntu, sans-serif;
+  background-color: #0d3b66;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+    &:hover {
+    background-color: white;
+    color: #0d3b66;
+    transform: scale(1.6);
+    transition: transform 250ms;
+  }
 }
 
 .btn-secondary {

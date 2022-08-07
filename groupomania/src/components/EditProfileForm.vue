@@ -90,11 +90,11 @@ export default {
 <style lang="scss" scoped>
 .uploadBtn {
   font-family: Pacifico;
-  background-color: #2688e3;
+  background-color: #f9564f;
   color: white;
   &:hover {
     background-color: white;
-    color: #2688e3;
+    color: #f9564f;
     transform: scale(1.6);
     transition: transform 250ms;
   }

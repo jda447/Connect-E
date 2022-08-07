@@ -9,14 +9,14 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons";
 import { faUserLarge } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-solid-svg-icons";
 import { faRightFromBracket} from "@fortawesome/free-solid-svg-icons";
-import { faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faPencil);
 library.add(faUserLarge);
 library.add(faMessage);
 library.add(faRightFromBracket);
-library.add(faCircleArrowLeft);
+library.add(faArrowLeft);
 library.add(faPaperPlane);
 
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
