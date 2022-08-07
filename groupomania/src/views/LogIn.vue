@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" />
+    <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" class="arrow" />
     </router-link>
       <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
-        <h1 class="text-center mt-5 mb-4">Log-in</h1>
+        <h1 class="text-center mt-4 mb-4">Log-in</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">
             <div class="form-group">
@@ -100,9 +100,10 @@ export default {
   font-weight: bold;
     &:hover {
     background-color: white;
-    color: #0d3b66;
+    color: #f9564f;;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 
@@ -117,7 +118,12 @@ h1 {
   font-family: Pacifico;
 }
 
-.btn-warning {
-  font-family: Pacifico;
+.arrow {
+  &:hover {
+    background-color: white;
+    color: #f9564f;
+    transform: scale(1.8);
+    transition: transform 250ms;
+  }
 }
 </style>

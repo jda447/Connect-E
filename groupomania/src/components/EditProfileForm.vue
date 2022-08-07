@@ -32,7 +32,7 @@
               <input v-model="hobbies" id="hobbies" placeholder="Add your hobbies" type="text" required>
             </div>
             <div class="mx-auto text-center col-4 col-md-4 col-lg-2 my-3">
-            <button v:on-click="onSubmit" class="btn uploadBtn text-center px-3 mt-1" type="submit">Upload</button>
+            <button v:on-click="onSubmit" class="btn uploadBtn mx-5 text-center fw-bold px-3 mt-1" type="submit">Upload</button>
             </div>
           </div>
         </div>
@@ -90,11 +90,11 @@ export default {
 <style lang="scss" scoped>
 .uploadBtn {
   font-family: Ubuntu;
-  background-color: #f9564f;
+  background-color: #229631;
   color: white;
   &:hover {
     background-color: white;
-    color: #f9564f;
+    color: #229631;
     transform: scale(1.6);
     transition: transform 250ms;
     font-family: Pacifico;

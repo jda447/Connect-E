@@ -38,7 +38,7 @@ export default {
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
-    color: white;
+    color: #f9564f;
 	}
 }
 .signOutNavBtn {
@@ -46,7 +46,7 @@ export default {
     &:hover {
     transform: scale(1.4);
     transition: transform 250ms;
-    color: white;
+    color: #f9564f;
 	}
 }
 

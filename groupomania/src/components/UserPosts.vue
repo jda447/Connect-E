@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="messageContainer mx-auto border shadow col-10 mt-2">
-      <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none">
+      <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none deletePost">
         x
       </button>
       <div :class="`post`">
@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .messageContainer {
   background-color: #fafafa;
@@ -49,5 +49,11 @@ export default {
 
 .seen-by {
   font-size: medium;
+}
+
+.deletePost {
+  &:hover {
+    color: #f9564f;
+  }
 }
 </style>

@@ -45,6 +45,7 @@ export default {
     color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 
@@ -59,6 +60,7 @@ export default {
     color: #0d3b66;
     transform: scale(1.6);
     transition: transform 250ms;
+    font-family: Pacifico;
   }
 }
 
