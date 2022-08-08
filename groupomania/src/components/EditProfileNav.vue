@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar mb-3">
-    <router-link to="/messages" class="profileNavBtn px-3 mx-3">
+    <router-link to="/messages" class="messagesNavBtn ms-4">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
     <div class="navbar-brand mx-auto fw-bold" href="#">Groupomania</div>
-      <router-link to="/" class="signOutNavBtn px-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
   </nav>
@@ -34,7 +34,7 @@ export default {
   background-color: #0d3b66;
 }
 
-.profileNavBtn {
+.messagesNavBtn {
   color: #e7eaf6;
     &:hover {
     transform: scale(1.4);

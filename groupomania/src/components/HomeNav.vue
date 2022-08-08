@@ -1,10 +1,10 @@
 <template>
   <nav class="navbar navbarGradient mb-3">
-    <router-link to="/profile" class="profileNavBtn px-3 mx-3">
+    <router-link to="/profile" class="profileNavBtn ms-4">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
     <div class="navbar-brand mx-auto fw-bold" href="#">Groupomania</div>
-      <router-link to="/" class="signOutNavBtn px-3 mx-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
   </nav>
