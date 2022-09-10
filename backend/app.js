@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const express = require('express');
+require('dotenv').config();
 
 const app = express();
 
@@ -8,10 +9,17 @@ app.use((req, res) => {
 });
 
 const sequelize = new Sequelize('database', 'username', 'password', {
-    host: 'localhost',
-    dialect: 'postgres',
-    port: 5432,
-    database: 'GroupomaniaDB',
+    postgres: {
+      options: {
+        host: 'localhost',
+        dialect: 'postgres',
+        port: 5432,
+        database: process.env.DB_DATABASE,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        logging: (...msg) => console.log(msg)
+      }
+    }
 });
 
 app.use((req, res, next) => {
