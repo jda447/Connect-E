@@ -2,12 +2,12 @@ const { Sequelize } = require('sequelize');
 require('dotenv').config();
 const express = require('express');
 const app = express();
-
 app.use(express.json());
 
-app.use((req, res) => {
-  res.json({ message: 'Your request was successful!' }); 
-});
+const userRoutes = require('./routes/user');
+
+const path = require('path');
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 const sequelize = new Sequelize(process.env.POSTGRES_URI)
 try {
@@ -24,5 +24,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
+
+app.use('/api/auth', userRoutes);
 
 module.exports = app;

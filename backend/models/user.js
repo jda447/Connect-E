@@ -7,7 +7,16 @@ module.exports = (sequelize) => {
       allowNull: false,
       unique: true,
       isEmail: true
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      len: [6,20],
     }
-  });
-  sequelize.sync();
+  }, {
+  freezeTableName: true
+});
+
+  User.sync({ alter: true })
 }
