@@ -51,7 +51,6 @@ export default {
 }
 
 .navbar-brand {
-  font-family: Ubuntu;
   color: #e7eaf6;
   font-size: 175%;
 }
