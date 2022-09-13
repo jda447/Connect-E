@@ -2,6 +2,8 @@ const { Sequelize } = require('sequelize');
 require('dotenv').config();
 const express = require('express');
 const app = express();
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const userRoutes = require('./routes/user');
@@ -9,7 +11,11 @@ const userRoutes = require('./routes/user');
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-const sequelize = new Sequelize(process.env.POSTGRES_URI)
+const sequelize = new Sequelize(process.env.POSTGRES_URI, {
+  logging: (...msg) => console.log(msg)
+});
+
+
 try {
   sequelize.authenticate();
   console.log('Connection to GroupomaniaDB has been established successfully.');
