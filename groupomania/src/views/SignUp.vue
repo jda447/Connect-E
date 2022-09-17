@@ -31,7 +31,7 @@
             <div class="text-center">
               <h5>Thank you</h5>
               <p>Sign-up successful!</p>
-              <router-link to="/edit-profile" class="btn btn-success my-2">Enter</router-link>
+              <router-link to="/editprofile" class="btn btn-success my-2">Enter</router-link>
             </div>
           </div>
         </div>

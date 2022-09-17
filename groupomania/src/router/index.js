@@ -12,13 +12,13 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/sign-up',
-    name: 'sign-up',
+    path: '/signup',
+    name: 'signup',
     component: SignUp
   },
   {
-    path: '/log-in',
-    name: 'log-in',
+    path: '/login',
+    name: 'login',
     component: LogIn
   },
   {
@@ -27,7 +27,7 @@ const routes = [
     component: Profile
   },
   {
-    path: '/edit-profile',
+    path: '/editprofile',
     name: 'editprofile',
     component: EditProfile
   },

@@ -6,7 +6,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 const userRoutes = require('./routes/user');
-app.use('/api/auth', userRoutes);
 
 const path = require('path');
 app.use('/images', express.static(path.join(__dirname, 'images')));
@@ -29,5 +28,7 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
   next();
 });
+
+app.use("/#", userRoutes);
 
 module.exports = app;

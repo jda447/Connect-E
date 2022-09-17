@@ -6,8 +6,8 @@
           <div class="my-5">
             <img class="col-8 col-md-6 col-lg-4" src="@/assets/icon-above-font-cropped.png"/>
           </div>
-            <router-link to="/sign-up" class="btn btnSignUp btn-lg shadow-none m-4">Sign-up</router-link>
-            <router-link to="/log-in" class="btn btnLogIn btn-lg shadow-none m-4">Log-in</router-link>
+            <router-link to="/signup" class="btn btnSignUp btn-lg shadow-none m-4">Sign-up</router-link>
+            <router-link to="/login" class="btn btnLogIn btn-lg shadow-none m-4">Log-in</router-link>
         </div>
       </div>
     </div>

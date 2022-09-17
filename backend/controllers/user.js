@@ -2,35 +2,29 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-exports.getUser = async (req,res) => {
-  res.send({
-    message:'This is working!'
-  });
-}
-
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(
     (hash) => {
-      const user = new User({
+      const user = User.create({
         email: req.body.email,
         password: hash
       });
-      user.save().then(
-        () => {
-          res.status(201).json({
-          message: 'User added successfully!'
-        });
+      console.log(user.toJSON());
       }
       ).catch(
-        (error) => {
-          res.status(500).json({
-            error: error
-          });
-        }
-      );
+      (error) => {
+        res.status(500).json({
+        error: error
+      });
     }
   );
 };
+
+// The findOne method obtains the first entry it finds (that fulfills the optional query options, if provided).
+
+// const user = await User.findOne({ where: { email: req.body.email} });
+// if (user === null) {
+//   console.log('Not found!');
 
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email }).then(
