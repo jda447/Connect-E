@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <EditProfileNav></EditProfileNav>
+    <ProfileNav></ProfileNav>
     <EditProfileForm></EditProfileForm>
       <div class="text-center">
         <router-link to="/profile" class="btn profileBtn btn-lg fw-bold">Profile</router-link>
@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import EditProfileNav from '../components/EditProfileNav.vue'
+import ProfileNav from '../components/ProfileNav.vue'
 import EditProfileForm from '../components/EditProfileForm.vue'
 
 export default {
   name: 'App',
   components: {
-    EditProfileNav,
+    ProfileNav,
     EditProfileForm
   }
 }
