@@ -132,4 +132,12 @@ export default {
 .file-input {
   display: none;
 }
+
+#name {
+  text-align: center;
+}
+
+#hobbies {
+  text-align: center;
+}
 </style>
