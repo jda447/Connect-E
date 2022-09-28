@@ -66,3 +66,30 @@ exports.login = (req, res, next) => {
     }
   );
 }
+
+exports.updateUser = (req, res, next) => {
+  let user = req.body || {};
+
+  User.update({_id: req.params.id}, user)
+  .then(    
+    (user) => {
+      res.status(201).json(user);
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json(error);
+    }
+  )
+}
+
+exports.deleteUser = (req, res, next) => {
+  User.destroy({_id: req.params.id}).then(
+    () => {
+      res.status(200).json();
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json(error);
+    }
+  );
+};
