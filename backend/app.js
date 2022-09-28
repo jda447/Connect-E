@@ -1,14 +1,13 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config();
 const express = require('express');
 const app = express();
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const { Sequelize } = require('sequelize');
+require('dotenv').config();
+const path = require('path');
 
 const userRoutes = require('./routes/user');
 
-const path = require('path');
-app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const sequelize = new Sequelize(process.env.POSTGRES_URI, {
   logging: console.log
@@ -29,6 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use("/#", userRoutes);
 
 module.exports = app;
