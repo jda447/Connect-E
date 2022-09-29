@@ -1,4 +1,4 @@
-const Post = require('../models/post');
+const Post = require('../models/posts');
 
 exports.addPost = (req, res, next) => {
   req.body.post = JSON.parse(req.body.post);
