@@ -5,23 +5,23 @@ exports.addPost = (req, res, next) => {
 
 	const post = Post.create({
 			post: req.body.post
-	}).then(
-		() => {
-			res.status(201).json(post);
-		}
-	).catch(
-		(error) => {
-			res.status(400).json(error);
+		}).then(
+			() => {
+				res.status(201).json(post);
+		}).catch(
+			(error) => {
+				res.status(400).json(error);
 		}
 	);
 }
+
 
 exports.getPosts = (req, res, next) => {
 	const posts = Post.findAll().then(
     (posts) => {
       res.status(200).json(posts);
     }
-  ).catch(
+		).catch(
     (error) => {
       res.status(400).json(error);
     }
@@ -30,13 +30,14 @@ exports.getPosts = (req, res, next) => {
 	console.log("All posts:", JSON.stringify(posts, null, 2));
 };
 
+
 exports.deletePost = (req, res, next) => {
   Post.destroy({_id: req.params.id}).then(
     () => {
       res.status(200).json();
     }
-  ).catch(
-    (error) => {
+  	).catch(
+    	(error) => {
       res.status(400).json(error);
     }
   );

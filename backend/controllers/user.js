@@ -26,6 +26,7 @@ exports.signup = (req, res, next) => {
   );
 };
 
+
 exports.login = (req, res, next) => {
   User.findOne({ email: req.body.email }).then(
     (user) => {
@@ -67,6 +68,7 @@ exports.login = (req, res, next) => {
   );
 }
 
+
 exports.updateUser = (req, res, next) => {
   let user = req.body || {};
 
@@ -81,6 +83,7 @@ exports.updateUser = (req, res, next) => {
     }
   )
 }
+
 
 exports.deleteUser = (req, res, next) => {
   User.destroy({_id: req.params.id}).then(
