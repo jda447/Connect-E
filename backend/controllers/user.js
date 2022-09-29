@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const userDetails = require('../models/userDetails');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -68,14 +69,32 @@ exports.login = (req, res, next) => {
   );
 }
 
+exports.createUser = (req, res, next) => {
+  req.body.userdetails = JSON.parse(req.body.userdetails);
+  const url = req.protocol + '://' + req.get('host');
+	const userdetails = userDetails.create({
+			name: req.body.name,
+      position: req.body.position,
+      hobbies: req.body.hobbies,
+      imageUrl: url + '/images/' + req.file.filename
+		}).then(
+			() => {
+				res.status(201).json(userdetails);
+		}).catch(
+			(error) => {
+				res.status(400).json(error);
+		}
+	);
+}
+
 
 exports.updateUser = (req, res, next) => {
-  let user = req.body || {};
+  let userdetails = req.body || {};
 
-  User.update({_id: req.params.id}, user)
+  userDetails.update({_id: req.params.id}, userdetails)
   .then(    
-    (user) => {
-      res.status(201).json(user);
+    (userdetails) => {
+      res.status(201).json(userdetails);
     }
   ).catch(
     (error) => {
