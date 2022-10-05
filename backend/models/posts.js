@@ -10,5 +10,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Posts',
   });
+  sequelize.sync({ alter: true });
   return Posts;
 };

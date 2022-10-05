@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const userDetails = require('../models/userDetails');
+const UserDetails = require('../models/userDetails');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -70,16 +70,16 @@ exports.login = (req, res, next) => {
 }
 
 exports.createUser = (req, res, next) => {
-  req.body.userdetails = JSON.parse(req.body.userdetails);
+  req.body.userDetails = JSON.parse(req.body.userDetails);
   const url = req.protocol + '://' + req.get('host');
-	const userdetails = userDetails.create({
+	const userDetails = UserDetails.create({
 			name: req.body.name,
       position: req.body.position,
       hobbies: req.body.hobbies,
       imageUrl: url + '/images/' + req.file.filename
 		}).then(
 			() => {
-				res.status(201).json(userdetails);
+				res.status(201).json(userDetails);
 		}).catch(
 			(error) => {
 				res.status(400).json(error);
@@ -89,12 +89,11 @@ exports.createUser = (req, res, next) => {
 
 
 exports.updateUser = (req, res, next) => {
-  let userdetails = req.body || {};
-
-  userDetails.update({_id: req.params.id}, userdetails)
+  let userDetails = req.body || {};
+  UserDetails.update({_id: req.params.id}, userDetails)
   .then(    
-    (userdetails) => {
-      res.status(201).json(userdetails);
+    (userDetails) => {
+      res.status(201).json(userDetails);
     }
   ).catch(
     (error) => {

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+    <form id="login-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
       <h1 class="text-center mt-4 mb-4">Log-in</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">

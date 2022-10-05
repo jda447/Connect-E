@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <form id="comment-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+    <form id="signup-form" class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
       <h1 class="text-center mt-4 mb-3">Sign-up</h1>
         <div class="form-wrap container">
           <div v-if="!submitted">
@@ -24,13 +24,6 @@
             <div class="form-group text-center m-4">
               <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btnSignInSubmit shadow-none">Submit</a>
             </div>    
-          </div>
-          <div v-else class="alert alert-success mt-5" role="alert">
-            <div class="text-center">
-              <h5>Thank you</h5>
-              <p>Sign-up successful!</p>
-              <router-link to="/editprofile" class="btn btn-success my-2">Enter</router-link>
-            </div>
           </div>
         </div>
     </form>
@@ -73,7 +66,17 @@ export default {
     submit : function(){                   
       this.validate();     
       if(this.emailValid && this.passwordValid){
-        //submit data to server here
+        fetch('http://localhost:3000/api/user', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: this.email,
+            password: this.password
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        }).then((this.$router.push("/editprofile")))
+        console.log(this.email, this.password);
         this.submitted = true;
       }
     }

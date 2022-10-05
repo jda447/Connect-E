@@ -2,7 +2,6 @@ const Post = require('../models/posts');
 
 exports.addPost = (req, res, next) => {
   req.body.post = JSON.parse(req.body.post);
-
 	const post = Post.create({
 			post: req.body.post
 		}).then(
@@ -17,7 +16,7 @@ exports.addPost = (req, res, next) => {
 
 
 exports.getPosts = (req, res, next) => {
-	const posts = Post.findAll().then(
+  const posts = Post.findAll().then(
     (posts) => {
       res.status(200).json(posts);
     }
