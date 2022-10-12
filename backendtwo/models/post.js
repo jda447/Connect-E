@@ -2,22 +2,26 @@
 const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Posts extends Model {}
-  Posts.init({
+  class Post extends Model {}
+
+  Post.init({
     post_id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true
+      autoIncrement: true
+    },
+    user_id: {
+      type: DataTypes.INTEGER
     },
     post: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      autoIncrement: true
     },
     userSeen: {
       type: DataTypes.INTEGER
     }
   }, {
     sequelize,
-    modelName: 'Posts',
+    modelName: 'Post',
   });
-  return Posts;
+  return Post;
 };
