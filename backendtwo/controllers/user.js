@@ -1,5 +1,4 @@
 const User = require('../models/user');
-const UserDetails = require('../models/userDetails');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -69,31 +68,31 @@ exports.login = (req, res, next) => {
   );
 }
 
-exports.createUser = (req, res, next) => {
-  req.body.userDetails = JSON.parse(req.body.userDetails);
-  const url = req.protocol + '://' + req.get('host');
-	const userDetails = UserDetails.create({
-			name: req.body.name,
-      position: req.body.position,
-      hobbies: req.body.hobbies,
-      imageUrl: url + '/images/' + req.file.filename
-		}).then(
-			() => {
-				res.status(201).json(userDetails);
-		}).catch(
-			(error) => {
-				res.status(400).json(error);
-		}
-	);
-}
+// exports.createUser = (req, res, next) => {
+//   req.body.userDetails = JSON.parse(req.body.userDetails);
+//   const url = req.protocol + '://' + req.get('host');
+// 	const userDetails = UserDetails.create({
+// 			name: req.body.name,
+//       position: req.body.position,
+//       hobbies: req.body.hobbies,
+//       imageUrl: url + '/images/' + req.file.filename
+// 		}).then(
+// 			() => {
+// 				res.status(201).json(userDetails);
+// 		}).catch(
+// 			(error) => {
+// 				res.status(400).json(error);
+// 		}
+// 	);
+// }
 
 
 exports.updateUser = (req, res, next) => {
-  let userDetails = req.body || {};
-  UserDetails.update({_id: req.params.id}, userDetails)
+  let user = req.body || {};
+  User.update({_id: req.params.id}, user)
   .then(    
-    (userDetails) => {
-      res.status(201).json(userDetails);
+    (user) => {
+      res.status(201).json(user);
     }
   ).catch(
     (error) => {
