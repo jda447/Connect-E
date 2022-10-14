@@ -10,18 +10,20 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     user_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      foreignKey: true
     },
     post: {
       type: DataTypes.STRING,
       autoIncrement: true
     },
-    userSeen: {
+    userSeen_id: {
       type: DataTypes.INTEGER
     }
   }, {
     sequelize,
     modelName: 'Post',
   });
+  sequelize.sync({ alter: true });
   return Post;
 };

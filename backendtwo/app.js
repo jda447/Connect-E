@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const { Sequelize } = require('sequelize');
 require('dotenv').config();
 const path = require('path');
 
@@ -9,18 +8,6 @@ const postRoutes = require('./routes/post');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-const sequelize = new Sequelize(process.env.POSTGRES_URI, {
-  logging: console.log
-});
-
-try {
-  sequelize.authenticate();
-  console.log('Connection to GroupomaniaDB has been established successfully.');
-  return sequelize;
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
-}
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
