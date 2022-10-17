@@ -77,20 +77,24 @@ exports.login = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  User.update({ name: 'John Doe' }, {
+  User.update({
+    imageUrl: req.body.imageUrl,
+    name: req.body.name,
+    position: req.body.position,
+    hobbies: req.body.hobbies
+  }, {
     where: {
-      name: 'Jane Doe'
+      name: 'John Doe'
     }
-  })
-    .then(
-      (user) => {
-        res.status(201).json(user)
-      }
-    ).catch(
-      (error) => {
-        res.status(400).json(error)
-      }
-    )
+  }).then(
+    (user) => {
+      res.status(201).json(user)
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json(error)
+    }
+  )
 }
 
 exports.deleteUser = (req, res, next) => {
