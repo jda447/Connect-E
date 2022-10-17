@@ -1,15 +1,19 @@
 const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
-  req.body.post = JSON.parse(req.body.post)
-  const post = Post.create({
+  Post.create({
     post: req.body.post
   }).then(
-    () => {
-      res.status(201).json(post)
-    }).catch(
+    (post) => {
+      res.status(201).json({
+        message: 'Post added successfully!', post
+      })
+    }
+  ).catch(
     (error) => {
-      res.status(400).json(error)
+      res.status(500).json({
+        error
+      })
     }
   )
 }

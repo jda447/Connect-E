@@ -5,6 +5,10 @@ const sequelize = require('../database')
 class Post extends Model {}
 
 Post.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true
+  },
   post_id: {
     type: DataTypes.INTEGER
   },
