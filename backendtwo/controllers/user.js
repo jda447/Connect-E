@@ -77,8 +77,11 @@ exports.login = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  const user = req.body || {}
-  User.update({ _id: req.params.id }, user)
+  User.update({ name: 'John Doe' }, {
+    where: {
+      name: 'Jane Doe'
+    }
+  })
     .then(
       (user) => {
         res.status(201).json(user)
@@ -91,11 +94,14 @@ exports.updateUser = (req, res, next) => {
 }
 
 exports.deleteUser = (req, res, next) => {
-  User.destroy({ _id: req.params.id }).then(
+  User.destroy({
+    where: {
+      email: 'valid2@email.com'
+    }
+  }).then(
     () => {
       res.status(200).json()
-    }
-  ).catch(
+    }).catch(
     (error) => {
       res.status(400).json(error)
     }
