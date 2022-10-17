@@ -9,9 +9,6 @@ Post.init({
     type: DataTypes.INTEGER,
     primaryKey: true
   },
-  post_id: {
-    type: DataTypes.INTEGER
-  },
   user_id: {
     type: DataTypes.INTEGER,
     foreignKey: true

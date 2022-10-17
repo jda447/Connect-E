@@ -19,21 +19,23 @@ exports.addPost = (req, res, next) => {
 }
 
 exports.getPosts = (req, res, next) => {
-  const posts = Post.findAll().then(
-    (posts) => {
-      res.status(200).json(posts)
+  Post.findAll().then(
+    (post) => {
+      res.status(200).json(post)
     }
   ).catch(
     (error) => {
       res.status(400).json(error)
     }
   )
-  console.log(posts.every(post => post instanceof Post)) // true
-  console.log('All posts:', JSON.stringify(posts, null, 2))
 }
 
 exports.deletePost = (req, res, next) => {
-  Post.destroy({ _id: req.params.id }).then(
+  Post.destroy({
+    where: {
+      post: 'This is my second post'
+    }
+  }).then(
     () => {
       res.status(200).json()
     }).catch(
