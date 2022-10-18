@@ -3,20 +3,30 @@
     <ProfileNav></ProfileNav>
     <div class="text-center">
       <ProfileInfo></ProfileInfo>
-      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-3">Edit</router-link>
+      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-3">
+        Edit
+      </router-link>
     </div>
+    <div class="text-center">
+      <router-link to="/" class="btn deleteUserBtn btn-lg btn-danger fw-bold px-2 mt-3" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+        Delete
+      </router-link>
+    </div>
+    <DeleteUserModal></DeleteUserModal>
   </div>
 </template>
 
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
 import ProfileInfo from '../components/ProfileInfo.vue'
+import DeleteUserModal from '../components/DeleteUserModal.vue'
 
 export default {
   name: 'App',
   components: {
     ProfileNav,
-    ProfileInfo
+    ProfileInfo,
+    DeleteUserModal
   }
 }
 </script>
@@ -40,6 +50,17 @@ export default {
     transform: scale(1.6);
     transition: transform 250ms;
     font-family: Pacifico;
+  }
+}
+
+.deleteUserBtn {
+  font-family: Ubuntu;
+  background-color: white;
+  color:#bb2124;
+  border: none;
+  &:hover {
+    background-color: #bb2124;
+    color: white;
   }
 }
 .btn:focus {

@@ -6,7 +6,7 @@
           <div class="my-5">
             <img class="col-8 col-md-6 col-lg-4" src="@/assets/icon-above-font-cropped.png"/>
           </div>
-            <div class="container">
+            <div class="container col-lg-6">
               <div class="row">
             <div class="col">
               <router-link to="/signup" class="btn btnSignUp btn-lg shadow-none m-1">Sign-up</router-link>
