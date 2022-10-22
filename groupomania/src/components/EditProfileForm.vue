@@ -15,24 +15,25 @@
           </div>
           <div class="col">
             <div class="mx-auto text-center my-2">
-              <label>Name</label><br>
-              <input v-model="name" id="name" type="text" placeholder="Add your name" required/>
+              <label>First name</label><br>
+              <input v-model="firstName" id="firstName" type="text" required/>
+            </div>
+            <div class="mx-auto text-center my-2">
+              <label>Last name</label><br>
+              <input v-model="lastName" id="lastName" type="text" required>
             </div>
             <div class="mx-auto text-center my-2">
             <label>Position</label><br>
             <select v-model="position" id="position" class="p-1" required>
-              <option disabled value="">Add your position</option>
               <option>Customer Service</option>
               <option>Manager</option>
               <option>CEO</option>
             </select>
             </div>
-            <div class="mx-auto text-center my-2">
-              <label>Hobbies</label><br>
-              <input v-model="hobbies" id="hobbies" placeholder="Add your hobbies" type="text" required>
-            </div>
             <div class="mx-auto text-center my-3">
-            <button v:on-click="onSubmit" class="btn uploadBtn text-center fw-bold px-3 mt-1" type="submit">Upload</button>
+            <button v:on-click="onSubmit" class="btn uploadBtn text-center fw-bold px-3 mt-1" type="submit">
+              Upload
+            </button>
             </div>
           </div>
         </div>
@@ -47,9 +48,9 @@ export default {
   data() {
   return {
     imageData: null,
-    name: '',
-    position: null,
-    hobbies: ''
+    firstName: '',
+    lastName: '',
+    position: null
     };
   },
   methods: {
@@ -69,19 +70,19 @@ export default {
       }
     },
     onSubmit () {
-      let employeeInfo = {
-        name: this.name,
-        position: this.position,
-        hobbies: this.hobbies
+      let staffInfo = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        position: this.position
       }
-      this.$emit('info-submitted', employeeInfo)
-      this.$store.commit('ADD_NAME', this.name)
+      this.$emit('info-submitted', staffInfo)
+      this.$store.commit('ADD_FIRSTNAME', this.firstName)
+      this.$store.commit('ADD_LASTNAME', this.lastName)
       this.$store.commit('ADD_POSITION', this.position)
-      this.$store.commit('ADD_HOBBIES', this.hobbies)
 
-      this.name = ''
+      this.firstName = ''
+      this.lastName = ''
       this.position = null
-      this.hobbies = ''
     }
   }
 }
@@ -104,7 +105,6 @@ export default {
   outline: none;
   box-shadow: none;
 }
-
 
 .base-image-input {
   width: 200px;
@@ -133,11 +133,11 @@ export default {
   display: none;
 }
 
-#name {
+#firstName {
   text-align: center;
 }
 
-#hobbies {
+#lastName {
   text-align: center;
 }
 </style>

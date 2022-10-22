@@ -4,7 +4,7 @@
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
     <div class="navbar-brand mx-auto fw-bold" href="#">Groupomania</div>
-      <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
         <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
       </router-link>
   </nav>

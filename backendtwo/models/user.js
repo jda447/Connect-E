@@ -25,14 +25,14 @@ User.init({
     type: DataTypes.STRING,
     isUrl: true
   },
-  name: {
+  firstName: {
     type: DataTypes.STRING,
     isAlpha: true
   },
-  position: {
+  lastName: {
     type: DataTypes.STRING
   },
-  hobbies: {
+  position: {
     type: DataTypes.STRING
   }
 }, {

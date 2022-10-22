@@ -51,11 +51,11 @@ exports.login = (req, res, next) => {
             })
           }
           const token = jwt.sign(
-            { userId: user._id },
+            { userId: user.user_id },
             'RANDOM_TOKEN_SECRET',
             { expiresIn: '24h' })
           res.status(200).json({
-            userId: user._id,
+            userId: user.user_id,
             token
           })
         }
@@ -79,12 +79,12 @@ exports.login = (req, res, next) => {
 exports.updateUser = (req, res, next) => {
   User.update({
     imageUrl: req.body.imageUrl,
-    name: req.body.name,
-    position: req.body.position,
-    hobbies: req.body.hobbies
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    position: req.body.position
   }, {
     where: {
-      name: 'John Doe'
+      user_id: 2
     }
   }).then(
     (user) => {
@@ -100,7 +100,7 @@ exports.updateUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   User.destroy({
     where: {
-      email: 'valid2@email.com'
+      user_id: 1
     }
   }).then(
     () => {

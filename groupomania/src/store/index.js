@@ -2,55 +2,55 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-      name: '',
-      position: null,
-      hobbies: '',
-      posts: [],
-      counter: 0
+    firstName: '',
+    lastName: '',
+    position: null,
+    posts: [],
+    counter: 0
   },
   mutations: {
-    ADD_NAME(state, name) {
-      state.name = name
+    ADD_FIRSTNAME (state, firstName) {
+      state.firstName = firstName
     },
-    ADD_POSITION(state, position) {
+    ADD_POSITION (state, position) {
       state.position = position
     },
-    ADD_HOBBIES(state, hobbies) {
-      state.hobbies = hobbies
+    ADD_LASTNAME (state, lastName) {
+      state.lastName = lastName
     },
-    ADD_POST(state, post) {
-      state.posts = [{content: post}, ...state.posts];
+    ADD_POST (state, post) {
+      state.posts = [{ content: post }, ...state.posts]
     },
-    REMOVE_POST(state, post) {
-      state.posts.splice(state.posts.indexOf(post), 1);
+    REMOVE_POST (state, post) {
+      state.posts.splice(state.posts.indexOf(post), 1)
     },
-    INCREASE_COUNTER(state) {
+    INCREASE_COUNTER (state) {
       state.counter++
-    },
+    }
   },
   actions: {
-    ADD_NAME(context) {
-      context.commit = ('ADD_NAME')
+    ADD_FIRSTNAME (context) {
+      context.commit = ('ADD_FIRSTNAME')
     },
-    ADD_POSITION(context) {
-      context.commit= ('ADD_POSITION')
+    ADD_POSITION (context) {
+      context.commit = ('ADD_POSITION')
     },
-    ADD_HOBBIES(context) {
-      context.commit = ('ADD_HOBBIES')
+    ADD_LASTNAME (context) {
+      context.commit = ('ADD_LASTNAME')
     },
-    INCREASE_COUNTER(context) {
+    INCREASE_COUNTER (context) {
       context.commit('INCREASE_COUNTER')
-    },
+    }
   },
   getters: {
-    employeeName: state => {
-      return `${state.name}`
+    staffFirstName: state => {
+      return `${state.firstName}`
     },
-    employeePosition: state => {
+    staffPosition: state => {
       return `${state.position}`
     },
-    employeeHobbies: state => {
-      return `${state.hobbies}`
+    staffLastName: state => {
+      return `${state.lastName}`
     }
   }
 })

@@ -6,7 +6,7 @@
       </button>
       <div :class="`post`">
       <div class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">
-        {{ $store.state.name }}
+        {{ $store.state.firstName + ' ' + $store.state.lastName }}
       <hr/>
       </div>
       <div class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3"> 
@@ -28,7 +28,7 @@ export default {
       this.$store.commit('REMOVE_POST', this.post)
     },
     userNameShow () {
-      this.$store.commit('ADD_NAME', this.name)
+      this.$store.commit('ADD_FIRSTNAME', 'ADD_LASTNAME', this.firstName, this.lastName)
     }
   }
 }
