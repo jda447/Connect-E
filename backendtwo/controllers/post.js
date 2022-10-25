@@ -2,6 +2,9 @@ const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
   Post.create({
+    where: {
+      user_id: req.body.userId
+    },
     post: req.body.post
   }).then(
     (post) => {
@@ -19,7 +22,8 @@ exports.addPost = (req, res, next) => {
 }
 
 exports.getPosts = (req, res, next) => {
-  Post.findAll().then(
+  Post.findAll({
+  }).then(
     (post) => {
       res.status(200).json(post)
     }
@@ -33,7 +37,7 @@ exports.getPosts = (req, res, next) => {
 exports.deletePost = (req, res, next) => {
   Post.destroy({
     where: {
-      post: 'This is my second post'
+      user_id: req.body.userId
     }
   }).then(
     () => {

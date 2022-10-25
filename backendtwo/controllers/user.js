@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const config = require('../config.js')
 
 exports.signup = (req, res, next) => {
   bcrypt.hash(req.body.password, 10).then(
@@ -52,7 +53,7 @@ exports.login = (req, res, next) => {
           }
           const token = jwt.sign(
             { userId: user.user_id },
-            'RANDOM_TOKEN_SECRET',
+            config.jwtSecret,
             { expiresIn: '24h' })
           res.status(200).json({
             userId: user.user_id,
@@ -84,7 +85,7 @@ exports.updateUser = (req, res, next) => {
     position: req.body.position
   }, {
     where: {
-      user_id: 2
+      user_id: req.body.userId
     }
   }).then(
     (user) => {
@@ -100,7 +101,7 @@ exports.updateUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   User.destroy({
     where: {
-      user_id: 1
+      user_id: req.body.userId
     }
   }).then(
     () => {
