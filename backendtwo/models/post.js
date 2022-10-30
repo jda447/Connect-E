@@ -9,20 +9,18 @@ class Post extends Model {
 }
 
 Post.init({
-  id: {
+  post_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
   user_id: {
     type: DataTypes.INTEGER,
-    foreignKey: true
+    foreignKey: true,
+    allowNull: false
   },
   post: {
     type: DataTypes.STRING
-  },
-  userSeen_id: {
-    type: DataTypes.INTEGER
   }
 }, {
   sequelize,

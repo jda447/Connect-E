@@ -2,10 +2,13 @@ const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
   Post.create({
+    post: req.body.post,
+    user_id: req.body.userId
+  },
+  {
     where: {
       user_id: req.body.userId
-    },
-    post: req.body.post
+    }
   }).then(
     (post) => {
       res.status(201).json({
