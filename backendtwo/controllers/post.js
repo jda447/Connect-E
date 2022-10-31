@@ -1,13 +1,18 @@
 const Post = require('../models/post')
+const jwt = require('jsonwebtoken')
+const config = require('../config.js')
 
 exports.addPost = (req, res, next) => {
+  const usertoken = req.headers.authorization
+  const token = usertoken.split(' ')
+  const decoded = jwt.verify(token[1], config.jwtSecret)
   Post.create({
     post: req.body.post,
-    user_id: req.body.userId
+    user_id: decoded.userId
   },
   {
     where: {
-      user_id: req.body.userId
+      user_id: decoded.userId
     }
   }).then(
     (post) => {
@@ -38,9 +43,12 @@ exports.getPosts = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
+  const usertoken = req.headers.authorization
+  const token = usertoken.split(' ')
+  const decoded = jwt.verify(token[1], config.jwtSecret)
   Post.destroy({
     where: {
-      user_id: req.body.userId
+      user_id: decoded.userId
     }
   }).then(
     () => {
