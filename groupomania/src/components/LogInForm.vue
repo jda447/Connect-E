@@ -24,12 +24,6 @@
             <div class="form-group text-center m-4">
               <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btnLogInSubmit shadow-none">Submit</a>
             </div>    
-          </div>
-          <div v-else class="alert alert-success mt-5" role="alert">
-            <div class="text-center">
-            <h5>Log-in successful!</h5>
-            <router-link to="/profile" class="btn btn-success my-2">Enter</router-link>
-          </div>
         </div>
       </div>
     </form>
@@ -72,6 +66,7 @@ export default {
     submit : function(){                   
       this.validate();     
       if(this.emailValid && this.passwordValid){
+        this.$router.push("/messages")
         //submit data to server here
         this.submitted = true;
       }

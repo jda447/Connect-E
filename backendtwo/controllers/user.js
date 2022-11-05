@@ -78,18 +78,12 @@ exports.login = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  const usertoken = req.headers.authorization
-  const token = usertoken.split(' ')
-  const decoded = jwt.verify(token[1], config.jwtSecret)
+  console.log(req.body.userId)
   User.update({
     imageUrl: req.body.imageUrl,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     position: req.body.position
-  }, {
-    where: {
-      user_id: decoded.userId
-    }
   }).then(
     (user) => {
       res.status(201).json(user)

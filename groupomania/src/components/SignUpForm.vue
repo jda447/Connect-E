@@ -66,9 +66,9 @@ export default {
     submit : function(){                   
       this.validate();     
       if(this.emailValid && this.passwordValid){
-        fetch('http://localhost:3000/api/user', {
+        fetch('http://localhost:3000/api/user/signup', {
           method: 'POST',
-          body: JSON.stringify({
+          body: new FormData() && JSON.stringify({
             email: this.email,
             password: this.password
           }),
@@ -76,9 +76,7 @@ export default {
             'Content-type': 'application/json; charset=UTF-8',
           }
         }).then((response) => response.json())
-        .then((json) => console.log(json))
         .then((this.$router.push("/editprofile")))
-        console.log(this.email, this.password);
         this.submitted = true;
       }
     }
