@@ -76,6 +76,7 @@ export default {
             'Content-type': 'application/json; charset=UTF-8',
           }
         }).then((response) => response.json())
+        .then((json) => console.log(json))
         .then((this.$router.push("/editprofile")))
         this.submitted = true;
       }

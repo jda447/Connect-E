@@ -66,8 +66,18 @@ export default {
     submit : function(){                   
       this.validate();     
       if(this.emailValid && this.passwordValid){
-        this.$router.push("/messages")
-        //submit data to server here
+        fetch('http://localhost:3000/api/user/login', {
+          method: 'POST',
+          body: new FormData() && JSON.stringify({
+            email: this.email,
+            password: this.password
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          }
+        }).then((response) => response.json())
+        .then((json) => console.log(json))
+        .then((this.$router.push("/messages")))
         this.submitted = true;
       }
     }
