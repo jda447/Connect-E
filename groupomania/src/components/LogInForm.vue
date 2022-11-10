@@ -44,7 +44,13 @@ export default {
       submitted : false
     }
   },
+  mounted: function(){
+    this.clearStorage()
+  },
   methods : {
+    clearStorage: function(){
+    sessionStorage.clear()
+    },
     validate : function(){
       this.emailBlurred = true;
       if( this.validEmail(this.email)){
@@ -73,10 +79,12 @@ export default {
             password: this.password
           }),
           headers: {
+            'Authorization': 'Bearer {token}',
             'Content-type': 'application/json; charset=UTF-8',
           }
         }).then((response) => response.json())
-        .then((json) => console.log(json))
+        // .then((json) => console.log(json))
+        .then((json) => sessionStorage.setItem('userId', json.userId))
         .then((this.$router.push("/messages")))
         this.submitted = true;
       }

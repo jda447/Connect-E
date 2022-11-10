@@ -29,6 +29,14 @@
 <script>
 export default {
   name: 'App',
+  mounted: function(){
+    this.clearStorage()
+  },
+  methods: {
+    clearStorage:function(){
+      sessionStorage.clear()
+    }
+  }
 }
 </script>
 
