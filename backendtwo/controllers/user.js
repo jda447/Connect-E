@@ -11,8 +11,13 @@ exports.signup = (req, res, next) => {
         password: hash
       }).then(
         (user) => {
+          const token = jwt.sign(
+            { userId: user.user_id },
+            config.jwtSecret,
+            { expiresIn: '24h' })
           res.status(201).json({
-            message: 'User added successfully!', user
+            userId: user.user_id,
+            token
           })
         }
       ).catch(

@@ -44,11 +44,11 @@ export default {
       submitted : false
     }
   },
-  mounted: function(){
+  mounted: function() {
     this.clearStorage()
   },
   methods : {
-    clearStorage:function(){
+    clearStorage: function() {
     sessionStorage.clear()
     },
     validate : function(){
@@ -70,8 +70,7 @@ export default {
       return re.test(password);
     },
     submit : function(){                   
-      this.validate();     
-      if(this.emailValid && this.passwordValid){
+      this.validate();
         fetch('http://localhost:3000/api/user/signup', {
           method: 'POST',
           body: new FormData() && JSON.stringify({
@@ -79,15 +78,22 @@ export default {
             password: this.password
           }),
           headers: {
-            'Authorization': 'Bearer {token}',
-            'Content-type': 'application/json; charset=UTF-8',
+            'Content-type': 'application/json',
           }
-        }).then((response) => response.json())
-        // .then((json) => console.log(json))
-        .then((json) => sessionStorage.setItem('userId', json.user.user_id))
-        .then((this.$router.push("/editprofile")))
-        this.submitted = true;
-      }
+        }).then((response) => {
+          if (response.ok) {
+            return response.json()
+          } else {
+            throw Error(response)
+          }
+          }).then((json) => {
+            if(this.emailValid && this.passwordValid){
+              sessionStorage.setItem('user', JSON.stringify(json))
+              this.$router.push("/editprofile")
+              this.submitted = true;
+          }
+        }
+      )
     }
   }
 }
