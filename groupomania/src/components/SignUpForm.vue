@@ -11,6 +11,7 @@
                 v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
                 v-on:blur="emailBlurred = true">
               <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
+              <div id="err" class="mt-1"></div>
             </div>
             <div class="form-group mt-3">
               <label for="password" class="mb-1">Password</label>
@@ -84,14 +85,17 @@ export default {
           if (response.ok) {
             return response.json()
           } else {
-            throw Error(response)
+            throw Error('User email already exists')
           }
-          }).then((json) => {
-            if(this.emailValid && this.passwordValid){
-              sessionStorage.setItem('user', JSON.stringify(json))
-              this.$router.push("/editprofile")
-              this.submitted = true;
+        }).then((json) => {
+          if(this.emailValid && this.passwordValid){
+            sessionStorage.setItem('user', JSON.stringify(json))
+            this.$router.push("/editprofile")
+            this.submitted = true;
           }
+        }).catch((err) => {
+          console.error(err)
+          document.getElementById("err").innerHTML = 'User email address already exists';
         }
       )
     }
@@ -126,5 +130,10 @@ export default {
 
 h1 {
   font-family: Pacifico;
+}
+
+#err {
+  color: #DC3545;
+  font-size: 88%;
 }
 </style>
