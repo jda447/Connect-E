@@ -33,9 +33,13 @@ export default {
     HomeNav,
     UserPosts
   },
+  created () {
+    this.getPosts()
+  },
   data() {
     return {
-      newPost: ''
+      newPost: '',
+      posts: []
     }
   },
   methods: {
@@ -44,6 +48,23 @@ export default {
         this.$store.commit('ADD_POST', this.newPost)
         this.newPost = ''
       }
+    },
+    getPosts () {
+      const token = sessionStorage.getItem('token')
+      fetch('http://localhost:3000/api/post', {
+          method: 'GET',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer' + token
+          }
+        }).then((response) => {
+          console.log(response.json())
+          this.posts = response
+        })
+        .catch((error) => {
+          console.log(error)
+        }
+      )
     }
   }
 }

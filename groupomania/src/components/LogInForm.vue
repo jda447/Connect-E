@@ -89,7 +89,8 @@ export default {
           }
         }).then((json) => {
           if(this.emailValid && this.passwordValid){
-            sessionStorage.setItem('user', JSON.stringify(json))
+            sessionStorage.setItem('user', JSON.stringify(json.userId))
+            sessionStorage.setItem('token', JSON.stringify(json.token))
             this.$router.push("/messages")
             this.submitted = true;
           }
