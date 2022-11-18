@@ -49,22 +49,19 @@ export default {
         this.newPost = ''
       }
     },
-    getPosts () {
+    async getPosts () {
       const token = sessionStorage.getItem('token')
-      fetch('http://localhost:3000/api/post', {
+      const response = await fetch('http://localhost:3000/api/post', {
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer' + token
+            'Authorization': 'Bearer ' + token
           }
-        }).then((response) => {
-          console.log(response.json())
-          this.posts = response
-        })
-        .catch((error) => {
-          console.log(error)
         }
       )
+      const posts = await response.json()
+      console.log(posts)
+      return posts
     }
   }
 }
