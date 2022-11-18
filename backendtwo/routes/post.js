@@ -6,8 +6,8 @@ const auth = require('../middleware/auth')
 
 const postCtrl = require('../controllers/post')
 
-router.post('/', auth, postCtrl.addPost)
-router.get('/', auth, postCtrl.getPosts)
+router.post('/create', auth, postCtrl.addPost)
+router.post('/', auth, postCtrl.getPosts)
 router.delete('/', auth, postCtrl.deletePost)
 
 module.exports = router

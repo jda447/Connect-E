@@ -19,6 +19,8 @@
       :key="i"
       :post="post">
     </UserPosts>
+    <div id="allPosts" class="text-center mt-4"></div>
+    <div id="err" class="text-center mt-4"></div>
     </div>
   </div>
 </template>
@@ -52,14 +54,23 @@ export default {
     async getPosts () {
       const token = sessionStorage.getItem('token')
       const response = await fetch('http://localhost:3000/api/post', {
-          method: 'GET',
+          method: 'POST',
+          body: JSON.stringify({
+            userId: parseInt(sessionStorage.getItem('user'))
+          }),
           headers: {
             'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + JSON.parse(token)
           }
         }
       )
-      const posts = await response.json()
+      if (!response.ok) {
+        const message = `Error retrieving posts: ${response.status}`;
+        document.getElementById("err").innerHTML = 'Error retrieving posts';
+        throw new Error(message);
+      }
+      const posts = await response.text()
+      document.getElementById("allPosts").innerHTML = posts;
       console.log(posts)
       return posts
     }
@@ -88,5 +99,10 @@ export default {
 .btn:focus {
   outline: none;
   box-shadow: none;
+}
+
+#err {
+  color: #DC3545;
+  font-size: 88%;
 }
 </style>
