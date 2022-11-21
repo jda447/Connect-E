@@ -1,21 +1,16 @@
 const jwt = require('jsonwebtoken')
-const config = require('../config.js')
+require('dotenv').config()
 
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1]
-    const decodedToken = jwt.verify(token, config.jwtSecret)
+    const decodedToken = jwt.verify(token, process.env.TOKEN_STRING)
     const userId = decodedToken.userId
-    const errorMsg = { message: 'Invalid User ID' }
-    console.log(req.body.userId, userId)
-    if (!req.body.userId || (req.body.userId && req.body.userId !== userId)) {
-      throw errorMsg
-    } else {
-      next()
+    req.auth = {
+      userId
     }
-  } catch {
-    res.status(401).json({
-      error: new Error('Invalid request!')
-    })
+    next()
+  } catch (error) {
+    res.status(401).json({ error })
   }
 }

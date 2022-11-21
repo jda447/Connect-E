@@ -19,7 +19,7 @@
                 v-model="password" 
                 v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
                 v-on:blur="passwordBlurred = true">
-                <h6>Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
+                <h6 class="mt-1">Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
               <div class="invalid-feedback">A valid password is required</div>
             </div>           
             <div class="form-group text-center m-4">

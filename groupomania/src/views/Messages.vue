@@ -54,10 +54,7 @@ export default {
     async getPosts () {
       const token = sessionStorage.getItem('token')
       const response = await fetch('http://localhost:3000/api/post', {
-          method: 'POST',
-          body: JSON.stringify({
-            userId: parseInt(sessionStorage.getItem('user'))
-          }),
+          method: 'GET',
           headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
