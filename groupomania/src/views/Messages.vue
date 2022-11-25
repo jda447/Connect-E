@@ -19,8 +19,17 @@
       :key="i"
       :post="post">
     </UserPosts>
-    <div id="allPosts" class="text-center mt-4"></div>
-    <div id="err" class="text-center mt-4"></div>
+    <!-- <div class="messageContainer mx-auto border shadow col-10 mt-2">
+      <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none deletePost">
+        x
+      </button>
+      <div id="userName" class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">A Name</div>
+      <hr class="mx-4"/>
+      <div id="allPosts" class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3">A post</div>
+      <div @click="$store.dispatch('INCREASE_COUNTER')" class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">
+        Seen by {{ $store.state.counter }}</div> -->
+      <div id="allPosts" class="text-center mt-4"></div>
+      <div id="err" class="text-center mt-4"></div>
     </div>
   </div>
 </template>
@@ -66,10 +75,17 @@ export default {
         document.getElementById("err").innerHTML = 'Error retrieving posts';
         throw new Error(message);
       }
-      const posts = await response.text()
-      document.getElementById("allPosts").innerHTML = posts;
-      console.log(posts)
+      const posts = await response.json()
+      posts.forEach((post) => {
+        console.log(post)
+        let userDbPosts = document.createElement("ol")
+        userDbPosts.className = 'mx-auto border shadow col-10 mt-2 p-5';
+        userDbPosts.innerHTML = (post.user_id + ' ');
+        let text = document.createTextNode(post.post);
+        userDbPosts.appendChild(text);
+        document.getElementById("allPosts").appendChild(userDbPosts);
       return posts
+    })
     }
   }
 }
@@ -77,12 +93,6 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-#app {
-  font-family: Helvetica, Arial, sans-serif;
-  color: #2c3e50;
-  border: solid 10px white;
-}
 
 .paperPlane {
   font-family: Pacifico;
@@ -102,4 +112,19 @@ export default {
   color: #DC3545;
   font-size: 88%;
 }
+
+// .messageContainer {
+//   background-color: #fafafa;
+// }
+// .btn-outline {
+//   font-weight: bolder;
+// }
+
+// .userNameMsgs {
+//   font-weight: bolder;
+// }
+
+// .seen-by {
+//   font-size: medium;
+// }
 </style>
