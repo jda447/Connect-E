@@ -25,16 +25,16 @@
     methods: {
       deleteUser : async function() {
         const token = sessionStorage.getItem('token')
-        const requestOptions = {
+        const userId = sessionStorage.getItem('user')
+        await fetch('http://localhost:3000/api/user', {
           method: 'DELETE',
+          body: JSON.parse(userId),
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token)
           }
-        };
-        console.log(requestOptions)
-        await fetch('http://localhost:3000/api/user', requestOptions)
-          .then(() => this.status = 'Delete successful')
-          .catch(error => {
+        }).then(() => this.status = 'Delete successful',
+        this.$router.push("/")
+        ).catch(error => {
           console.error('Error deleting user', error);
           document.getElementById("err").innerHTML = 'Error deleting user';
         }

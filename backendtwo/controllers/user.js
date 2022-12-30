@@ -103,7 +103,7 @@ exports.updateUser = (req, res, next) => {
 exports.deleteUser = (req, res, next) => {
   User.destroy({
     where: {
-      user_id: req.body.userId
+      user_id: req.auth.userId
     }
   }).then(
     () => {
