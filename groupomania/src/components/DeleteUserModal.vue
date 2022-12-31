@@ -32,11 +32,16 @@
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token)
           }
-        }).then(() => this.status = 'Delete successful',
-        this.$router.push("/")
-        ).catch(error => {
-          console.error('Error deleting user', error);
-          document.getElementById("err").innerHTML = 'Error deleting user';
+        }).then(async response => {
+          if (!response.ok) {
+            const error = (response.status)
+            return Promise.reject(error);
+          }
+          this.$router.push("/")
+        }).catch(error => {
+          this.errorMessage = error;
+          console.error('Unauthorized access', error);
+          document.getElementById("err").innerHTML = 'Unauthorized access';
         }
       );
     }
