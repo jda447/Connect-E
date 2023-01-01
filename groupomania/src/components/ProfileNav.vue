@@ -1,13 +1,16 @@
 <template>
-  <nav class="navbar navbarGradient mb-3">
-    <router-link to="/messages" class="messagesNavBtn ms-4">
+  <div class="navbar">
+    <img class="col-4 col-md-3 col-lg-2 mt-1 ms-3" src="@/assets/group-logo-nav.png"/>
+    <div class="logos">
+    <router-link to="/messages" class="messagesNavBtn">
       <font-awesome-icon :icon="['fas', 'pencil']" />
     </router-link>
-    <div class="navbar-brand mx-auto fw-bold" href="#">Groupomania</div>
-      <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
-        <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
-      </router-link>
-  </nav>
+    <router-link to="/" class="signOutNavBtn mx-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
+      <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
+    </router-link>
+  </div>
+  </div>  
+  <hr/>
   <SignOutModal></SignOutModal>
 </template>
 
@@ -30,30 +33,20 @@ export default {
   color: #0d3b66;
   border: solid 10px white;
 }
-.navbarGradient {
-  background-color: #0d3b66;
-}
 .messagesNavBtn {
-    color: #e7eaf6;
+  color: #0d3b66;
     &:hover {
-    transform: scale(1.4);
-    transition: transform 250ms;
-    color: #f9564f;
+    color: #d51d1d;
 	}
 }
 .signOutNavBtn {
-    color: #e7eaf6;
+    color: #0d3b66;
     &:hover {
-    transform: scale(1.4);
-    transition: transform 250ms;
-    color: #f9564f;
+    color: #d51d1d;
 	}
 }
 
-.navbar-brand {
-  color: #e7eaf6;
-  font-size: 175%;
+hr {
+  margin: 0
 }
-
-
 </style>

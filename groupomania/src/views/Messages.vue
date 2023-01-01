@@ -144,6 +144,10 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+#app {
+  color: #0d3b66;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 h5 {
   color: #0d3b66;

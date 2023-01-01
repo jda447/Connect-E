@@ -36,7 +36,6 @@ export default {
 
 #app {
   color: #0d3b66;
-  border: solid 10px white;
   font-family: Arial, Helvetica, sans-serif;
 }
 

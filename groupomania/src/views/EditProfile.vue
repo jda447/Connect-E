@@ -25,7 +25,6 @@ export default {
 #app {
   font-family: Helvetica, Arial, sans-serif;
   color: #0d3b66;
-  border: solid 10px white;
 }
 
 .profileBtn {
