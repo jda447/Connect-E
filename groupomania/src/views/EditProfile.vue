@@ -23,20 +23,23 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Ubuntu, sans-serif;
   color: #0d3b66;
 }
 
 .profileBtn {
-  font-family: Ubuntu;
-  background-color: #0d3b66;
+  background-color: #fd2500;
   color: white;
-  &:hover {
-    background-color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, white 50%, #0d3b66 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
+    &:hover {
+    background-position: left bottom;
     color: #0d3b66;
-    transform: scale(1.6);
-    transition: transform 250ms;
-    font-family: Pacifico;
   }
 }
 

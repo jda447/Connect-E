@@ -108,7 +108,6 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
-  font-family: Helvetica, Arial, sans-serif;
   color: #0d3b66;
   border: solid 10px white;
   min-height: 100vh;
@@ -116,16 +115,17 @@ export default {
 
 .btnSignInSubmit {
   font-family: Ubuntu, sans-serif;
-  background-color: #0d3b66;
+  background-color: #fd2500;
   color: white;
   text-decoration: none;
   font-weight: bold;
+  background: linear-gradient(to right, #fd2500 50%, #0d3b66 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
     &:hover {
-    background-color: white;
-    color: #f9564f;
-    transform: scale(1.6);
-    transition: transform 250ms;
-    font-family: Pacifico;
+    background-position: left bottom;
   }
 }
 

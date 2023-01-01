@@ -90,15 +90,17 @@ export default {
 
 <style lang="scss" scoped>
 .uploadBtn {
-  font-family: Ubuntu;
-  background-color: #229631;
   color: white;
-  &:hover {
-    background-color: white;
-    color: #229631;
-    transform: scale(1.6);
-    transition: transform 250ms;
-    font-family: Pacifico;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, white 50%, #229631 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
+    &:hover {
+    background-position: left bottom;
+    color:#229631;
   }
 }
 .btn:focus {

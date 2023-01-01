@@ -146,21 +146,24 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 #app {
   color: #0d3b66;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Ubuntu, sans-serif;
 }
 
 h5 {
   color: #0d3b66;
 }
 .btn {
-  font-family: Helvetica, Arial, sans-serif;
-  border-radius: 12px;
-  background-color: #0d3b66;
+  background-color: #fd2500;
   color: white;
-  font-weight: bolder;
-  &:hover {
-    background-color: #e63946;
-    color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, #fd2500 50%, #0d3b66 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
+    &:hover {
+    background-position: left bottom;
   }
 }
 .btn:focus {

@@ -36,30 +36,40 @@ export default {
 
 #app {
   color: #0d3b66;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Ubuntu, sans-serif;
 }
 
 .editBtn {
-  background-color: #0d3b66;
+  font-family: Ubuntu, sans-serif;
+  background-color: #fd2500;
   color: white;
-  font-family: Ubuntu;
-  &:hover {
-    background-color: white;
-    color: #0d3b66;
-    transform: scale(1.6);
-    transition: transform 250ms;
-    font-family: Pacifico;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to right, white 50%, #0d3b66 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
+    &:hover {
+    background-position: left bottom;
+    color:#0d3b66;
   }
 }
 
 .deleteUserBtn {
-  font-family: Ubuntu;
-  background-color: white;
-  color:#bb2124;
-  border: none;
-  &:hover {
-    background-color: #bb2124;
-    color: white;
+  font-family: Ubuntu, sans-serif;
+  background-color: #bb2124;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: linear-gradient(to left, #bb2124 50%, #0d3b66 50%);
+  background-size: 200% 100%;
+  background-position: left bottom;
+  transition: all 1s ease;
+  border: #0d3b66 1px;
+    &:hover {
+    background-position: right bottom;
+    color: black;
   }
 }
 .btn:focus {

@@ -2,10 +2,11 @@
   <div class="navbar">
     <img class="col-4 col-md-3 col-lg-2 mt-1 ms-3" src="@/assets/group-logo-nav.png"/>
     <div class="logos">
-    <router-link to="/profile" class="messagesNavBtn">
+      <div class="dot me-1"></div><span id="online">Online</span>
+    <router-link to="/profile" class="messagesNavBtn mx-4">
       <font-awesome-icon :icon="['fas', 'user-large']" />
     </router-link>
-    <router-link to="/" class="signOutNavBtn mx-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
+    <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
       <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
     </router-link>
   </div>
@@ -36,17 +37,29 @@ export default {
 .messagesNavBtn {
   color: #0d3b66;
     &:hover {
-    color: #d51d1d;
+    color: #fd2500;
 	}
 }
 .signOutNavBtn {
     color: #0d3b66;
     &:hover {
-    color: #d51d1d;
+    color: #fd2500;
 	}
 }
 
 hr {
   margin: 0
+}
+.dot {
+  height: 0.8rem;
+  width: 0.8rem;
+  background-color: #08b708;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#online {
+  color: #08b708;
+  font-size: 85%;
 }
 </style>

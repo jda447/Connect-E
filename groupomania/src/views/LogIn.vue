@@ -29,7 +29,7 @@ export default {
 .arrow {
   &:hover {
     background-color: white;
-    color: #f9564f;
+    color: #fd2500;
     transform: scale(1.8);
     transition: transform 250ms;
   }

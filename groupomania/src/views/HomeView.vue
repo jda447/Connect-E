@@ -59,7 +59,7 @@ export default {
     &:hover {
     background-color: white;
     color: #0d3b66;
-    transform: scale(1.6);
+    transform: scale(1.4);
     transition: transform 250ms;
     font-family: Pacifico;
   }
@@ -74,7 +74,7 @@ export default {
     &:hover {
     background-color: white;
     color: #0d3b66;
-    transform: scale(1.6);
+    transform: scale(1.4);
     transition: transform 250ms;
     font-family: Pacifico;
   }
