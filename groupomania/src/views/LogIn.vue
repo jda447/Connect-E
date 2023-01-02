@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="col-lg-9 mx-auto">
     <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" class="arrow" />
     </router-link>
     <LogInForm></LogInForm>

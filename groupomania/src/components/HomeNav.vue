@@ -1,23 +1,25 @@
 <template>
-  <div class="navbar">
-    <img class="col-4 col-md-3 col-lg-2 mt-1 ms-3" src="@/assets/group-logo-nav.png"/>
-    <div class="logos">
-      <button 
-        @click="toggle = !toggle" 
-        class="btn online">
-        <span :class="{green: !toggle}">Online |</span>
-        <span :class="{green: toggle}">| Offline</span>
-      </button>
-    <router-link to="/profile" class="messagesNavBtn mx-4">
-      <font-awesome-icon :icon="['fas', 'user-large']" />
-    </router-link>
-    <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
-      <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
-    </router-link>
-  </div>
-  </div>  
-  <hr/>
+  <div id="app">
+    <div class="navbar">
+      <img class="col-4 col-md-3 col-lg-2 mt-1 ms-3" src="@/assets/group-logo-nav.png"/>
+      <div class="logos">
+        <button 
+          @click="toggle = !toggle" 
+          class="btn online">
+          <span :class="{green: !toggle}">Online |</span>
+          <span :class="{green: toggle}">| Offline</span>
+        </button>
+        <router-link to="/profile" class="messagesNavBtn mx-4">
+          <font-awesome-icon :icon="['fas', 'user-large']" />
+        </router-link>
+        <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
+          <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
+        </router-link>
+      </div>
+    </div>  
+    <hr/>
   <SignOutModal></SignOutModal>
+  </div>
 </template>
 
 <script>
@@ -40,7 +42,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
 #app {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: Ubuntu, sans-serif;
   color: #0d3b66;
   border: solid 10px white;
 }

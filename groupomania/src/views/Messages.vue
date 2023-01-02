@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="col-lg-9 mx-auto">
     <HomeNav></HomeNav>
-    <div class="container">
+    <div class="container mb-5">
     <h5 class="mx-2">Create a post</h5>
     <hr/>
     <div class="tab">
@@ -12,22 +12,21 @@
 
     <div id="Post" class="tabcontent">
       <input type="text"
-      size="36"
-      class="my-3 px-2 col-7"
-      placeholder="Title"
-      maxlength="100">
-
-    <textarea type="text"
-      size="36"
-      class="pe-5 px-2 col-10"
-      v-model="newPost"
-      placeholder="Write something..."
-      @keypress.enter="addPost">
-    </textarea>
-    <br>
-    <button class="btn my-2" @click="addPost">
-      Post
-    </button>
+        size="36"
+        class="my-3 px-2 col-7"
+        placeholder="Title"
+        maxlength="100">
+      <textarea type="text"
+        size="36"
+        class="pe-5 px-2 col-10"
+        v-model="newPost"
+        placeholder="Write something..."
+        @keypress.enter="addPost">
+      </textarea>
+      <br>
+      <button class="btn my-2" @click="addPost">
+        Post
+      </button>
     </div>
     <div id="Image" class="tabcontent">
       <h3>Image</h3>
@@ -39,24 +38,13 @@
     </div>
   </div>
 </div>
-    <!-- <div class="text-center">
-      <input type="text"
-      size="36"
-      class="px-2"
-      v-model="newPost"
-      placeholder="Write something..." 
-      @keypress.enter="addPost">
-      <button class="btn paperPlane btn-sm mb-1 px-3" @click="addPost">
-        <font-awesome-icon :icon="['fas', 'fa-paper-plane']" />
-      </button>
-    </div> -->
 
-    <!-- <div class="posts">
+    <div class="posts col-lg-9 mx-auto">
     <UserPosts
       v-for="(post, i) in $store.state.posts"
       :key="i"
       :post="post">
-    </UserPosts> -->
+    </UserPosts>
     <!-- <div class="messageContainer mx-auto border shadow col-10 mt-2">
       <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none deletePost">
         x
@@ -66,21 +54,20 @@
       <div id="allPosts" class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3">A post</div>
       <div @click="$store.dispatch('INCREASE_COUNTER')" class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">
         Seen by {{ $store.state.counter }}</div> -->
-      <!-- <div id="allPosts" class="text-center mt-4"></div>
+      <div id="allPosts" class="text-center mt-4"></div>
       <div id="err" class="text-center mt-4"></div>
-    </div>
-  </div> -->
+  </div>
 </template>
 
 <script>
 import HomeNav from '../components/HomeNav.vue'
-// import UserPosts from '../components/UserPosts.vue'
+import UserPosts from '../components/UserPosts.vue'
 
 export default {
   name: 'App',
   components: {
     HomeNav,
-    // UserPosts
+      UserPosts
   },
   created () {
     this.getPosts()
@@ -176,20 +163,20 @@ h5 {
   font-size: 88%;
 }
 
-// .messageContainer {
-//   background-color: #fafafa;
-// }
-// .btn-outline {
-//   font-weight: bolder;
-// }
+.messageContainer {
+  background-color: #fafafa;
+}
+.btn-outline {
+  font-weight: bolder;
+}
 
-// .userNameMsgs {
-//   font-weight: bolder;
-// }
+.userNameMsgs {
+  font-weight: bolder;
+}
 
-// .seen-by {
-//   font-size: medium;
-// }
+.seen-by {
+  font-size: medium;
+}
 
 .tab {
   overflow: hidden;
@@ -223,6 +210,7 @@ h5 {
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
+  background-color: #f8f8f8;
 }
 
 textarea {
