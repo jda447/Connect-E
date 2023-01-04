@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="col-lg-9 mx-auto">
+  <div id="app" class="col-lg-7 mx-auto">
     <HomeNav></HomeNav>
     <div class="container mb-5">
     <h5 class="mx-2">Create a post</h5>
@@ -11,19 +11,15 @@
     </div>
 
     <div id="Post" class="tabcontent">
-      <input type="text"
-        size="36"
-        class="my-3 px-2 col-7"
-        placeholder="Title"
-        maxlength="100">
       <textarea type="text"
         size="36"
-        class="pe-5 px-2 col-10"
+        class="pe-5 px-2 mt-3 col-10"
         v-model="newPost"
         placeholder="Write something..."
         @keypress.enter="addPost">
       </textarea>
       <br>
+      <div id="sendErr" class="text-center mt-4"></div>
       <button class="btn my-2" @click="addPost">
         Post
       </button>
@@ -39,7 +35,7 @@
   </div>
 </div>
 
-    <div class="posts col-lg-9 mx-auto">
+    <div class="posts col-lg-6 mx-auto">
     <UserPosts
       v-for="(post, i) in $store.state.posts"
       :key="i"
@@ -92,12 +88,6 @@ export default {
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.className += " active";
     },
-    addPost () {
-      if (this.newPost) {
-        this.$store.commit('ADD_POST', this.newPost)
-        this.newPost = ''
-      }
-    },
     async getPosts () {
       const token = sessionStorage.getItem('token')
       const response = await fetch('http://localhost:3000/api/post', {
@@ -124,6 +114,31 @@ export default {
         document.getElementById("allPosts").appendChild(userDbPosts);
       return posts
     })
+    },
+    async addPost () {
+      const token = sessionStorage.getItem('token')
+      const userId = sessionStorage.getItem('user')
+      const response = await fetch('http://localhost:3000/api/post', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          },
+          body: JSON.stringify({ 
+            post: this.newPost,
+            userId: userId
+          })
+        }
+      )
+      if (response.ok && this.newPost) {
+        this.$store.commit('ADD_POST', this.newPost)
+        this.newPost = ''
+      }
+      if (!response.ok) {
+        const message = `Error sending post: ${response.status}`;
+        document.getElementById("sendErr").innerHTML = 'Error sending post';
+        throw new Error(message);
+      }
     }
   }
 }
@@ -158,7 +173,7 @@ h5 {
   box-shadow: none;
 }
 
-#err {
+#err, #sendErr {
   color: #b61929;
   font-size: 88%;
 }
