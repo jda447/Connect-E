@@ -21,6 +21,10 @@ Post.init({
   },
   post: {
     type: DataTypes.STRING
+  },
+  imageUrl: {
+    type: DataTypes.STRING,
+    isUrl: true
   }
 }, {
   sequelize,

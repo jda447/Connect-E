@@ -19,19 +19,44 @@
         @keypress.enter="addPost">
       </textarea>
       <br>
-      <div id="sendErr" class="text-center mt-4"></div>
+      <div id="sendErr" class="text-center mt-1"></div>
       <button class="btn my-2" @click="addPost">
         Post
       </button>
     </div>
+
     <div id="Image" class="tabcontent">
-      <h3>Image</h3>
-      <p>Post your image here</p> 
+      <div class="container">
+        <div class="row">
+      <div class="base-image-input rounded-3 text-center border border-2 py-3 my-3 mx-3"
+      :style="{ 'background-image': `url(${imageData})` }"
+      @click="chooseImage">
+        <span v-if="!imageData" class="placeholder rounded-square">
+          Choose an Image
+        </span>
+        <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
+      </div>
+      <div class="col mt-4">
+      <textarea type="text"
+        size="36"
+        class="pe-5 px-2 mt-2 col"
+        v-model="newPost"
+        placeholder="Add some text..."
+        @keypress.enter="addPost">
+      </textarea>
+      <button class="btn my-3" @click="addPost">
+        Post
+      </button>
+      </div>
+      </div>
     </div>
+    </div>
+
     <div id="Link" class="tabcontent">
       <h3>Link</h3>
       <p>Post your link here</p>
     </div>
+    
   </div>
 </div>
 
@@ -71,7 +96,8 @@ export default {
   data() {
     return {
       newPost: '',
-      posts: []
+      posts: [],
+      imageData: null,
     }
   },
   methods: {
@@ -88,6 +114,7 @@ export default {
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.className += " active";
     },
+
     async getPosts () {
       const token = sessionStorage.getItem('token')
       const response = await fetch('http://localhost:3000/api/post', {
@@ -115,6 +142,7 @@ export default {
       return posts
     })
     },
+
     async addPost () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
@@ -133,11 +161,29 @@ export default {
       if (response.ok && this.newPost) {
         this.$store.commit('ADD_POST', this.newPost)
         this.newPost = ''
+        // window.location.reload()
       }
       if (!response.ok) {
         const message = `Error sending post: ${response.status}`;
         document.getElementById("sendErr").innerHTML = 'Error sending post';
         throw new Error(message);
+      }
+    },
+
+    chooseImage () {
+      this.$refs.fileInput.click()
+    },
+
+    onSelectFile () {
+      const input = this.$refs.fileInput
+      const files = input.files
+      if (files && files[0]) {
+        const reader = new FileReader
+        reader.onload = e => {
+          this.imageData = e.target.result
+        }
+        reader.readAsDataURL(files[0])
+        this.$emit('input', files[0])
       }
     }
   }
@@ -230,5 +276,32 @@ h5 {
 
 textarea {
   resize: none;
+}
+
+//
+
+.base-image-input {
+  width: 10rem;
+  height: 10rem;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center center;
+}
+.placeholder {
+  background: #F0F0F0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #141414;
+  font-size: 1rem;
+}
+.placeholder:hover {
+  background: #E0E0E0;
+}
+.file-input {
+  display: none;
 }
 </style>

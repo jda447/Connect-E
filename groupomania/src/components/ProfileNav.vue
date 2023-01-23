@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <div class="navbar">
-      <img class="col-4 col-md-3 col-lg-2 mt-1 ms-3" src="@/assets/group-logo-nav.png"/>
+      <router-link to="/messages" class="col-4">
+        <img src="@/assets/group-logo-nav.png" class="col-10 mt-1 ms-3"/>
+      </router-link>
       <div class="logos">
         <button 
           @click="toggle = !toggle" 
