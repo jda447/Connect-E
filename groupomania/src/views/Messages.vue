@@ -1,64 +1,70 @@
 <template>
   <div id="app" class="col-lg-7 mx-auto">
     <HomeNav></HomeNav>
-    <div class="container mb-5">
-    <h5 class="mx-2">Create a post</h5>
-    <hr/>
-    <div class="tab">
-      <button class="tablinks col-4" @click="postChoice(event, 'Post')">Post</button>
-      <button class="tablinks col-4" @click="postChoice(event, 'Image')">Image</button>
-      <button class="tablinks col-4" @click="postChoice(event, 'Link')">Link</button>
-    </div>
 
-    <div id="Post" class="tabcontent">
-      <textarea type="text"
-        size="36"
-        class="pe-5 px-2 mt-3 col-10"
-        v-model="newPost"
-        placeholder="Write something..."
-        @keypress.enter="addPost">
-      </textarea>
-      <br>
-      <div id="sendErr" class="text-center mt-1"></div>
-      <button class="btn my-2" @click="addPost">
-        Post
+    <div>
+      <button @click="isOpenA = ! isOpenA" class="btn postPen ms-5 mb-4 px-2">
+        Post +
       </button>
-    </div>
+        <collapse-transition>
+          <div v-show="isOpenA" class="container list-reset mb-5">
+          <div class="tab">
+            <button class="tablinks col-4" @click="postChoice(event, 'Post')">Post</button>
+            <button class="tablinks col-4" @click="postChoice(event, 'Image')">Image</button>
+            <button class="tablinks col-4" @click="postChoice(event, 'Link')">Link</button>
+          </div>
 
-    <div id="Image" class="tabcontent">
-      <div class="container">
-        <div class="row">
-      <div class="base-image-input rounded-3 text-center border border-2 py-3 my-3 mx-3"
-      :style="{ 'background-image': `url(${imageData})` }"
-      @click="chooseImage">
-        <span v-if="!imageData" class="placeholder rounded-square">
-          Choose an Image
-        </span>
-        <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
-      </div>
-      <div class="col mt-4">
-      <textarea type="text"
-        size="36"
-        class="pe-5 px-2 mt-2 col"
-        v-model="newPost"
-        placeholder="Add some text..."
-        @keypress.enter="addPost">
-      </textarea>
-      <button class="btn my-3" @click="addPost">
-        Post
-      </button>
-      </div>
-      </div>
-    </div>
-    </div>
+          <div id="Post" class="tabcontent">
+            <textarea type="text"
+              size="36"
+              class="pe-5 px-2 mt-3 col-10"
+              v-model="newPost"
+              placeholder="Write something..."
+              @keypress.enter="addPost">
+            </textarea>
+            <br>
+            <div id="sendErr" class="text-center mt-1"></div>
+            <button class="btn sendPost my-2" @click="addPost">
+              Post
+            </button>
+          </div>
 
-    <div id="Link" class="tabcontent">
-      <h3>Link</h3>
-      <p>Post your link here</p>
+          <div id="Image" class="tabcontent">
+            <div class="container">
+              <div class="row">
+                <div class="base-image-input rounded-3 text-center border border-2 py-3 my-3 mx-3"
+                :style="{ 'background-image': `url(${imageData})` }"
+                @click="chooseImage">
+                  <span v-if="!imageData" class="placeholder rounded-square">
+                    Choose an Image
+                  </span>
+                  <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
+                </div>
+                <div class="col mt-4">
+                  <textarea type="text"
+                    size="36"
+                    class="pe-5 px-2 mt-2 col"
+                    v-model="newPost"
+                    placeholder="Add some text..."
+                    @keypress.enter="addPost">
+                  </textarea>
+                  <button class="btn sendImage my-3" @click="addPost">
+                    Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="Link" class="tabcontent">
+            <h3>Link</h3>
+            <p>Post your link here</p>
+          </div>
+          
+          </div>
+        </collapse-transition>  
+      </div>
     </div>
-    
-  </div>
-</div>
 
     <div class="posts col-lg-6 mx-auto">
     <UserPosts
@@ -66,17 +72,8 @@
       :key="i"
       :post="post">
     </UserPosts>
-    <!-- <div class="messageContainer mx-auto border shadow col-10 mt-2">
-      <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none deletePost">
-        x
-      </button>
-      <div id="userName" class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">A Name</div>
-      <hr class="mx-4"/>
-      <div id="allPosts" class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3">A post</div>
-      <div @click="$store.dispatch('INCREASE_COUNTER')" class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">
-        Seen by {{ $store.state.counter }}</div> -->
-      <div id="allPosts" class="text-center mt-4"></div>
-      <div id="err" class="text-center mt-4"></div>
+    <div id="allPosts" class="text-center mt-4"></div>
+    <div id="err" class="text-center mt-4"></div>
   </div>
 </template>
 
@@ -98,6 +95,8 @@ export default {
       newPost: '',
       posts: [],
       imageData: null,
+      isOpenA: false,
+      isOpenB: false
     }
   },
   methods: {
@@ -158,7 +157,7 @@ export default {
           })
         }
       )
-      if (response.ok && this.newPost) {
+      if (response.ok && this.newPost && this.$store.state.firstName !== '') {
         this.$store.commit('ADD_POST', this.newPost)
         this.newPost = ''
         // window.location.reload()
@@ -200,7 +199,7 @@ export default {
 h5 {
   color: #0d3b66;
 }
-.btn {
+.sendPost, .sendImage {
   background-color: #fd2500;
   color: white;
   text-decoration: none;
@@ -213,6 +212,26 @@ h5 {
     &:hover {
     background-position: left bottom;
   }
+}
+
+.postPen {
+  background-color: #0d3b66;
+  color: white;
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.postPen:active {
+  background-color: #0d3b66;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
+.postPen:not(:first-child) {
+  margin-top: 10px;
 }
 .btn:focus {
   outline: none;
