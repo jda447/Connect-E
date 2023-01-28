@@ -3,7 +3,7 @@
     <ProfileNav></ProfileNav>
     <EditProfileForm></EditProfileForm>
       <div class="text-center">
-        <router-link to="/profile" class="btn profileBtn btn-lg fw-bold">Profile</router-link>
+        <router-link to="/profile" class="btn profileBtn btn-lg fw-bold px-2">Profile</router-link>
       </div>
   </div>
 </template>
@@ -28,19 +28,23 @@ export default {
 }
 
 .profileBtn {
-  background-color: #fd2500;
+  background-color: #0d3b66;
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(to right, white 50%, #0d3b66 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 1s ease;
-  border: #0d3b66 1px;
-    &:hover {
-    background-position: left bottom;
-    color: #0d3b66;
-  }
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.profileBtn:active {
+  background-color: #0d3b66;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+
+.profileBtn:not(:first-child) {
+  margin-top: 10px;
 }
 
 .btn:focus {

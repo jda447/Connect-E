@@ -31,7 +31,7 @@
             </select>
             </div>
             <div class="mx-auto text-center my-3">
-            <button v:on-click="onSubmit" class="btn uploadBtn text-center fw-bold px-3 mt-1" type="submit">
+            <button v:on-click="onSubmit" class="btn uploadBtn border border-success border-2 text-center fw-bold px-2 mt-1" type="submit">
               Upload
             </button>
             </div>
@@ -90,17 +90,17 @@ export default {
 
 <style lang="scss" scoped>
 .uploadBtn {
-  color: white;
+  color: #229631;
   text-decoration: none;
   font-weight: bold;
-  background: linear-gradient(to right, white 50%, #229631 50%);
+  background: linear-gradient(to right, #229631 50%, white 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all 1s ease;
-  border: #0d3b66 1px;
+  border: #229631 5px;
     &:hover {
     background-position: left bottom;
-    color:#229631;
+    color:white;
   }
 }
 .btn:focus {

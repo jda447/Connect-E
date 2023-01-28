@@ -3,7 +3,7 @@
     <ProfileNav></ProfileNav>
     <div class="text-center">
       <ProfileInfo></ProfileInfo>
-      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-3">
+      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-3 px-2">
         Edit
       </router-link>
     </div>
@@ -40,37 +40,29 @@ export default {
 }
 
 .editBtn {
-  font-family: Ubuntu, sans-serif;
-  background-color: #fd2500;
+  background-color: #0d3b66;
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(to right, white 50%, #0d3b66 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 1s ease;
-  border: #0d3b66 1px;
-    &:hover {
-    background-position: left bottom;
-    color:#0d3b66;
-  }
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .deleteUserBtn {
-  font-family: Ubuntu, sans-serif;
-  background-color: #bb2124;
+  background-color: #fd2500;
   color: white;
-  text-decoration: none;
-  font-weight: bold;
-  background: linear-gradient(to left, #bb2124 50%, #0d3b66 50%);
-  background-size: 200% 100%;
-  background-position: left bottom;
-  transition: all 1s ease;
-  border: #0d3b66 1px;
-    &:hover {
-    background-position: right bottom;
-    color: black;
-  }
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editBtn:active, .deleteUserBtn:active {
+  background-color: #0d3b66;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
 }
 .btn:focus {
   outline: none;
