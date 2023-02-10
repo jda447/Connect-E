@@ -25,7 +25,7 @@
             <br>
             <div id="sendErr" class="text-center mt-1"></div>
             <button class="btn sendPost my-2" @click="addPost">
-              Post
+              Send
             </button>
           </div>
 
@@ -157,7 +157,7 @@ export default {
           })
         }
       )
-      if (response.ok && this.newPost && this.$store.state.firstName !== '') {
+      if (response.ok && this.newPost) {
         this.$store.commit('ADD_POST', this.newPost)
         this.newPost = ''
         // window.location.reload()

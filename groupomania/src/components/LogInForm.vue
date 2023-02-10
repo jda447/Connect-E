@@ -14,16 +14,32 @@
               <div id="err" class="mt-1"></div>
             </div>
             <div class="form-group mt-3">
-              <label for="password" class="mb-1">Password</label>
-              <input placeholder="Please enter your password"
-                v-model="password" 
-                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
-                v-on:blur="passwordBlurred = true">
+              <label for="password" class="mb-1">Password
+                <btn class="eyeButton ms-2" @click.prevent="toggleShow">
+                  <font-awesome-icon :icon="['falight', 'fa-eye']" />
+                </btn>
+              </label>
+                <div class="passwordControl">
+                  <div class="control">
+                  <input v-if="showPassword" type="text" class="input"
+                    v-model="password" 
+                    v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                    v-on:blur="passwordBlurred = true"
+                    placeholder="Please enter your password" />
+                
+                  <input v-else type="password" class="input"
+                  v-model="password" 
+                  v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                  v-on:blur="passwordBlurred = true"
+                  placeholder="Please enter your password">
+                  </div>
+                </div>
+
                 <h6 class="mt-1">Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
               <div class="invalid-feedback">A valid password is required</div>
-            </div>           
+            </div>
             <div class="form-group text-center m-4">
-              <a type="submit" href="#" v-on:click.stop.prevent="submit" class="btn btn-lg btnLogInSubmit shadow-none">Submit</a>
+              <a type="submit" v-on:click.prevent="submit" class="btn btn-lg btnLogInSubmit shadow-none">Submit</a>
             </div>    
         </div>
       </div>
@@ -42,13 +58,22 @@ export default {
       passwordBlurred : false,
       emailValid : false,
       passwordValid : false,
-      submitted : false
+      submitted : false,
+      showPassword: false
     }
   },
   mounted: function() {
     this.clearStorage()
   },
+  computed: {
+    buttonLabel() {
+      return (this.showPassword) ? "Hide" : "Show";
+    }
+  },
   methods : {
+    toggleShow() {
+      this.showPassword = !this.showPassword;
+    },
     clearStorage: function() {
     sessionStorage.clear()
     },
@@ -131,6 +156,12 @@ export default {
 
 h1 {
 	font-family: Pacifico;
+}
+
+.eyeButton {
+  &:hover {
+    color: green;
+  }
 }
 
 #err {
