@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <form id="login-form" class="col-10 col-sm-6 col-md-5 col-lg-5 mx-auto">
-      <h1 class="text-center mt-4 mb-4">Sign-in</h1>
+      <h1 class="text-center mt-4 mb-4">Sign-up</h1>
       <div class="form-wrap container">
         <div v-if="!submitted">
           <div class="form-group mb-3">

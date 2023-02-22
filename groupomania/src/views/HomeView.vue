@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <div class="row">
-        <div  class="text-center">
+        <div class="text-center">
           <div class="my-5">
             <img class="col-8 col-md-6 col-lg-4" src="@/assets/icon-above-font-cropped.png"/>
           </div>

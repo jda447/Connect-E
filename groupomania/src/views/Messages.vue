@@ -72,7 +72,23 @@
       :key="i"
       :post="post">
     </UserPosts>
-    <div id="allPosts" class="text-center mt-4"></div>
+    <div v-for="p in posts" :key="p.post" class="messageContainer mx-auto border shadow col-10 mt-2">
+      <button @click="removePost" class="btn btn-outline float-end btn-sm shadow-none deletePost">
+        x
+      </button>
+      <div :class="`posts`">
+      <div class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">
+        {{ $store.state.firstName + ' ' + $store.state.lastName }}
+      <hr/>
+      </div>
+      <div class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3"> 
+        {{ p.post }}
+      </div>
+      <div @click="$store.dispatch('INCREASE_COUNTER')" class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">
+        Seen by {{ $store.state.counter }}
+      </div>
+      </div>
+    </div>
     <div id="err" class="text-center mt-4"></div>
   </div>
 </template>
@@ -116,30 +132,15 @@ export default {
 
     async getPosts () {
       const token = sessionStorage.getItem('token')
-      const response = await fetch('http://localhost:3000/api/post', {
+      await fetch('http://localhost:3000/api/post', {
           method: 'GET',
           headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
           }
-        }
-      )
-      if (!response.ok) {
-        const message = `Error retrieving posts: ${response.status}`;
-        document.getElementById("err").innerHTML = 'Error retrieving posts';
-        throw new Error(message);
-      }
-      const posts = await response.json()
-      posts.forEach((post) => {
-        console.log(post)
-        let userDbPosts = document.createElement("ol")
-        userDbPosts.className = 'mx-auto border shadow col-10 mt-2 p-5';
-        userDbPosts.innerHTML = (post.user_id + ' ');
-        let text = document.createTextNode(post.post);
-        userDbPosts.appendChild(text);
-        document.getElementById("allPosts").appendChild(userDbPosts);
-      return posts
-    })
+        })
+        .then(response => response.json())
+        .then(data => this.posts = data)
     },
 
     async addPost () {
@@ -191,10 +192,10 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-#app {
-  color: #0d3b66;
-  font-family: Ubuntu, sans-serif;
-}
+// #app {
+//   color: #0d3b66;
+//   font-family: Ubuntu, sans-serif;
+// }
 
 h5 {
   color: #0d3b66;
@@ -258,6 +259,12 @@ h5 {
   font-size: medium;
 }
 
+.deletePost {
+  &:hover {
+    color: #f9564f;
+  }
+}
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
@@ -297,8 +304,7 @@ textarea {
   resize: none;
 }
 
-//
-
+// post images
 .base-image-input {
   width: 10rem;
   height: 10rem;
