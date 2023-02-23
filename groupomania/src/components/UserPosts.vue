@@ -7,7 +7,6 @@
       <div :class="`post`">
       <div class="userNameMsgs mx-4 mt-4 flex-grow-1 bd-highlight">
         {{ $store.state.firstName + ' ' + $store.state.lastName }}
-      <hr/>
       </div>
       <div class="userPost flex-grow-1 bd-highlight mx-4 mt-4 mb-3"> 
         {{ post.content }}
