@@ -1,63 +1,55 @@
 <template>
   <div>
-    <button @click="isOpenA = ! isOpenA" class="btn postPen ms-5 mb-4 px-2">
-      Post +
-    </button>
-        <div v-show="isOpenA" class="container list-reset mb-5">
-        <div class="tab">
-          <button class="tablinks col-4" @click="postChoice(event, 'Post')">Post</button>
-          <button class="tablinks col-4" @click="postChoice(event, 'Image')">Image</button>
-          <button class="tablinks col-4" @click="postChoice(event, 'Link')">Link</button>
+    <div class="container">
+      <div class="center-block text-center">
+        <button @click=" show = !show" class="btn postPen px-3 mb-3 me-2">
+          Post +
+        </button>
+        <button @click=" showImage = !showImage" class="btn postPen mb-3 ms-2">
+          Image +
+        </button>
+      </div>
+    </div>
+    <div v-if="show || showImage" class="border rounded-3 mx-5 mb-5">
+    <Transition>
+      <div v-if="showImage" id="Image">
+        <div class="container mt-3">
+          <div class="row">
+            <div class="base-image-input rounded-3 text-center border border-2 py-3 my-2 mx-auto my-auto"
+            :style="{ 'background-image': `url(${imageData})` }"
+            @click="chooseImage">
+              <span v-if="!imageData" class="placeholder rounded-square">
+                Choose an Image
+              </span>
+              <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
+            </div>
+          </div>
         </div>
+      </div>
+    </Transition>
 
-        <div id="Post" class="tabcontent">
+    <Transition>
+      <div v-if="show">
+        <div class="container pt-4">
+          <div class="row">
           <textarea type="text"
             size="36"
-            class="pe-5 px-2 mt-3 col-10"
+            class="px-2 col-10 mx-auto"
             v-model="newPost"
             placeholder="Write something..."
             @keypress.enter="addPost">
           </textarea>
           <br>
           <div id="sendErr" class="text-center mt-1"></div>
-          <button class="btn sendPost my-2" @click="addPost">
-            Send
-          </button>
-        </div>
-
-        <div id="Image" class="tabcontent">
-          <div class="container">
-            <div class="row">
-              <div class="base-image-input rounded-3 text-center border border-2 py-3 my-3 mx-3"
-              :style="{ 'background-image': `url(${imageData})` }"
-              @click="chooseImage">
-                <span v-if="!imageData" class="placeholder rounded-square">
-                  Choose an Image
-                </span>
-                <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
-              </div>
-              <div class="col mt-4">
-                <textarea type="text"
-                  size="36"
-                  class="pe-5 px-2 mt-2 col"
-                  v-model="newPost"
-                  placeholder="Add some text..."
-                  @keypress.enter="addPost">
-                </textarea>
-                <button class="btn sendImage my-3" @click="addPost">
-                  Post
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="Link" class="tabcontent">
-          <h3>Link</h3>
-          <p>Post your link here</p>
         </div>
       </div>
+    </div>
+    </Transition>
+      <button v-if="show || showImage" class="btn sendPost mb-3 mt-2 mx-auto" @click="addPost">
+        Send
+      </button>
   </div>
+</div>
 </template>
 
 <script>
@@ -67,25 +59,11 @@ export default {
     return {
       newPost: '',
       imageData: null,
-      isOpenA: false,
-      isOpenB: false
+      show: false,
+      showImage: false
     }
   },
   methods: {
-     postChoice(evt, tabName) {
-      let i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.className += " active";
-    },
-    
     async addPost () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
@@ -133,18 +111,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sendPost, .sendImage {
+.sendPost {
   background-color: #fd2500;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  background: linear-gradient(to right, #fd2500 50%, #0d3b66 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 1s ease;
-  border: #0d3b66 1px;
+  display: flex;
+  justify-content: center;
     &:hover {
-    background-position: left bottom;
+    color: #fd2500;
+    background-color: white;
+    border: 1px solid #fd2500;
   }
 }
 
@@ -152,7 +129,6 @@ export default {
   background-color: #0d3b66;
   color: white;
   border: none;
-  padding: 5px;
   box-shadow: 0 2px 4px darkslategray;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -164,9 +140,6 @@ export default {
   transform: translateY(2px);
 }
 
-.postPen:not(:first-child) {
-  margin-top: 10px;
-}
 .btn:focus {
   outline: none;
   box-shadow: none;
@@ -175,41 +148,6 @@ export default {
 #err, #sendErr {
   color: #b61929;
   font-size: 88%;
-}
-
-.tab {
-  overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #0d3b66;
-}
-
-.tab button {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 6px 8px;
-  transition: 0.3s;
-  font-size: 17px;
-  color: white;
-}
-
-.tab button:hover {
-  background-color: #f3f1f1;
-  color: #0d3b66;
-}
-
-.tab button.active {
-  background-color: #ccc;
-}
-
-.tabcontent {
-  display: none;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-top: none;
-  background-color: #f8f8f8;
 }
 
 textarea {
@@ -240,5 +178,9 @@ textarea {
 }
 .file-input {
   display: none;
+}
+
+.border {
+  color: #0d3b66
 }
 </style>
