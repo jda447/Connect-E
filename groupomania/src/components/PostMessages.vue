@@ -16,7 +16,7 @@
         <div class="container mt-3">
           <div class="row">
             <div class="base-image-input rounded-3 text-center border border-2 py-3 my-2 mx-auto my-auto"
-            :style="{ 'background-image': `url(${imageData})` }"
+            :style="{ 'background-image': `url(${imageData || preImageData})` }"
             @click="chooseImage">
               <span v-if="!imageData" class="placeholder rounded-square">
                 Choose an Image
@@ -59,6 +59,7 @@ export default {
     return {
       newPost: '',
       imageData: null,
+      preImageData: '',
       show: false,
       showImage: false
     }
@@ -127,6 +128,7 @@ export default {
 
 .postPen {
   background-color: #0d3b66;
+  font-family: Ubuntu;
   color: white;
   border: none;
   box-shadow: 0 2px 4px darkslategray;

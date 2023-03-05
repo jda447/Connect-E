@@ -28,16 +28,16 @@
               v-on:blur="passwordBlurred = true"
               placeholder="Please enter your password" />
                   
-            <span class="input-group-text eyeIcon">
-              <btn class="eyeButton" @click.prevent="toggleShow">
+            <span class="input-group-text eyeIcon p-0">
+              <button class="btn eyeButton" @click.prevent="toggleShow">
                 <font-awesome-icon :icon="['falight', 'fa-eye']" />
-              </btn>
+              </button>
             </span>
           </div>
           <h6 class="mt-1 ms-2">Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
           <div class="invalid-feedback">A valid password is required</div>
           <div class="form-group text-center m-4">
-            <a type="submit" v-on:click.prevent="submit" class="btn btn-lg btnSignInSubmit shadow-none">Submit</a>
+            <a type="submit" v-on:click.prevent="submit" class="btn btnSignInSubmit shadow-none">Submit</a>
           </div>    
         </div>
       </div>

@@ -1,19 +1,23 @@
 <template>
   <div id="app">
-    <div class="navbar">
-      <router-link to="/messages" class="col-4">
-        <img src="@/assets/group-logo-nav.png" class="col-10 mt-1 ms-3"/>
+    <div class="navbar p-0">
+      <router-link to="/messages" class="col-6 col-md-4 col-sm-4">
+        <img src="@/assets/group-logo-nav.png" class="col-10 ms-3"/>
       </router-link>
-      <div class="logos">
-        <button 
-          @click="toggle = !toggle" 
-          class="btn online">
-          <span :class="{green: !toggle}">Online |</span>
-          <span :class="{green: toggle}">| Offline</span>
-        </button>
-        <router-link to="/messages" class="messagesNavBtn mx-4">
+      <div class="logos mt-3">
+        <router-link to="/messages" class="messagesNavBtn mx-3">
           <font-awesome-icon :icon="['fas', 'pencil']" />
         </router-link>
+        <div class="dropdown mx-2">
+          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-3" />
+          <div id="dropdown" class="dropdown-content">
+            <a href="#">About</a>
+            <router-link to="/" class="text-center fw-bold px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
+              Delete
+            </router-link>
+          </div>
+          <DeleteUserModal></DeleteUserModal>
+        </div>
         <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
           <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
         </router-link>
@@ -26,16 +30,23 @@
 
 <script>
 import SignOutModal from '../components/SignOutModal.vue'
+import DeleteUserModal from '../components/DeleteUserModal.vue'
 
 export default {
 	name: 'ProfileNav',
     components: {
-    SignOutModal
+    SignOutModal,
+    DeleteUserModal
   },
   data() {
     return {
       toggle: false
     };
+  },
+  methods: {
+    dropDown() {
+      document.getElementById("dropdown").classList.toggle("show");
+    },
   }
 }
 </script>
@@ -65,22 +76,29 @@ hr {
   margin: 0
 }
 
-.online {
-  font-size: 85%;
-  padding: 2px 4px;
-  color: white;
-  border: solid 1px #0d3b66;
-    &:focus {
-      outline:none;
-      box-shadow: none;
-    }
+.dropbtn {
+  cursor: pointer;
 }
 
-.green {
-  color: #0d3b66;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.btn {
-  margin: 10px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.show {display:block;}
 </style>

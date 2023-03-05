@@ -3,7 +3,7 @@
     <HomeNav></HomeNav>
     <PostMessages></PostMessages>
     
-    <div class="posts col-lg-6 mx-auto">
+    <div class="posts col-lg-10 mx-auto">
     <UserPosts
       v-for="(post, i) in $store.state.posts"
       :key="i"

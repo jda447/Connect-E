@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col">
             <div class="base-image-input rounded-circle mx-auto text-center col-4 col-md-4 col-lg-2 my-2"
-            :style="{ 'background-image': `url(${imageData})` }"
+            :style="{ 'background-image': `url(${imageData || preImageData})` }"
             @click="chooseImage">
               <span v-if="!imageData" class="placeholder rounded-circle">
                 Choose an Image
@@ -47,6 +47,7 @@ export default {
   name: 'App',
   data() {
   return {
+    preImageData: '',
     imageData: null,
     firstName: '',
     lastName: '',
