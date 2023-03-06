@@ -83,17 +83,18 @@ exports.login = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  console.log(req.body.userId)
   User.update({
-    imageUrl: req.body.imageUrl,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     position: req.body.position
-  }).then(
-    (user) => {
-      res.status(201).json(user)
+  }, {
+    where: {
+      user_id: req.body.userId
     }
-  ).catch(
+  }).then(
+    () => {
+      res.status(200).json()
+    }).catch(
     (error) => {
       res.status(400).json(error)
     }

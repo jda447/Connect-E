@@ -5,11 +5,11 @@
         <img src="@/assets/group-logo-nav.png" class="col-10 ms-3"/>
       </router-link>
       <div class="logos mt-3">
-        <router-link to="/profile" class="messagesNavBtn mx-3">
+        <router-link to="/profile" class="messagesNavBtn mx-2">
           <font-awesome-icon :icon="['fas', 'user-large']" />
         </router-link>
         <div class="dropdown mx-2">
-          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-3" />
+          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-2" />
           <div id="dropdown" class="dropdown-content">
             <a href="#">About</a>
             <router-link to="/" class="text-center fw-bold px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">

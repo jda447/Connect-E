@@ -70,20 +70,42 @@ export default {
         this.$emit('input', files[0])
       }
     },
-    onSubmit () {
-      let staffInfo = {
+    async onSubmit () {
+      const token = sessionStorage.getItem('token')
+      const userId = sessionStorage.getItem('user')
+      const response = await fetch('http://localhost:3000/api/user', {
+          method: 'PUT',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          },
+          body: new FormData() && JSON.stringify({
+          firstName: this.firstName,
+          lastName: this.lastName,
+          position: this.position,
+          userId: userId
+        }),
+        }
+      )
+      if (response.ok) {
+        console.log('it worked!')
+        let staffInfo = {
         firstName: this.firstName,
         lastName: this.lastName,
         position: this.position
-      }
-      this.$emit('info-submitted', staffInfo)
-      this.$store.commit('ADD_FIRSTNAME', this.firstName)
-      this.$store.commit('ADD_LASTNAME', this.lastName)
-      this.$store.commit('ADD_POSITION', this.position)
+        }
+        this.$emit('info-submitted', staffInfo)
+        this.$store.commit('ADD_FIRSTNAME', this.firstName)
+        this.$store.commit('ADD_LASTNAME', this.lastName)
+        this.$store.commit('ADD_POSITION', this.position)
 
-      this.firstName = ''
-      this.lastName = ''
-      this.position = null
+        this.firstName = ''
+        this.lastName = ''
+        this.position = null
+      }
+      if (!response.ok) {
+        console.log('it did not work')
+      }
     }
   }
 }
