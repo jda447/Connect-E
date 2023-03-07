@@ -3,7 +3,7 @@
     <ProfileNav></ProfileNav>
     <div class="text-center">
       <ProfileInfo></ProfileInfo>
-      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-3 px-2">
+      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-4 px-2">
         Edit
       </router-link>
     </div>

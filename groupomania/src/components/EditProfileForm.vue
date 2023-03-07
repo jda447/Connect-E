@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <form class="editProfileForm" @submit.prevent="onSubmit">
-      <div class="container col-md-9 col-lg-6">
+      <!-- <div class="container col-md-9 col-lg-6">
         <div class="row">
           <div class="col">
             <div class="base-image-input rounded-circle mx-auto text-center col-4 col-md-4 col-lg-2 my-2"
-            :style="{ 'background-image': `url(${imageData || preImageData})` }"
+            :style="{ 'background-image': `url(${imageUrl || preimageUrl})` }"
             @click="chooseImage">
-              <span v-if="!imageData" class="placeholder rounded-circle">
+              <span v-if="!imageUrl" class="placeholder rounded-circle">
                 Choose an Image
               </span>
               <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
             </div>
-          </div>
+          </div> -->
           <div class="col">
             <div class="mx-auto text-center my-2">
               <label>First name</label><br>
@@ -36,8 +36,8 @@
             </button>
             </div>
           </div>
-        </div>
-      </div>
+        <!-- </div> -->
+      <!-- </div> -->
     </form>
   </div>
 </template>
@@ -47,29 +47,29 @@ export default {
   name: 'App',
   data() {
   return {
-    preImageData: '',
-    imageData: null,
+    preimageUrl: '',
+    imageUrl: null,
     firstName: '',
     lastName: '',
     position: null
     };
   },
   methods: {
-    chooseImage () {
-      this.$refs.fileInput.click()
-    },
-    onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      if (files && files[0]) {
-        const reader = new FileReader
-        reader.onload = e => {
-          this.imageData = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit('input', files[0])
-      }
-    },
+    // chooseImage () {
+    //   this.$refs.fileInput.click()
+    // },
+    // onSelectFile () {
+    //   const input = this.$refs.fileInput
+    //   const files = input.files
+    //   if (files && files[0]) {
+    //     const reader = new FileReader
+    //     reader.onload = e => {
+    //       this.imageUrl = e.target.result
+    //     }
+    //     reader.readAsDataURL(files[0])
+    //     this.$emit('input', files[0])
+    //   }
+    // },
     async onSubmit () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
@@ -131,32 +131,32 @@ export default {
   box-shadow: none;
 }
 
-.base-image-input {
-  width: 200px;
-  height: 200px;
-  cursor: pointer;
-  background-size: cover;
-  background-position: center center;
-  border: dashed 1px
-}
-.placeholder {
-  background: #F0F0F0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: #333;
-  font-size: 18px;
-  font-family: Helvetica;
-}
-.placeholder:hover {
-  background: #E0E0E0;
-}
-.file-input {
-  display: none;
-}
+// .base-image-input {
+//   width: 200px;
+//   height: 200px;
+//   cursor: pointer;
+//   background-size: cover;
+//   background-position: center center;
+//   border: dashed 1px
+// }
+// .placeholder {
+//   background: #F0F0F0;
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   color: #333;
+//   font-size: 18px;
+//   font-family: Helvetica;
+// }
+// .placeholder:hover {
+//   background: #E0E0E0;
+// }
+// .file-input {
+//   display: none;
+// }
 
 #firstName {
   text-align: center;

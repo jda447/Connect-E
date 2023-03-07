@@ -16,9 +16,9 @@
         <div class="container mt-3">
           <div class="row">
             <div class="base-image-input rounded-3 text-center border border-2 py-3 my-2 mx-auto my-auto"
-            :style="{ 'background-image': `url(${imageData || preImageData})` }"
+            :style="{ 'background-image': `url(${imageUrl || preimageUrl})` }"
             @click="chooseImage">
-              <span v-if="!imageData" class="placeholder rounded-square">
+              <span v-if="!imageUrl" class="placeholder rounded-square">
                 Choose an Image
               </span>
               <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
@@ -58,8 +58,8 @@ export default {
   data() {
     return {
       newPost: '',
-      imageData: null,
-      preImageData: '',
+      imageUrl: null,
+      preimageUrl: '',
       show: false,
       showImage: false
     }
@@ -101,7 +101,7 @@ export default {
       if (files && files[0]) {
         const reader = new FileReader
         reader.onload = e => {
-          this.imageData = e.target.result
+          this.imageUrl = e.target.result
         }
         reader.readAsDataURL(files[0])
         this.$emit('input', files[0])

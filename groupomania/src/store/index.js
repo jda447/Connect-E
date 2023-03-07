@@ -4,7 +4,7 @@ export default createStore({
   state: {
     firstName: '',
     lastName: '',
-    position: null,
+    position: '',
     posts: [],
     counter: 0
   },
