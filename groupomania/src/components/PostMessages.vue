@@ -2,10 +2,10 @@
   <div>
     <div class="container">
       <div class="center-block text-center">
-        <button @click=" show = !show" class="btn postPen px-3 mb-3 me-2">
+        <button @click="()=>show = !show" class="btn postPen px-3 mb-3 me-2">
           Post +
         </button>
-        <button @click=" showImage = !showImage" class="btn postPen mb-3 ms-2">
+        <button @click="()=>showImage = !showImage" class="btn postPen mb-3 ms-2">
           Image +
         </button>
       </div>
@@ -21,7 +21,8 @@
               <span v-if="!imageUrl" class="placeholder rounded-square">
                 Choose an Image
               </span>
-              <input class="file-input" ref="fileInput" type="file" @input="onSelectFile">
+              <input class="file-input" ref="fileInput" type="file"
+              @input="onSelectFile">
             </div>
           </div>
         </div>
@@ -45,9 +46,11 @@
       </div>
     </div>
     </Transition>
-      <button v-if="show || showImage" class="btn sendPost mb-3 mt-2 mx-auto" @click="addPost">
+      <button v-if="show || showImage" class="btn sendPost mb-3 mt-2 mx-auto"
+      @click="addPost">
         Send
       </button>
+      <div id="err" class="text-center mt-4"></div>
   </div>
 </div>
 </template>
@@ -80,9 +83,10 @@ export default {
           })
         }
       )
-      if (response.ok && this.newPost) {
-        this.$store.commit('ADD_POST', this.newPost)
-        this.newPost = ''
+      if (response.ok) {
+        // this.$store.commit('ADD_POST', this.newPost)
+        // this.newPost = ''
+        this.$router.go()
       }
       if (!response.ok) {
         const message = `Error sending post: ${response.status}`;
