@@ -1,10 +1,16 @@
 const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
-  console.log(req.body.userId)
+  console.log(req.body)
+  console.log(req.file)
+  const url = req.protocol + '://' + req.get('host')
   Post.create({
+    where: {
+      user_id: req.body.user_id
+    },
     post: req.body.post,
-    user_id: req.body.userId
+    imageUrl: url + '/images/' + req.file.filename,
+    user_id: req.body.user_id
   }).then(
     (post) => {
       res.status(201).json({

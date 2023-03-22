@@ -7,9 +7,9 @@
     class="btn btn-outline float-end btn-sm shadow-none deletePost">
       x
     </button>
-      <li class="mt-3"> user_id {{ item.user_id }}</li>
-      <li v-if="item.post" class="fw-bold"> {{ item.post }}</li>
-      <li v-if="item.imageUrl"> <img :src="item.imageUrl" class="border" /></li>
+      <li class="mt-3 mb-2"> user_id {{ item.user_id }}</li>
+      <li v-if="item.post" class="fw-bold mb-2"> {{ item.post }}</li>
+      <li v-if="item.imageUrl"> <img :src="item.imageUrl" class="col-4 mb-2" /></li>
       <li class="mb-1"> post_id {{  item.post_id }}</li>
     <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
     class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">

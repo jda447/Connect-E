@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <div class="container">
       <div class="center-block text-center">
         <button @click="()=>show = !show" class="btn postPen px-3 mb-3 me-2">
@@ -51,7 +51,30 @@
         Send
       </button>
       <div id="err" class="text-center mt-4"></div>
-  </div>
+  </div> -->
+  <div class="file ms-5">
+  <form @submit.prevent="addPost" enctype="multipart/form-data">
+    <div class="fields">
+      <label>Upload File</label><br>
+      <textarea type="text"
+        size="36"
+        class="px-2 mx-auto"
+        v-model="post"
+        placeholder="Write something..."
+        @keypress.enter="addPost">
+      </textarea><br>
+      <input
+        type="file"
+        ref="file"
+        name="image"
+        class="my-1 mb-2"
+        @change="onSelect"
+      />
+    </div>
+    <div class="fields">
+      <button class="mb-2">Submit</button>
+    </div>
+  </form>
 </div>
 </template>
 
@@ -60,27 +83,33 @@
 export default {
   data() {
     return {
-      newPost: '',
-      imageUrl: null,
-      preimageUrl: '',
-      show: false,
-      showImage: false
+      file: '',
+      post: ''
+      // newPost: '',
+      // imageUrl: null,
+      // preimageUrl: '',
+      // show: false,
+      // showImage: false
     }
   },
   methods: {
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.file = file;
+    },
     async addPost () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
+      const formData = new FormData()
+      formData.append('image', this.file)
+      formData.append('post', this.post)
+      formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/post', {
           method: 'POST',
           headers: {
-            'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
           },
-          body: JSON.stringify({ 
-            post: this.newPost,
-            userId: userId
-          })
+          body: formData
         }
       )
       if (response.ok) {
@@ -89,29 +118,28 @@ export default {
         this.$router.go()
       }
       if (!response.ok) {
-        const message = `Error sending post: ${response.status}`;
-        document.getElementById("sendErr").innerHTML = 'Error sending post';
-        throw new Error(message);
+        console.log(response)
       }
     },
-
-    chooseImage () {
-      this.$refs.fileInput.click()
-    },
-
-    onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      if (files && files[0]) {
-        const reader = new FileReader
-        reader.onload = e => {
-          this.imageUrl = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit('input', files[0])
-      }
-    }
   }
+
+  //   chooseImage () {
+  //     this.$refs.fileInput.click()
+  //   },
+
+  //   onSelectFile () {
+  //     const input = this.$refs.fileInput
+  //     const files = input.files
+  //     if (files && files[0]) {
+  //       const reader = new FileReader
+  //       reader.onload = e => {
+  //         this.imageUrl = e.target.result
+  //       }
+  //       reader.readAsDataURL(files[0])
+  //       this.$emit('input', files[0])
+  //     }
+  //   }
+  // }
 }
 </script>
 
