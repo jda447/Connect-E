@@ -83,20 +83,35 @@ exports.login = (req, res, next) => {
 }
 
 exports.updateUser = (req, res, next) => {
-  User.update({
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    position: req.body.position
-  }, {
+  const url = req.protocol + '://' + req.get('host')
+  User.findOne({
     where: {
-      user_id: req.body.userId
+      user_id: req.body.user_id
     }
   }).then(
-    () => {
-      res.status(200).json()
-    }).catch(
-    (error) => {
-      res.status(400).json(error)
+    (user) => {
+      if (!user) {
+        return res.status(401).json({
+          error: ('User not found!')
+        })
+      }
+      user.update({
+        where: {
+          user_id: req.body.user_id
+        },
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        position: req.body.position,
+        imageUrl: url + '/images/' + req.file.filename
+      }).then(
+        (user) => {
+          res.status(200).json(user)
+        }).catch(
+        (error) => {
+          res.status(400).json(error)
+          console.log(error)
+        }
+      )
     }
   )
 }

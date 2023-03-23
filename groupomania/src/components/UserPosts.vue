@@ -2,17 +2,16 @@
 <div id="app">
   <ul v-for="item in posts.slice().reverse()"
     :key="item.post_id"
-    class="list-unstyled border shadow mx-auto ps-4 col-10">
+    class="list-unstyled border shadow mx-auto col-10">
     <button v-on:click.prevent="deletePost"
-    class="btn btn-outline float-end btn-sm shadow-none deletePost">
+    class="btn btn-outline float-end btn-sm shadow-none deletePost mx-1">
       x
     </button>
-      <li class="mt-3 mb-2"> user_id {{ item.user_id }}</li>
-      <li v-if="item.post" class="fw-bold mb-2"> {{ item.post }}</li>
-      <li v-if="item.imageUrl"> <img :src="item.imageUrl" class="col-4 mb-2" /></li>
-      <li class="mb-1"> post_id {{  item.post_id }}</li>
+      <li class="mt-3 mb-2 ps-4"> user_id {{ item.user_id }}</li>
+      <li v-if="item.post" class="fw-bold mb-2 ps-5"> {{ item.post }}</li>
+      <li v-if="item.imageUrl"> <img :src="item.imageUrl" class="col-9 rounded ps-5 mb-2" /></li>
     <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
-    class="seen-by mt-auto mx-2 p-1 d-flex align-items-end flex-column bd-highlight">
+    class="seen-by mx-3 my-2 d-flex align-items-end flex-column bd-highlight">
       Seen by {{ $store.state.counter }}
     </div>
   </ul>

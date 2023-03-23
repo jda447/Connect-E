@@ -1,7 +1,7 @@
 <template>
 <div id="app" class="col-lg-7 mx-auto">
   <ProfileNav></ProfileNav>
-    <div class="container">
+    <!-- <div class="container">
       <div class="row justify-content-around">
         <div class="col-6 col-lg-5 card">
           <div class="base-image-input rounded-circle mx-auto text-center col-4 col-md-4 col-lg-2 mt-2"
@@ -66,13 +66,44 @@
         </router-link>
       </div>
     </div>
-  </div>
+  </div> -->
+  <form @submit.prevent="addPost" enctype="multipart/form-data">
+    <div class="fields border border-2 rounded-3 col-10 mx-auto">
+      <div class="text-center">
+        <label>First name</label><br>
+        <input v-model="firstName" class="col-6 col-lg-8 text-center" id="firstName" type="text" required/>
+      </div>
+      <div class="text-center">
+        <label>Last name</label><br>
+        <input v-model="lastName" class="col-6 col-lg-8 text-center" id="lastName" type="text" required>
+      </div>
+      <div class="text-center">
+        <label>Position</label><br>
+        <select v-model="position" id="position" class="select col-6 col-lg-8 p-1 text-center" required>
+          <option>Customer Service</option>
+          <option>Manager</option>
+          <option>CEO</option>
+        </select>
+      </div>
+      <br>
+      <img :src="image" class="rounded col-4 my-2">
+      <input
+        type="file"
+        ref="file"
+        name="image"
+        class="col-11 my-1 mb-2"
+        @change="onSelect"/>
+      <div class="fields">
+        <button class="btn sendPost col-2 mx-auto mb-2">Update</button>
+      </div>
+    </div>
+  </form>
 </div>
 </template>
 
 <script>
 import ProfileNav from '../components/ProfileNav.vue'
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
@@ -80,79 +111,133 @@ export default {
     ProfileNav
   },
   data() {
-  return {
-    preimageUrl: '',
-    imageUrl: null,
-    firstName: '',
-    lastName: '',
-    position: ''
-    };
+    return {
+      file: '',
+      firstName: '',
+      lastName: '',
+      position: '',
+      image: ''
+    }
   },
   methods: {
-    chooseImage () {
-      this.$refs.fileInput.click()
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.image = URL.createObjectURL(file)
+      this.file = file;
     },
-    onSelectFile () {
-      const input = this.$refs.fileInput
-      const files = input.files
-      if (files && files[0]) {
-        const reader = new FileReader
-        reader.onload = e => {
-          this.imageUrl = e.target.result
-        }
-        reader.readAsDataURL(files[0])
-        this.$emit('input', files[0])
-      }
-    },
-    async onSubmit () {
+    async addPost () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
+      const formData = new FormData()
+      formData.append('image', this.file)
+      formData.append('firstName', this.firstName)
+      formData.append('lastName', this.lastName)
+      formData.append('position', this.position)
+      formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/user', {
           method: 'PUT',
           headers: {
-            'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
           },
-          body: new FormData() && JSON.stringify({
-          firstName: this.firstName,
-          lastName: this.lastName,
-          position: this.position,
-          userId: userId
-        }),
+          body: formData
         }
       )
       if (response.ok) {
-        console.log('it worked!')
-        let staffInfo = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        position: this.position
-        }
-        this.$emit('info-submitted', staffInfo)
-        this.$store.commit('ADD_FIRSTNAME', this.firstName)
-        this.$store.commit('ADD_LASTNAME', this.lastName)
-        this.$store.commit('ADD_POSITION', this.position)
-
-        this.firstName = ''
-        this.lastName = ''
-        this.position = ''
-        this.imageUrl = ''
+        console.log(response)
       }
       if (!response.ok) {
-        console.log('it did not work')
-       }
+        console.log(response)
+      }
     }
-  },
-  computed: {
-    ...mapGetters(['staffFirstName', 'staffPosition', 'staffLastName'])
   }
 }
+//   data() {
+//   return {
+//     preimageUrl: '',
+//     imageUrl: null,
+//     firstName: '',
+//     lastName: '',
+//     position: ''
+//     };
+//   },
+//   methods: {
+//     chooseImage () {
+//       this.$refs.fileInput.click()
+//     },
+//     onSelectFile () {
+//       const input = this.$refs.fileInput
+//       const files = input.files
+//       if (files && files[0]) {
+//         const reader = new FileReader
+//         reader.onload = e => {
+//           this.imageUrl = e.target.result
+//         }
+//         reader.readAsDataURL(files[0])
+//         this.$emit('input', files[0])
+//       }
+//     },
+//     async onSubmit () {
+//       const token = sessionStorage.getItem('token')
+//       const userId = sessionStorage.getItem('user')
+//       const response = await fetch('http://localhost:3000/api/user', {
+//           method: 'PUT',
+//           headers: {
+//             'Content-type': 'application/json',
+//             'Authorization': 'Bearer ' + JSON.parse(token)
+//           },
+//           body: new FormData() && JSON.stringify({
+//           firstName: this.firstName,
+//           lastName: this.lastName,
+//           position: this.position,
+//           userId: userId
+//         }),
+//         }
+//       )
+//       if (response.ok) {
+//         console.log('it worked!')
+//         let staffInfo = {
+//         firstName: this.firstName,
+//         lastName: this.lastName,
+//         position: this.position
+//         }
+//         this.$emit('info-submitted', staffInfo)
+//         this.$store.commit('ADD_FIRSTNAME', this.firstName)
+//         this.$store.commit('ADD_LASTNAME', this.lastName)
+//         this.$store.commit('ADD_POSITION', this.position)
+
+//         this.firstName = ''
+//         this.lastName = ''
+//         this.position = ''
+//         this.imageUrl = ''
+//       }
+//       if (!response.ok) {
+//         console.log('it did not work')
+//        }
+//     }
+//   },
+//   computed: {
+//     ...mapGetters(['staffFirstName', 'staffPosition', 'staffLastName'])
+//   }
+// }
 </script>
 
 <style lang="scss" scoped>
 #app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
+}
+.sendPost {
+  background-color: #0d3b66;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+    &:hover {
+    color: #fd2500;
+    background-color: white;
+    border: 1px solid #fd2500;
+  }
 }
 .uploadBtn {
   color: #229631;

@@ -26,8 +26,7 @@ User.init({
     len: [6, 20]
   },
   imageUrl: {
-    type: DataTypes.STRING,
-    isUrl: true
+    type: DataTypes.STRING
   },
   firstName: {
     type: DataTypes.STRING,
