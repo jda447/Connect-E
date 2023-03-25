@@ -25,7 +25,7 @@ export default {
       posts: []
     }
   },
-  created () {
+  created() {
     this.getPosts()
   },
   methods: {

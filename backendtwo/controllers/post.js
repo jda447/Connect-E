@@ -1,8 +1,6 @@
 const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
-  console.log(req.body)
-  console.log(req.file)
   const url = req.protocol + '://' + req.get('host')
   Post.create({
     where: {

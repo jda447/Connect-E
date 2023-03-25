@@ -1,12 +1,7 @@
 <template>
-  <div id="app" class="col-lg-7 mx-auto">
+  <div id="app" class="text-center mx-auto col-lg-7">
     <ProfileNav></ProfileNav>
-    <div class="text-center">
-      <ProfileInfo></ProfileInfo>
-      <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold mb-5 mt-4 px-2">
-        Edit
-      </router-link>
-    </div>
+    <ProfileInfo></ProfileInfo>
   </div>
 </template>
 
@@ -29,25 +24,5 @@ export default {
 #app {
   color: #0d3b66;
   font-family: Ubuntu, sans-serif;
-}
-
-.editBtn {
-  background-color: #0d3b66;
-  color: white;
-  border: none;
-  padding: 5px;
-  box-shadow: 0 2px 4px darkslategray;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.editBtn:active {
-  background-color: #0d3b66;
-  box-shadow: 0 0 2px darkslategray;
-  transform: translateY(2px);
-}
-.btn:focus {
-  outline: none;
-  box-shadow: none;
 }
 </style>

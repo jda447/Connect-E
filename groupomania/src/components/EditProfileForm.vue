@@ -1,44 +1,65 @@
 <template>
   <div id="app">
-    <form class="editProfileForm" @submit.prevent="onSubmit">
-      <!-- <div class="container col-md-9 col-lg-6">
-        <div class="row">
-          <div class="col">
-            <div class="base-image-input rounded-circle mx-auto text-center col-4 col-md-4 col-lg-2 my-2"
-            :style="{ 'background-image': `url(${imageUrl || preimageUrl})` }"
-            @click="chooseImage">
-              <span v-if="!imageUrl" class="placeholder rounded-circle">
-                Choose an Image
-              </span>
-              <input class="file-input rounded-circle" ref="fileInput" type="file" @input="onSelectFile">
-            </div>
-          </div> -->
-          <div class="col">
-            <div class="mx-auto text-center my-2">
-              <label>First name</label><br>
-              <input v-model="firstName" id="firstName" type="text" required/>
-            </div>
-            <div class="mx-auto text-center my-2">
-              <label>Last name</label><br>
-              <input v-model="lastName" id="lastName" type="text" required>
-            </div>
-            <div class="mx-auto text-center my-2">
-            <label>Position</label><br>
-            <select v-model="position" id="position" class="p-1" required>
-              <option>Customer Service</option>
-              <option>Manager</option>
-              <option>CEO</option>
-            </select>
-            </div>
-            <div class="mx-auto text-center my-3">
-            <button v:on-click="onSubmit" class="btn uploadBtn border border-success border-2 text-center fw-bold px-2 mt-1" type="submit">
-              Upload
-            </button>
+    <div class="container">
+      <div class="row justify-content-around">
+        <div class="col-6 col-lg-5 card mb-3">
+          <img :src="image" class="rounded-circle mx-auto col-4 my-2">
+            <div class="card-body">
+              <div class="card-title text-center mb-4">
+                <label class="">Name</label>
+                <div class="fw-bold">
+                  {{  firstName + ' ' + lastName }}
+                </div> 
+              </div>
+              <div class="text-center">
+                <label class="">Position</label>
+                <div class="fw-bold">
+                  {{ position }}
+                </div>
+              </div>
             </div>
           </div>
-        <!-- </div> -->
-      <!-- </div> -->
-    </form>
+        </div>
+        <form @submit.prevent="updateUser" enctype="multipart/form-data">
+          <div class="fields border border-2 rounded-3 col-10 mx-auto">
+            <div class="text-center">
+              <label>First name</label><br>
+              <input v-model="firstName" class="col-6 col-lg-8 text-center" id="firstName" type="text" required/>
+            </div>
+            <div class="text-center">
+              <label>Last name</label><br>
+              <input v-model="lastName" class="col-6 col-lg-8 text-center" id="lastName" type="text" required>
+            </div>
+            <div class="text-center">
+              <label>Position</label><br>
+              <select v-model="position" id="position" class="select col-6 col-lg-8 p-1 text-center" required>
+                <option>Customer Service</option>
+                <option>Manager</option>
+                <option>CEO</option>
+              </select>
+            </div>
+            <br>
+            <div class="fields text-center mx-auto mb-2">
+              <label class="btn fileUpload text-center mb-2">Add image
+              <input
+                type="file"
+                ref="file"
+                name="image"
+                class="file-input col-11 my-1 mb-2"
+                @change="onSelect"/>
+              </label>
+            </div>
+            <div class="fields text-center mx-auto mb-2">
+              <button class="btn uploadBtn border border-2 border-success">Upload</button>
+            </div>
+          </div>
+        </form>
+        <div class="text-center">
+        <router-link to="/profile" class="btn profileBtn btn-lg fw-bold mt-4 mb-4 px-2">
+          Profile
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -46,65 +67,43 @@
 export default {
   name: 'App',
   data() {
-  return {
-    preimageUrl: '',
-    imageUrl: null,
-    firstName: '',
-    lastName: '',
-    position: null
+    return {
+      file: '',
+      firstName: '',
+      lastName: '',
+      position: '',
+      image: ''
     };
   },
   methods: {
-    // chooseImage () {
-    //   this.$refs.fileInput.click()
-    // },
-    // onSelectFile () {
-    //   const input = this.$refs.fileInput
-    //   const files = input.files
-    //   if (files && files[0]) {
-    //     const reader = new FileReader
-    //     reader.onload = e => {
-    //       this.imageUrl = e.target.result
-    //     }
-    //     reader.readAsDataURL(files[0])
-    //     this.$emit('input', files[0])
-    //   }
-    // },
-    async onSubmit () {
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.image = URL.createObjectURL(file)
+      this.file = file;
+    },
+    async updateUser () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
+      const formData = new FormData()
+      formData.append('image', this.file)
+      formData.append('firstName', this.firstName)
+      formData.append('lastName', this.lastName)
+      formData.append('position', this.position)
+      formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/user', {
           method: 'PUT',
           headers: {
-            'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
           },
-          body: new FormData() && JSON.stringify({
-          firstName: this.firstName,
-          lastName: this.lastName,
-          position: this.position,
-          userId: userId
-        }),
+          body: formData
         }
       )
       if (response.ok) {
-        console.log('it worked!')
-        let staffInfo = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        position: this.position
-        }
-        this.$emit('info-submitted', staffInfo)
-        this.$store.commit('ADD_FIRSTNAME', this.firstName)
-        this.$store.commit('ADD_LASTNAME', this.lastName)
-        this.$store.commit('ADD_POSITION', this.position)
-
-        this.firstName = ''
-        this.lastName = ''
-        this.position = null
+        console.log(response)
+        this.$router.push({ path: '/profile' })
       }
       if (!response.ok) {
-        console.log('it did not work')
+        console.log(response)
       }
     }
   }
@@ -126,43 +125,34 @@ export default {
     color:white;
   }
 }
+.card {
+  background-color: #f8f8f8;
+}
+.profileBtn {
+  background-color: #0d3b66;
+  color: white;
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.profileBtn:active {
+  background-color: #0d3b66;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
 .btn:focus {
   outline: none;
   box-shadow: none;
 }
-
-// .base-image-input {
-//   width: 200px;
-//   height: 200px;
-//   cursor: pointer;
-//   background-size: cover;
-//   background-position: center center;
-//   border: dashed 1px
-// }
-// .placeholder {
-//   background: #F0F0F0;
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   cursor: pointer;
-//   color: #333;
-//   font-size: 18px;
-//   font-family: Helvetica;
-// }
-// .placeholder:hover {
-//   background: #E0E0E0;
-// }
-// .file-input {
-//   display: none;
-// }
-
-#firstName {
-  text-align: center;
+.file-input {
+  display: none;
 }
-
-#lastName {
-  text-align: center;
+.fileUpload {
+  background-color: #0d3b66;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
 }
 </style>

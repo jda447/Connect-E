@@ -1,38 +1,53 @@
 <template>
-<div id="app">
-  <div v-if="staffFirstName && staffPosition && staffLastName" class="list text-center">
-    <div class="card col-6 col-xs-10 mx-auto px-3">
-      <img src="" class="card-img-top" alt="">
-      <div class="card-body">
-        <li class="card-title">
-          <label class="mt-3">
-            Name 
-          </label>
-          <div class="fw-bold">
-            {{ staffFirstName + ' ' + staffLastName }} 
+  <div id="app">
+    <div class="container mt-2 mb-4">
+      <div class="row justify-content-around">
+        <div class="card col-5">
+          <div class="card-body">
+            <div class="card-title text-center mb-4">
+              <ul v-for="item in user"
+                :key="item.user_id"
+                class="list-unstyled mx-auto">
+                <li class="col-10 mx-auto">
+                  <img :src="item.imageUrl" class="rounded-circle col-8 mt-4" /></li>
+                <li class="fw-bold h5 mt-3">
+                  {{ item.firstName }} {{ item.lastName }}</li>
+                <li class="fw-bold mt-2">
+                  {{ item.position }}</li>
+              </ul>
+            </div>
           </div>
-        </li>
-        <div class="mb-3 mt-3">
-        <li><label class="">
-          Position </label>
-          <div class="fw-bold">
-            {{ staffPosition }}
-          </div>
-        </li>
         </div>
       </div>
     </div>
+    <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold p-2 px-3 mb-4">
+      Edit
+    </router-link>
   </div>
-</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
   name: 'App',
-  computed: {
-    ...mapGetters(['staffFirstName', 'staffPosition', 'staffLastName'])
+  data() {
+    return {
+      user: ''
+    }
+  },
+  created() {
+    this.getUser()
+  },
+  methods: {
+    async getUser () {
+      const token = sessionStorage.getItem('token')
+      await fetch('http://localhost:3000/api/user', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+      }).then(response => response.json())
+      .then(data => this.user = data)
+    }
   }
 }
 </script>
@@ -41,12 +56,28 @@ export default {
 .card {
   background-color: #fafafa;
 }
-
 .list {
   list-style: none;
 }
-
 .card-body {
   padding: 0;
+}
+.editBtn {
+  background-color: #0d3b66;
+  color: white;
+  border: none;
+  padding: 5px;
+  box-shadow: 0 2px 4px darkslategray;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.editBtn:active {
+  background-color: #0d3b66;
+  box-shadow: 0 0 2px darkslategray;
+  transform: translateY(2px);
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
 </style>

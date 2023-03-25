@@ -64,20 +64,34 @@ exports.login = (req, res, next) => {
             userId: user.user_id,
             token
           })
-        }
-      ).catch(
+        }).catch(
         (error) => {
           res.status(500).json({
             error
           })
         }
       )
-    }
-  ).catch(
+    }).catch(
     (error) => {
       res.status(500).json({
         error
       })
+    }
+  )
+}
+
+exports.getUser = (req, res, next) => {
+  User.findAll({
+    where: {
+      user_id: req.auth.userId
+    }
+  }).then(
+    (user) => {
+      res.status(200).json(user)
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json(error)
     }
   )
 }
