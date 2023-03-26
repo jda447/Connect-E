@@ -1,22 +1,50 @@
 <template>
-<div class="file text-center mb-4">
-  <form @submit.prevent="addPost" enctype="multipart/form-data">
-    <div class="fields border border-2 rounded-3 col-10 mx-auto">
-      <textarea type="text"
-        class="col-11 ps-2 mt-3 pt-1"
+<div class="text-center mb-4">
+  <form v-if="!toggle" @submit.prevent="addPost">
+    <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
+      <div class="input-group">
+        <input type="text"
+          class="form-control col-11"
+          v-model="post"
+          placeholder="Write something..."
+          @keypress.enter="addPost">
+        <span @click="toggle = !toggle" class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send media post">
+          <font-awesome-icon :icon="['fa', 'image']" size="lg" class="imageToggle text-center mx-2" />
+        </span>
+      </div>
+      <div v-if="post" class="text-center mt-3">
+        <button class="btn sendPost mb-2 mt-2">Send</button>
+        <div id="sendErr" class="text-center mt-1 mb-3"></div>
+      </div>
+    </div>
+  </form>
+  <form v-if="toggle" @submit.prevent="addPostImage" enctype="multipart/form-data">
+    <div class="border border-2 rounded-3 col-10 mx-auto">
+      <div class="input-group">
+      <input type="text"
+        class="form-control col-11"
         v-model="post"
-        placeholder="Write something..."
-        @keypress.enter="addPost">
-      </textarea><br>
-      <img :src="image" class="rounded col-4 my-2">
-      <input
-        type="file"
-        ref="file"
-        name="image"
-        class="col-11 my-1 mb-2"
-        @change="onSelect"/>
-      <div class="fields">
-        <button class="btn sendPost col-2 mx-auto mb-2">Send</button>
+        placeholder="Write something...">
+      <span class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send post">
+        <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
+      </span>
+    </div>
+      <label class="fileUpload fs-6 mt-3 mb-2">
+        <font-awesome-icon :icon="['fa', 'image']" size="2xl" class="text-center mt-3" />
+          Add image
+        <input
+          type="file"
+          ref="file"
+          name="image"
+          class="file-input col-11 my-1"
+          @change="onSelect"/>
+        </label>
+        <div>
+          <img :src="image" class="rounded col-4 text-center mb-2 mt-3">
+        </div>
+      <div v-if="image" class="text-center">
+        <button class="btn sendPost mb-2 mt-2">Send</button>
+        <div id="sendErr" class="text-center mt-1 mb-3"></div>
       </div>
     </div>
   </form>
@@ -30,23 +58,48 @@ export default {
     return {
       file: '',
       post: '',
-      image: ''
+      image: '',
+      toggle: null
     }
   },
   methods: {
+    async addPost () {
+      const token = sessionStorage.getItem('token')
+      const userId = sessionStorage.getItem('user')
+      const response = await fetch('http://localhost:3000/api/post/addPost', {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          },
+          body: JSON.stringify({ 
+            post: this.post,
+            userId: userId
+          })
+        }
+      )
+      if (response.ok && this.post) {
+        this.$router.go()
+      }
+      if (!response.ok) {
+        const message = `Error sending post: ${response.status}`;
+        document.getElementById("sendErr").innerHTML = 'Error sending post';
+        throw new Error(message);
+      }
+    },
     onSelect() {
       const file = this.$refs.file.files[0];
       this.image = URL.createObjectURL(file)
       this.file = file;
     },
-    async addPost () {
+    async addPostImage () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
       const formData = new FormData()
       formData.append('image', this.file)
       formData.append('post', this.post)
       formData.append('user_id', userId)
-      const response = await fetch('http://localhost:3000/api/post', {
+      const response = await fetch('http://localhost:3000/api/post/addPostImage', {
           method: 'POST',
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token)
@@ -59,6 +112,9 @@ export default {
       }
       if (!response.ok) {
         console.log(response)
+        const message = `Error sending post: ${response.status}`;
+        document.getElementById("sendErr").innerHTML = 'Error sending post';
+        throw new Error(message);
       }
     }
   }
@@ -71,8 +127,6 @@ export default {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  display: flex;
-  justify-content: center;
     &:hover {
     color: #fd2500;
     background-color: white;
@@ -82,12 +136,30 @@ export default {
 .btn:focus {
   outline: none;
   box-shadow: none;
+  color: black;
+}
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  color: black;
+}
+.file-input {
+  display: none;
+}
+.fileUpload {
+  background-color: white;
+  color: #0d3b66;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-textarea {
-  resize: none;
+.imageToggle {
+  color: #0d3b66;
+  font-weight: bold;
+  cursor: pointer;
 }
-.border {
-  color: #0d3b66
+#sendErr {
+  color: #DC3545;
+  font-size: 88%;
 }
 </style>

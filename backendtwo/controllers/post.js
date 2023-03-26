@@ -1,6 +1,26 @@
 const Post = require('../models/post')
 
 exports.addPost = (req, res, next) => {
+  console.log(req.body.userId)
+  Post.create({
+    post: req.body.post,
+    user_id: req.body.userId
+  }).then(
+    (post) => {
+      res.status(201).json({
+        message: 'Post added successfully!', post
+      })
+    }
+  ).catch(
+    (error) => {
+      res.status(500).json({
+        error
+      })
+    }
+  )
+}
+
+exports.addPostImage = (req, res, next) => {
   const url = req.protocol + '://' + req.get('host')
   Post.create({
     where: {

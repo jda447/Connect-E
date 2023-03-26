@@ -1,5 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" class="col-lg-7 mx-auto">
+    <div class="text-center fw-bold h2 mb-3">
+      Profile
+    </div>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
         <div class="card col-5">
@@ -20,9 +23,11 @@
         </div>
       </div>
     </div>
-    <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold px-3 mb-4">
-      Edit
-    </router-link>
+    <div class="text-center">
+      <router-link to="/editprofile" class="btn editBtn btn-lg text-center fw-bold px-3">
+        Edit
+      </router-link>
+    </div>
   </div>
 </template>
 

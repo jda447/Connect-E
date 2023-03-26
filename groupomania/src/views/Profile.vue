@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="text-center mx-auto col-lg-7">
+  <div id="app" class="col-lg-7 mx-auto ">
     <ProfileNav></ProfileNav>
     <ProfileInfo></ProfileInfo>
   </div>
