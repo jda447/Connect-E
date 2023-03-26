@@ -46,7 +46,7 @@ export default {
   methods: {
     dropDown() {
       document.getElementById("dropdown").classList.toggle("show");
-    },
+    }
   }
 }
 </script>
@@ -75,16 +75,13 @@ export default {
 hr {
   margin: 0
 }
-
 .dropbtn {
   cursor: pointer;
 }
-
 .dropdown {
   position: relative;
   display: inline-block;
 }
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -92,7 +89,6 @@ hr {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-
 .dropdown-content a {
   color: black;
   padding: 12px 16px;

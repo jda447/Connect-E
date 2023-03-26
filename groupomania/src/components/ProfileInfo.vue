@@ -10,7 +10,7 @@
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
                   <img :src="item.imageUrl" class="rounded-circle col-8 mt-4" /></li>
-                <li class="fw-bold h5 mt-3">
+                <li class="fw-bold fs-4 mt-3">
                   {{ item.firstName }} {{ item.lastName }}</li>
                 <li class="fw-bold mt-2">
                   {{ item.position }}</li>
@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold p-2 px-3 mb-4">
+    <router-link to="/editprofile" class="btn editBtn btn-lg fw-bold px-3 mb-4">
       Edit
     </router-link>
   </div>
@@ -40,7 +40,7 @@ export default {
   methods: {
     async getUser () {
       const token = sessionStorage.getItem('token')
-      await fetch('http://localhost:3000/api/user', {
+      await fetch('http://localhost:3000/api/user/getUser', {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(token)

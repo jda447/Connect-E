@@ -2,59 +2,57 @@
   <div id="app">
     <div class="container">
       <div class="row justify-content-around">
-        <div class="col-6 col-lg-5 card mb-3">
-          <img :src="image" class="rounded-circle mx-auto col-4 my-2">
+        <div v-if="firstName || lastName || position || image" class="col-5 card mb-3">
+          <img :src="image" class="rounded-circle mx-auto col-6 mt-3">
             <div class="card-body">
-              <div class="card-title text-center mb-4">
-                <label class="">Name</label>
-                <div class="fw-bold">
+              <div class="card-title text-center">
+                <div class="fw-bold fs-5">
                   {{  firstName + ' ' + lastName }}
                 </div> 
               </div>
               <div class="text-center">
-                <label class="">Position</label>
-                <div class="fw-bold">
+                <div class="fw-bold fs-6 mt-1">
                   {{ position }}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <form @submit.prevent="updateUser" enctype="multipart/form-data">
-          <div class="fields border border-2 rounded-3 col-10 mx-auto">
-            <div class="text-center">
-              <label>First name</label><br>
-              <input v-model="firstName" class="col-6 col-lg-8 text-center" id="firstName" type="text" required/>
-            </div>
-            <div class="text-center">
-              <label>Last name</label><br>
-              <input v-model="lastName" class="col-6 col-lg-8 text-center" id="lastName" type="text" required>
-            </div>
-            <div class="text-center">
-              <label>Position</label><br>
-              <select v-model="position" id="position" class="select col-6 col-lg-8 p-1 text-center" required>
-                <option>Customer Service</option>
-                <option>Manager</option>
-                <option>CEO</option>
-              </select>
-            </div>
-            <br>
-            <div class="fields text-center mx-auto mb-2">
-              <label class="btn fileUpload text-center mb-2">Add image
-              <input
-                type="file"
-                ref="file"
-                name="image"
-                class="file-input col-11 my-1 mb-2"
-                @change="onSelect"/>
-              </label>
-            </div>
-            <div class="fields text-center mx-auto mb-2">
-              <button class="btn uploadBtn border border-2 border-success">Upload</button>
-            </div>
+      <form @submit.prevent="updateUser" enctype="multipart/form-data">
+        <div v-if="image && firstName && lastName && position" class="fields text-center mx-auto mb-3">
+          <button class="btn uploadBtn">Upload</button>
+        </div>
+        <div v-if="!firstName || !lastName || !position || !image" class="fields text-center mx-auto mt-3">
+          <label class="btn fileUpload text-center mb-2">
+            <font-awesome-icon :icon="['fa', 'user-large']" class="me-2" />Profile picture
+          <input
+            type="file"
+            ref="file"
+            name="image"
+            class="file-input col-11 my-1 mt-2"
+            @change="onSelect"/>
+          </label>
+        </div>
+        <div v-if="!firstName || !lastName || !position || !image" class="fields col-10 mx-auto">
+          <div class="text-center">
+            <label>First name</label><br>
+            <input v-model="firstName" class="col-6 col-lg-8 text-center" id="firstName" type="text" required/>
           </div>
-        </form>
-        <div class="text-center">
+          <div v-if="!firstName || !lastName || !position || !image" class="text-center">
+            <label>Last name</label><br>
+            <input v-model="lastName" class="col-6 col-lg-8 text-center" id="lastName" type="text" required>
+          </div>
+          <div v-if="!firstName || !lastName || !position || !image" class="text-center mb-3">
+            <label>Position</label><br>
+            <select v-model="position" id="position" class="select col-6 col-lg-8 p-1 text-center" required>
+              <option>Customer Service</option>
+              <option>Manager</option>
+              <option>CEO</option>
+            </select>
+          </div>
+        </div>
+      </form>
+      <div v-if="!firstName || !lastName || !position || !image" class="text-center">
         <router-link to="/profile" class="btn profileBtn btn-lg fw-bold mt-4 mb-4 px-2">
           Profile
         </router-link>
@@ -112,17 +110,15 @@ export default {
 
 <style lang="scss" scoped>
 .uploadBtn {
-  color: #229631;
+  color: white;
+  background-color: #229631;
   text-decoration: none;
   font-weight: bold;
-  background: linear-gradient(to right, #229631 50%, white 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
   transition: all 1s ease;
-  border: #229631 5px;
     &:hover {
-    background-position: left bottom;
-    color:white;
+    color:#229631;
+    background-color: white;
+    border: 1px solid #229631;
   }
 }
 .card {
@@ -150,9 +146,15 @@ export default {
   display: none;
 }
 .fileUpload {
-  background-color: #0d3b66;
-  color: white;
-  border-radius: 50%;
+  background-color: white;
+  color: #0d3b66;
+  font-weight: bold;
+  border: 1px solid;
   cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: #0d3b66;
+    border: 1px solid #0d3b66;
+  }
 }
 </style>
