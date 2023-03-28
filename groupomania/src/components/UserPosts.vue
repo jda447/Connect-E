@@ -4,20 +4,23 @@
       :key="post.post_id"
       class="list-unstyled border shadow mx-auto col-10">
       <button v-on:click.prevent="deletePost"
-      class="btn btn-outline float-end btn-sm shadow-none deletePost mx-1">
+      class="btn btn-outline float-end shadow-none deletePost mx-1">
         x
       </button>
-        <li v-for="item in user"
-          :key="item.user_id"
-          class="list-unstyled fw-bold mt-3 ms-3 mb-3">
-          <img :src="item.imageUrl" class="rounded-circle col-1" />
-            {{ item.firstName }} {{ item.lastName }}
-        </li>
-        <li v-if="post.post" class="mb-3 ps-5"> {{ post.post }}</li>
-        <li v-if="post.imageUrl"> <img :src="post.imageUrl" class="col-9 rounded ps-5 mb-2" /></li>
+      <li v-for="item in user"
+        :key="item.user_id"
+        class="list-unstyled fw-bold mt-3 ms-3 mb-3">
+        <img :src="item.imageUrl" class="rounded-circle col-1" />
+          {{ item.firstName }} {{ item.lastName }}
+      </li>
+      <li v-if="post.post" class="mb-4 me-2 ps-5"> {{ post.post }}</li>
+      <li v-if="post.imageUrl"> <img :src="post.imageUrl" class="col-9 rounded ps-5 mb-4" /></li>
       <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
-        class="seen-by mx-3 my-2 d-flex align-items-end flex-column bd-highlight">
-        Seen by {{ $store.state.counter }}
+        class="seen-by mx-3 my-3 position-relative">
+        <div class="position-absolute bottom-0 end-0 mb-2">
+          <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+            {{ $store.state.counter }}
+        </div>
       </div>
     </ul>
   </div>
@@ -87,8 +90,11 @@ export default {
 }
 .seen-by {
   font-size: medium;
+  cursor: pointer;
+  color: #0d3b66;
 }
 .deletePost {
+  color: #0d3b66;
   &:hover {
     color: #f9564f;
   }

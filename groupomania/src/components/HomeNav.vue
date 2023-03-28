@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <div class="navbar p-0">
-      <router-link to="/messages" class="col-6 col-md-4 col-sm-4">
+      <router-link to="/messages" @click="homeNavLogo" class="col-6 col-md-4 col-sm-4">
         <img src="@/assets/group-logo-nav.png" class="col-10 ms-3"/>
       </router-link>
       <div class="logos mt-3">
-        <router-link to="/profile" class="messagesNavBtn mx-2">
+        <router-link to="/profile" class="navBtns mx-2" data-toggle="tooltip" data-placement="left" title="Profile">
           <font-awesome-icon :icon="['fas', 'user-large']" />
         </router-link>
-        <div class="dropdown mx-2">
+        <div class="dropdown mx-2" data-toggle="tooltip" data-placement="left" title="Settings">
           <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-2" />
           <div id="dropdown" class="dropdown-content">
             <a href="#">About</a>
@@ -18,7 +18,7 @@
           </div>
           <DeleteUserModal></DeleteUserModal>
         </div>
-        <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
+        <router-link to="/" class="navBtns me-4" data-bs-toggle="modal" data-bs-target="#signOutModal" data-toggle="tooltip" data-placement="left" title="Sign-out">
           <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
         </router-link>
       </div>
@@ -46,6 +46,9 @@ export default {
   methods: {
     dropDown() {
       document.getElementById("dropdown").classList.toggle("show");
+    },
+    homeNavLogo() {
+      this.$router.go()
     }
   }
 }
@@ -59,14 +62,8 @@ export default {
   color: #0d3b66;
   border: solid 10px white;
 }
-.messagesNavBtn {
+.navBtns {
   color: #0d3b66;
-    &:hover {
-    color: #fd2500;
-	}
-}
-.signOutNavBtn {
-    color: #0d3b66;
     &:hover {
     color: #fd2500;
 	}
@@ -77,6 +74,9 @@ hr {
 }
 .dropbtn {
   cursor: pointer;
+  &:hover {
+    color: #fd2500;
+  }
 }
 .dropdown {
   position: relative;

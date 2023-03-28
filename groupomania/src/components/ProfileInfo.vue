@@ -5,7 +5,7 @@
     </div>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
-        <div class="card col-5">
+        <div class="card col-7">
           <div class="card-body">
             <div class="card-title text-center mb-4">
               <ul v-for="item in user"
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="text-center">
-      <router-link to="/editprofile" class="btn editBtn btn-lg text-center fw-bold px-3">
+      <router-link to="/editprofile" class="btn editBtn btn-lg text-center fw-bold mb-4 px-3">
         Edit
       </router-link>
     </div>

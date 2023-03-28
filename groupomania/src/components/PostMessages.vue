@@ -29,8 +29,8 @@
         <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
       </span>
     </div>
-      <label class="fileUpload fs-6 mt-3 mb-2">
-        <font-awesome-icon :icon="['fa', 'image']" size="2xl" class="text-center mt-3" />
+      <label class="btn fileUpload mt-4 mb-2">
+        <font-awesome-icon :icon="['fa', 'image']" class="text-center" />
           Add image
         <input
           type="file"
@@ -146,17 +146,27 @@ export default {
 .file-input {
   display: none;
 }
+
 .fileUpload {
   background-color: white;
   color: #0d3b66;
   font-weight: bold;
+  border: 1px solid;
   cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: #0d3b66;
+    border: 1px solid #0d3b66;
+  }
 }
 
 .imageToggle {
   color: #0d3b66;
   font-weight: bold;
   cursor: pointer;
+    &:hover {
+      color: #fd2500;
+    }
 }
 #sendErr {
   color: #DC3545;

@@ -20,7 +20,7 @@
       </div>
     </div>
     <footer class="footer text-center mx-auto p-3">
-      © 2022 Copyright:
+      © 2023 Copyright:
       <a class="text-reset fw-bold" href="#">Groupomania.com</a>
     </footer>
   </div>

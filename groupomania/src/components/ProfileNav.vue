@@ -5,11 +5,11 @@
         <img src="@/assets/group-logo-nav.png" class="col-10 ms-3"/>
       </router-link>
       <div class="logos mt-3">
-        <router-link to="/messages" class="messagesNavBtn mx-2">
+        <router-link to="/messages" class="navBtns mx-2" data-toggle="tooltip" data-placement="left" title="Messages">
           <font-awesome-icon :icon="['fas', 'pencil']" />
         </router-link>
-        <div class="dropdown mx-2">
-          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-2" />
+        <div class="dropdown mx-2" data-toggle="tooltip" data-placement="left" title="Settings">
+          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="navBtns dropbtn me-2" />
           <div id="dropdown" class="dropdown-content">
             <a href="#">About</a>
             <router-link to="/" class="text-center fw-bold px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
@@ -18,7 +18,7 @@
           </div>
           <DeleteUserModal></DeleteUserModal>
         </div>
-        <router-link to="/" class="signOutNavBtn me-4" data-bs-toggle="modal" data-bs-target="#signOutModal">
+        <router-link to="/" class="navBtns me-4" data-bs-toggle="modal" data-bs-target="#signOutModal" data-toggle="tooltip" data-placement="left" title="Sign-out">
           <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
         </router-link>
       </div>
@@ -59,14 +59,8 @@ export default {
   color: #0d3b66;
   border: solid 10px white;
 }
-.messagesNavBtn {
+.navBtns {
   color: #0d3b66;
-    &:hover {
-    color: #fd2500;
-	}
-}
-.signOutNavBtn {
-    color: #0d3b66;
     &:hover {
     color: #fd2500;
 	}
@@ -77,6 +71,9 @@ hr {
 }
 .dropbtn {
   cursor: pointer;
+    &:hover {
+    color: #fd2500;
+  }
 }
 .dropdown {
   position: relative;

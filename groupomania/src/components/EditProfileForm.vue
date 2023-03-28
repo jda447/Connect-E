@@ -33,18 +33,18 @@
             @change="onSelect"/>
           </label>
         </div>
-        <div v-if="!firstName || !lastName || !position || !image" class="fields col-10 mx-auto">
+        <div v-if="!firstName || !lastName || !position || !image" class="fields col-lg-6 mx-auto">
           <div class="text-center">
             <label>First name</label><br>
-            <input v-model="firstName" class="col-6 col-lg-8 text-center" id="firstName" type="text" required/>
+            <input v-model="firstName" class="col-5 col-lg-8 text-center" id="firstName" type="text" required/>
           </div>
           <div v-if="!firstName || !lastName || !position || !image" class="text-center">
             <label>Last name</label><br>
-            <input v-model="lastName" class="col-6 col-lg-8 text-center" id="lastName" type="text" required>
+            <input v-model="lastName" class="col-5 col-lg-8 text-center" id="lastName" type="text" required>
           </div>
           <div v-if="!firstName || !lastName || !position || !image" class="text-center mb-3">
             <label>Position</label><br>
-            <select v-model="position" id="position" class="select col-6 col-lg-8 p-1 text-center" required>
+            <select v-model="position" id="position" class="select col-5 col-lg-8 p-1 text-center" required>
               <option>Customer Service</option>
               <option>Manager</option>
               <option>CEO</option>
