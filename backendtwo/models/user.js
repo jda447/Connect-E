@@ -25,7 +25,7 @@ User.init({
     allowNull: false,
     len: [6, 20]
   },
-  imageUrl: {
+  profileImage: {
     type: DataTypes.STRING
   },
   firstName: {

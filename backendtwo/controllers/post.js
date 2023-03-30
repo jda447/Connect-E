@@ -4,6 +4,10 @@ exports.addPost = (req, res, next) => {
   console.log(req.body.userId)
   Post.create({
     post: req.body.post,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    position: req.body.position,
+    profileImage: req.body.profileImage,
     user_id: req.body.userId
   }).then(
     (post) => {
@@ -28,6 +32,10 @@ exports.addPostImage = (req, res, next) => {
     },
     post: req.body.post,
     imageUrl: url + '/images/' + req.file.filename,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    position: req.body.position,
+    profileImage: req.body.profileImage,
     user_id: req.body.user_id
   }).then(
     (post) => {

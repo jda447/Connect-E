@@ -25,6 +25,18 @@ Post.init({
   imageUrl: {
     type: DataTypes.STRING,
     isUrl: true
+  },
+  firstName: {
+    type: DataTypes.STRING
+  },
+  lastName: {
+    type: DataTypes.STRING
+  },
+  position: {
+    type: DataTypes.STRING
+  },
+  profileImage: {
+    type: DataTypes.STRING
   }
 }, {
   sequelize,

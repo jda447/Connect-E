@@ -59,10 +59,25 @@ export default {
       file: '',
       post: '',
       image: '',
-      toggle: null
+      toggle: null,
+      user: ''
     }
   },
+  created() {
+    this.getUser()
+  },
   methods: {
+    async getUser () {
+      const token = sessionStorage.getItem('token')
+      await fetch('http://localhost:3000/api/user/getUser', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+      }).then(response => response.json())
+      .then(data => this.user = data)
+    },
+
     async addPost () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
@@ -74,6 +89,10 @@ export default {
           },
           body: JSON.stringify({ 
             post: this.post,
+            firstName: this.user[0].firstName,
+            lastName: this.user[0].lastName,
+            position: this.user[0].position,
+            profileImage: this.user[0].profileImage,
             userId: userId
           })
         }
@@ -98,6 +117,10 @@ export default {
       const formData = new FormData()
       formData.append('image', this.file)
       formData.append('post', this.post)
+      formData.append('firstName', this.user[0].firstName)
+      formData.append('lastName', this.user[0].lastName)
+      formData.append('position', this.user[0].position)
+      formData.append('profileImage', this.user[0].profileImage)
       formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/post/addPostImage', {
           method: 'POST',
@@ -108,7 +131,11 @@ export default {
         }
       )
       if (response.ok) {
-        this.$router.go()
+        // this.$router.go()
+        console.log(this.user[0].profileImage)
+        console.log(this.user[0].firstName)
+        console.log(this.user[0].lastName)
+        console.log(this.user[0].position)
       }
       if (!response.ok) {
         console.log(response)

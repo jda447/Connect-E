@@ -12,7 +12,7 @@
                 :key="item.user_id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="item.imageUrl" class="rounded-circle col-8 mt-4" /></li>
+                  <img :src="item.profileImage" class="rounded-circle col-8 mt-4" /></li>
                 <li class="fw-bold fs-4 mt-3">
                   {{ item.firstName }} {{ item.lastName }}</li>
                 <li class="fw-bold mt-2">

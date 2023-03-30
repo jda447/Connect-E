@@ -7,16 +7,14 @@
       class="btn btn-outline float-end shadow-none deletePost mx-1">
         x
       </button>
-      <li v-for="item in user"
-        :key="item.user_id"
-        class="list-unstyled fw-bold mt-3 ms-3 mb-3">
-        <img :src="item.imageUrl" class="rounded-circle col-1" />
-          {{ item.firstName }} {{ item.lastName }}
+      <li v-if="post.post || post.imageUrl" class="fw-bold ms-3 mt-3">
+      <img :src="post.profileImage" class="rounded-circle col-1 me-1" />
+        {{ post.firstName}} {{ post.lastName }}
       </li>
-      <li v-if="post.post" class="mb-4 me-2 ps-5"> {{ post.post }}</li>
-      <li v-if="post.imageUrl"> <img :src="post.imageUrl" class="col-9 rounded ps-5 mb-4" /></li>
+      <li v-if="post.post" class="col-9 mx-auto mb-4 mt-1"> {{ post.post }}</li>
+      <li v-if="post.imageUrl" class="col-9 mx-auto mt-4"> <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" /></li>
       <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
-        class="seen-by mx-3 my-3 position-relative">
+        class="seen-by mx-3 mt-4 position-relative">
         <div class="position-absolute bottom-0 end-0 mb-2">
           <font-awesome-icon :icon="['fa', 'thumbs-up']" />
             {{ $store.state.counter }}
@@ -49,6 +47,7 @@ export default {
       }).then(response => response.json())
       .then(data => this.posts = data)
     },
+
     async getUserIcon () {
       const token = sessionStorage.getItem('token')
       await fetch('http://localhost:3000/api/user/getUserIcon', {
@@ -59,6 +58,7 @@ export default {
       }).then(response => response.json())
       .then(data => this.user = data)
     },
+    
     deletePost : async function() {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('user')

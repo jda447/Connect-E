@@ -9,10 +9,10 @@
             <div class="container col-lg-6">
               <div class="row">
             <div class="col">
-              <router-link to="/signup" class="btn btnSignUp btn-lg shadow-none m-1">Sign-up</router-link>
+              <router-link to="/signup" class="btn btnSignUp btn-lg btn-outline shadow-none m-1">Sign up</router-link>
             </div>
             <div class="col">
-              <router-link to="/login" class="btn btnLogIn btn-lg shadow-none m-1">Log-in</router-link>
+              <router-link to="/login" class="btn btnLogIn btn-lg shadow-none m-1">Log in</router-link>
             </div>
           </div>
         </div>
@@ -59,9 +59,9 @@ export default {
     &:hover {
     background-color: white;
     color: #0d3b66;
-    transform: scale(1.4);
-    transition: transform 250ms;
-    font-family: Pacifico;
+    border: 2px solid;
+    // transform: scale(1.4);
+    // transition: transform 250ms;
   }
 }
 
@@ -74,9 +74,9 @@ export default {
     &:hover {
     background-color: white;
     color: #0d3b66;
-    transform: scale(1.4);
-    transition: transform 250ms;
-    font-family: Pacifico;
+    border: 2px solid;
+    // transform: scale(1.4);
+    // transition: transform 250ms;
   }
 }
 

@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <form id="login-form" class="col-10 col-sm-6 col-md-5 col-lg-5 mx-auto">
-      <h1 class="text-center mt-4 mb-4">Sign-up</h1>
+      <h1 class="text-center mt-4 mb-4">Sign up</h1>
       <div class="form-wrap container">
         <div v-if="!submitted">
           <div class="form-group mb-3">
-            <label for="email" class="mb-1 ms-2 fw-bold">Email address</label>
+            <label for="email" class="mb-1 ms-2 fw-bold">Email</label>
             <input placeholder="Please enter your email address"
               v-model="email" 
               v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
@@ -138,22 +138,21 @@ export default {
 
 .btnSignInSubmit {
   font-family: Ubuntu, sans-serif;
-  background-color: #fd2500;
   color: white;
+  background-color: #0d3b66;
   text-decoration: none;
   font-weight: bold;
-  background: linear-gradient(to right, #fd2500 50%, #0d3b66 50%);
-  background-size: 200% 100%;
-  background-position: right bottom;
-  transition: all 1s ease;
-  border: #0d3b66 1px;
+  border: 2px solid #0d3b66;
     &:hover {
-    background-position: left bottom;
+    color: #0d3b66;
+    background-color: white;
+    border: 2px solid #0d3b66;
   }
 }
 
 h1 {
   font-family: Pacifico;
+  font-weight: bold;
 }
 
 .eyeButton {

@@ -132,7 +132,7 @@ exports.updateUser = (req, res, next) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         position: req.body.position,
-        imageUrl: url + '/images/' + req.file.filename
+        profileImage: url + '/images/' + req.file.filename
       }).then(
         (user) => {
           res.status(200).json(user)
