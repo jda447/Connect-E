@@ -6,8 +6,7 @@
         <input type="text"
           class="form-control col-11"
           v-model="post"
-          placeholder="Write something..."
-          @keypress.enter="addPost">
+          placeholder="Write something...">
         <span @click="toggle = !toggle" class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send media post">
           <font-awesome-icon :icon="['fa', 'image']" size="lg" class="imageToggle text-center mx-2" />
         </span>
@@ -131,7 +130,7 @@ export default {
         }
       )
       if (response.ok) {
-        // this.$router.go()
+        this.$router.go()
         console.log(this.user[0].profileImage)
         console.log(this.user[0].firstName)
         console.log(this.user[0].lastName)

@@ -7,11 +7,11 @@
       class="btn btn-outline float-end shadow-none deletePost mx-1">
         x
       </button>
-      <li v-if="post.post || post.imageUrl" class="fw-bold ms-3 mt-3">
-      <img :src="post.profileImage" class="rounded-circle col-1 me-1" />
+      <li v-if="post.post || post.imageUrl" class="nameText fw-bold ms-4 mt-4 mb-2">
+      <img :src="post.profileImage" class="profileImage rounded-circle border border-3 col-1 me-1" />
         {{ post.firstName}} {{ post.lastName }}
       </li>
-      <li v-if="post.post" class="col-9 mx-auto mb-4 mt-1"> {{ post.post }}</li>
+      <li v-if="post.post" class="col-9 mx-auto mb-5 mt-1"> {{ post.post }}</li>
       <li v-if="post.imageUrl" class="col-9 mx-auto mt-4"> <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" /></li>
       <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
         class="seen-by mx-3 mt-4 position-relative">
@@ -28,13 +28,11 @@
 export default {
   data() {
     return {
-      posts: [],
-      user: ''
+      posts: []
     }
   },
   created() {
     this.getPosts()
-    this.getUserIcon()
   },
   methods: {
     async getPosts () {
@@ -47,18 +45,6 @@ export default {
       }).then(response => response.json())
       .then(data => this.posts = data)
     },
-
-    async getUserIcon () {
-      const token = sessionStorage.getItem('token')
-      await fetch('http://localhost:3000/api/user/getUserIcon', {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token)
-        }
-      }).then(response => response.json())
-      .then(data => this.user = data)
-    },
-    
     deletePost : async function() {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('user')
@@ -88,6 +74,11 @@ export default {
 .btn-outline {
   font-weight: bolder;
 }
+.profileImage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
 .seen-by {
   font-size: medium;
   cursor: pointer;
@@ -98,5 +89,8 @@ export default {
   &:hover {
     color: #f9564f;
   }
+}
+.nameText {
+  color: #0d3b66;
 }
 </style>

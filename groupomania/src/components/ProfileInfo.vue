@@ -1,8 +1,5 @@
 <template>
   <div id="app" class="col-lg-7 mx-auto">
-    <div class="text-center fw-bold h2 mb-3">
-      Profile
-    </div>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
         <div class="card col-7">
@@ -12,7 +9,7 @@
                 :key="item.user_id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="item.profileImage" class="rounded-circle col-8 mt-4" /></li>
+                  <img :src="item.profileImage" class="profileImage rounded-circle col-8 mt-4" /></li>
                 <li class="fw-bold fs-4 mt-3">
                   {{ item.firstName }} {{ item.lastName }}</li>
                 <li class="fw-bold mt-2">
@@ -84,5 +81,10 @@ export default {
 .btn:focus {
   outline: none;
   box-shadow: none;
+}
+.profileImage {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
 }
 </style>

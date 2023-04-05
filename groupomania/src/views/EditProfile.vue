@@ -1,18 +1,18 @@
 <template>
   <div id="app" class="col-lg-7 mx-auto">
-    <ProfileNav></ProfileNav>
+    <EditNav></EditNav>
     <EditProfileForm></EditProfileForm>
   </div>
 </template>
 
 <script>
-import ProfileNav from '../components/ProfileNav.vue'
+import EditNav from '../components/EditNav.vue'
 import EditProfileForm from '../components/EditProfileForm.vue'
 
 export default {
   name: 'App',
   components: {
-    ProfileNav,
+    EditNav,
     EditProfileForm
   }
 }
