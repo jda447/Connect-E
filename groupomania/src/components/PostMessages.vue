@@ -1,53 +1,59 @@
 <template>
-<div class="text-center mb-4">
-  <form v-if="!toggle" @submit.prevent="addPost">
-    <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
-      <div class="input-group">
+  <div class="text-center mb-4">
+    <form v-if="!toggle" @submit.prevent="addPost">
+      <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
+        <div class="input-group">
+          <input type="text"
+            class="form-control col-11"
+            v-model="post"
+            placeholder="Write something...">
+          <span @click="toggle = !toggle"
+            class="input-group-text p-0"
+            data-toggle="tooltip"
+            data-placement="left"
+            title="Send media post">
+            <font-awesome-icon :icon="['fa', 'image']"
+              size="lg"
+              class="imageToggle text-center mx-2" />
+          </span>
+        </div>
+        <div v-if="post" class="text-center mt-3">
+          <button class="btn sendPost mb-2 mt-2">Send</button>
+          <div id="sendErr" class="text-center mt-1 mb-3"></div>
+        </div>
+      </div>
+    </form>
+    <form v-if="toggle" @submit.prevent="addPostImage" enctype="multipart/form-data">
+      <div class="border border-2 rounded-3 col-10 mx-auto">
+        <div class="input-group">
         <input type="text"
           class="form-control col-11"
           v-model="post"
           placeholder="Write something...">
-        <span @click="toggle = !toggle" class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send media post">
-          <font-awesome-icon :icon="['fa', 'image']" size="lg" class="imageToggle text-center mx-2" />
+        <span class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send post">
+          <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
         </span>
       </div>
-      <div v-if="post" class="text-center mt-3">
-        <button class="btn sendPost mb-2 mt-2">Send</button>
-        <div id="sendErr" class="text-center mt-1 mb-3"></div>
-      </div>
-    </div>
-  </form>
-  <form v-if="toggle" @submit.prevent="addPostImage" enctype="multipart/form-data">
-    <div class="border border-2 rounded-3 col-10 mx-auto">
-      <div class="input-group">
-      <input type="text"
-        class="form-control col-11"
-        v-model="post"
-        placeholder="Write something...">
-      <span class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send post">
-        <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
-      </span>
-    </div>
-      <label class="btn fileUpload mt-4 mb-2">
-        <font-awesome-icon :icon="['fa', 'image']" class="text-center" />
-          Add image
-        <input
-          type="file"
-          ref="file"
-          name="image"
-          class="file-input col-11 my-1"
-          @change="onSelect"/>
-        </label>
-        <div>
-          <img :src="image" class="rounded col-4 text-center mb-2 mt-3">
+        <label class="btn fileUpload mt-4 mb-2">
+          <font-awesome-icon :icon="['fa', 'image']" class="text-center" />
+            Add image
+          <input
+            type="file"
+            ref="file"
+            name="image"
+            class="file-input col-11 my-1"
+            @change="onSelect"/>
+          </label>
+          <div>
+            <img :src="image" class="rounded col-4 text-center mb-2 mt-3">
+          </div>
+        <div v-if="image" class="text-center">
+          <button class="btn sendPost mb-2 mt-2">Send</button>
+          <div id="sendErr" class="text-center mt-1 mb-3"></div>
         </div>
-      <div v-if="image" class="text-center">
-        <button class="btn sendPost mb-2 mt-2">Send</button>
-        <div id="sendErr" class="text-center mt-1 mb-3"></div>
       </div>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
 </template>
 
 <script>

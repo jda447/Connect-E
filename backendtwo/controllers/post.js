@@ -66,10 +66,11 @@ exports.getPosts = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
+  console.log(req.params.id)
   Post.destroy({
     where: {
-      user_id: req.body.userId,
-      post_id: req.body.post_id
+      user_id: req.auth.userId,
+      post_id: req.params.id
     }
   }).then(
     () => {
