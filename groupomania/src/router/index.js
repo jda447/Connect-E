@@ -4,6 +4,7 @@ import SignUp from '../views/SignUp.vue'
 import LogIn from '../views/LogIn.vue'
 import Profile from '../views/Profile.vue'
 import EditProfile from '../views/EditProfile.vue'
+import SingleUser from '../views/SingleUser.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/editprofile',
     name: 'editprofile',
     component: EditProfile
+  },
+  {
+    path: '/singleuser',
+    name: 'singleuser',
+    component: SingleUser
   },
   {
     path: '/messages',

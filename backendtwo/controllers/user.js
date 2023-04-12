@@ -96,6 +96,22 @@ exports.getUser = (req, res, next) => {
   )
 }
 
+exports.singleUser = (req, res, next) => {
+  User.findAll({
+    where: {
+      user_id: req.params.id
+    }
+  }).then(
+    (user) => {
+      res.status(200).json(user)
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json(error)
+    }
+  )
+}
+
 exports.updateUser = (req, res, next) => {
   const url = req.protocol + '://' + req.get('host')
   User.findOne({
