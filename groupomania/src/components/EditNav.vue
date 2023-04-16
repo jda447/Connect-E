@@ -2,14 +2,14 @@
   <div id="app">
     <div class="navbar p-0">
       <router-link to="/messages" class="col-6 col-md-4 col-sm-4">
-        <img src="@/assets/group-logo-nav.png" class="col-10 ms-3"/>
+        <img src="@/assets/group-logo-nav.png" class="col-11 ms-3"/>
       </router-link>
       <div class="logos mt-3">
         <router-link to="/profile" class="navBtns mx-2" data-toggle="tooltip" data-placement="left" title="Profile">
           <font-awesome-icon :icon="['fas', 'user-large']" />
         </router-link>
         <div class="dropdown mx-2" data-toggle="tooltip" data-placement="left" title="Settings">
-          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="dropbtn me-2" />
+          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="navBtns dropbtn me-2" />
           <div id="dropdown" class="dropdown-content">
             <a href="#">About</a>
             <router-link to="/" class="text-center fw-bold px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
@@ -61,6 +61,7 @@ export default {
 }
 .navBtns {
   color: #0d3b66;
+  font-size: 1.2rem;
     &:hover {
     color: #fd2500;
 	}

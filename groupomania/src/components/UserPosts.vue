@@ -4,16 +4,16 @@
       :key="post.post_id"
       class="list-unstyled border shadow mx-auto col-10">
       <button @click.prevent="deletePost(post.post_id)"
-        class="btn fw-bold float-end shadow-none deletePost mx-1">
-        x
+        class="btn fw-bold float-end shadow-none deletePost m-1">
+        <font-awesome-icon :icon="['fa', 'xmark']" class="text-center" />
       </button>
-      <li v-if="post.post || post.imageUrl" class="ms-4 mt-4 mb-2">
-        <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold">
-          <img :src="post.profileImage" class="profileImage rounded-circle border border-3 col-1 me-1" />
+      <li v-if="post.post || post.imageUrl" class="ms-1 mt-2 mb-2">
+        <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold fs-5">
+          <img :src="post.profileImage" class="profileImage rounded-circle border border-3 me-1" />
           {{ post.firstName}} {{ post.lastName }}
         </button>
       </li>
-      <li v-if="post.post" class="col-9 mx-auto mb-5 mt-1">
+      <li v-if="post.post" class="postText col-10 mx-auto mb-5 mt-1">
         {{ post.post }}
       </li>
       <li v-if="post.imageUrl" class="col-9 mx-auto mt-4">
@@ -79,9 +79,13 @@ export default {
 
 <style lang="scss" scoped>
 .profileImage {
-  height: 50px;
-  width: 50px;
+  height: 66px;
+  width: 66px;
   border-radius: 50%;
+}
+
+.postText {
+  font-size: 1.2rem;
 }
 .seen-by {
   font-size: medium;
@@ -98,7 +102,8 @@ export default {
   color: #0d3b66;
   font-family: Ubuntu, sans-serif;
   &:hover {
-    border: solid 1px;
+    border: solid 1px #0d3b66;
+    background-color: #fafafa;
   }
 }
 </style>

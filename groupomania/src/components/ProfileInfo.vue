@@ -2,17 +2,17 @@
   <div id="app" class="col-lg-7 mx-auto">
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
-        <div class="card col-7">
+        <div class="card col-7 col-sm-6 col-md-5 col-lg-8">
           <div class="card-body">
             <div class="card-title text-center mb-4">
               <ul v-for="item in user"
                 :key="item.user_id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="item.profileImage" class="profileImage rounded-circle col-8 mt-4" /></li>
-                <li class="fw-bold fs-4 mt-3">
+                  <img :src="item.profileImage" class="profileImage rounded-circle border border-3 col-8 mt-4" /></li>
+                <li class="fw-bold fs-2 mt-3">
                   {{ item.firstName }} {{ item.lastName }}</li>
-                <li class="fw-bold mt-2">
+                <li class="fw-bold fs-5 mt-2">
                   {{ item.position }}</li>
               </ul>
             </div>
@@ -55,11 +55,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#app {
+  font-family: Ubuntu, sans-serif;
+  color: #0d3b66;
+}
 .card {
   background-color: #fafafa;
-}
-.list {
-  list-style: none;
+  background: linear-gradient(to top, #fafafa 60%, #0d3b66 40%);
+  border: solid 2px #0d3b66;
+  border-radius: 15%;
 }
 .card-body {
   padding: 0;
@@ -83,8 +87,8 @@ export default {
   box-shadow: none;
 }
 .profileImage {
-  height: 175px;
-  width: 175px;
+  height: 150px;
+  width: 150px;
   border-radius: 50%;
 }
 </style>

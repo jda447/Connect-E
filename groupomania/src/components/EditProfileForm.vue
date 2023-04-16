@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <div class="row justify-content-around">
-        <div v-if="image && firstName && lastName && position" class="card col-7 col-lg-5 mb-3">
+        <div v-if="image && firstName && lastName && position" class="card col-6 col-sm-5 col-md-4 mb-3">
           <img :src="image" class="profileImage rounded-circle mx-auto col-6 mt-3">
             <div class="card-body">
               <div class="card-title text-center">
