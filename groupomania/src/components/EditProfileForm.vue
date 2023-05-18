@@ -76,6 +76,7 @@ export default {
       this.image = URL.createObjectURL(file)
       this.file = file;
     },
+    
     async updateUser () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')

@@ -4,15 +4,22 @@
       <div class="row">
         <div class="text-center">
           <div class="my-5">
-            <img class="col-8 col-md-6 col-lg-4" src="@/assets/icon-above-font-cropped.png"/>
+            <img class="shimmer col-8 col-md-6 col-lg-4"
+            src="@/assets/icon-above-font-cropped.png"/>
           </div>
             <div class="container col-lg-6">
               <div class="row">
             <div class="col">
-              <router-link to="/signup" class="btn btnSignUp btn-lg btn-outline shadow-none m-1">Sign up</router-link>
+              <router-link to="/signup"
+                class="btn btnSignUp btn-lg shadow-none m-1">
+                Sign up
+              </router-link>
             </div>
             <div class="col">
-              <router-link to="/login" class="btn btnLogIn btn-lg shadow-none m-1">Log in</router-link>
+              <router-link to="/login"
+                class="btn btnLogIn btn-lg shadow-none m-1">
+                Log in
+              </router-link>
             </div>
           </div>
         </div>
@@ -49,7 +56,6 @@ export default {
   border: solid 20px white;
   height: 100vh;
 }
-
 .btnSignUp {
   font-family: Ubuntu, sans-serif;
   background-color: #0d3b66;
@@ -60,11 +66,8 @@ export default {
     background-color: white;
     color: #0d3b66;
     border: 2px solid;
-    // transform: scale(1.4);
-    // transition: transform 250ms;
   }
 }
-
 .btnLogIn {
   font-family: Ubuntu, sans-serif;
   background-color: #0d3b66;
@@ -75,11 +78,19 @@ export default {
     background-color: white;
     color: #0d3b66;
     border: 2px solid;
-    // transform: scale(1.4);
-    // transition: transform 250ms;
   }
 }
+.shimmer {
+  color: grey;
+  display: inline-block;
+  -webkit-mask: linear-gradient(-60deg,#000 30%,#0005,#000 70%) right/300% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 2.5s infinite;
+}
 
+@keyframes shimmer {
+  100% {-webkit-mask-position:left}
+}
 .footer {
   background-color: rgba(0, 0, 0, 0.1);
   position: absolute;

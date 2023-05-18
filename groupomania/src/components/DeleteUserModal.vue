@@ -10,7 +10,7 @@
           </div>
           <div class="modal-footer mx-auto">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            <a v-on:click.prevent="deleteUser" type="submit" role="button" class="btn btn-success">Yes</a>
+            <a @click.prevent="deleteUser" type="submit" role="button" class="btn btn-success">Yes</a>
           </div>
           <div id="err" class="text-center mb-3"></div>
         </div>
@@ -43,7 +43,7 @@
           console.error('Unauthorized access', error);
           document.getElementById("err").innerHTML = 'Unauthorized access';
         }
-      );
+      )
     }
   }
 }

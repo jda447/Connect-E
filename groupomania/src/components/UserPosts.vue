@@ -19,11 +19,11 @@
       <li v-if="post.imageUrl" class="col-9 mx-auto mt-4">
         <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" />
       </li>
-      <div @click="()=>$store.dispatch('INCREASE_COUNTER')"
+      <div @click.prevent="addLike(post.post_id)"
         class="seen-by mx-3 mt-4 position-relative">
         <div class="position-absolute bottom-0 end-0 mb-2">
           <font-awesome-icon :icon="['fa', 'thumbs-up']" />
-            {{ $store.state.counter }}
+            {{ likes.length }}
         </div>
       </div>
     </ul>
@@ -34,11 +34,13 @@
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      likes: ''
     }
   },
   created() {
     this.getPosts()
+    this.getLikes()
   },
   methods: {
     async getPosts() {
@@ -52,9 +54,37 @@ export default {
       .then(data => this.posts = data)
     },
 
+    async getLikes() {
+      const token = sessionStorage.getItem('token')
+      await fetch('http://localhost:3000/api/like', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+      }).then(response => response.json())
+      .then(data => this.likes = data)
+    },
+
     singleUser(singleUserId) {
       sessionStorage.setItem('singleUser', singleUserId)
       this.$router.push({ path: '/singleuser' })
+    },
+
+    async addLike(postId) {
+      const token = sessionStorage.getItem('token')
+      await fetch('http://localhost:3000/api/like/' + postId, {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+        }).then(async response => {
+          if (response.ok) {
+            this.$router.go()
+          }
+        }).catch(error => {
+          console.log(error)
+        }
+      )
     },
 
     async deletePost(postId) {
@@ -83,7 +113,6 @@ export default {
   width: 66px;
   border-radius: 50%;
 }
-
 .postText {
   font-size: 1.2rem;
 }

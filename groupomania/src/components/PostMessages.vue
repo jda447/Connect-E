@@ -57,7 +57,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -111,11 +110,13 @@ export default {
         throw new Error(message);
       }
     },
+
     onSelect() {
       const file = this.$refs.file.files[0];
       this.image = URL.createObjectURL(file)
       this.file = file;
     },
+
     async addPostImage () {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
@@ -137,10 +138,6 @@ export default {
       )
       if (response.ok) {
         this.$router.go()
-        console.log(this.user[0].profileImage)
-        console.log(this.user[0].firstName)
-        console.log(this.user[0].lastName)
-        console.log(this.user[0].position)
       }
       if (!response.ok) {
         console.log(response)
@@ -178,7 +175,6 @@ export default {
 .file-input {
   display: none;
 }
-
 .fileUpload {
   background-color: white;
   color: #0d3b66;
@@ -191,7 +187,6 @@ export default {
     border: 1px solid #0d3b66;
   }
 }
-
 .imageToggle {
   color: #0d3b66;
   font-weight: bold;
@@ -200,6 +195,7 @@ export default {
       color: #fd2500;
     }
 }
+
 #sendErr {
   color: #DC3545;
   font-size: 88%;
