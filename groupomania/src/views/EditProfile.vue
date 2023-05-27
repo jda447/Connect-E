@@ -1,7 +1,11 @@
 <template>
-  <div id="app" class="col-lg-7 mx-auto">
-    <EditNav></EditNav>
-    <EditProfileForm></EditProfileForm>
+  <div class="app col-lg-7 mx-auto">
+    <nav role="navigation">
+      <EditNav />
+    </nav>
+    <main role="main">
+      <EditProfileForm />
+    </main>
   </div>
 </template>
 
@@ -19,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
+.app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
 }

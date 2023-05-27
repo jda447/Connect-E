@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app">
     <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -12,7 +12,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
             <a @click.prevent="deleteUser" type="submit" role="button" class="btn btn-success">Yes</a>
           </div>
-          <div id="err" class="text-center mb-3"></div>
+          <div class="err text-center mb-3"></div>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         }).catch(error => {
           this.errorMessage = error;
           console.error('Unauthorized access', error);
-          document.getElementById("err").innerHTML = 'Unauthorized access';
+          document.getElementByClass("err").innerHTML = 'Unauthorized access';
         }
       )
     }
@@ -50,12 +50,12 @@
 </script>
     
 <style lang="scss" scoped>
-#app {
+.app {
   font-family: Helvetica, Arial, sans-serif;
   border: solid 10px white;
 }
 
-#err {
+.err {
   color: #DC3545;
   font-size: 88%;
 }

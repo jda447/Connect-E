@@ -1,5 +1,5 @@
 <template>
-<div id="app">
+<div class="app">
   <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
+.app {
   font-family: Helvetica, Arial, sans-serif;
   border: solid 10px white;
 }

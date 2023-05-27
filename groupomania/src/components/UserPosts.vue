@@ -1,32 +1,33 @@
 <template>
-  <div id="app">
-    <ul v-for="post in posts.slice().reverse()"
-      :key="post.post_id"
-      class="list-unstyled border shadow mx-auto col-10">
-      <button @click.prevent="deletePost(post.post_id)"
-        class="btn fw-bold float-end shadow-none deletePost m-1">
-        <font-awesome-icon :icon="['fa', 'xmark']" class="text-center" />
+  <div v-for="post in posts.slice().reverse()"
+    :key="post.post_id"
+    class="list-unstyled border shadow mx-auto col-10">
+    <button @click.prevent="deletePost(post.post_id)"
+      class="btn fw-bold float-end shadow-none deletePost m-1"
+      data-toggle="tooltip"
+      data-placement="left"
+      title="Delete post">
+      <font-awesome-icon :icon="['fa', 'xmark']" class="text-center" />
+    </button>
+    <div v-if="post.post || post.imageUrl" class="ms-1 mt-2 mb-2">
+      <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold fs-5">
+        <img :src="post.profileImage" class="profileImage rounded-circle border border-3 me-1" alt="User's profile"/>
+        {{ post.firstName}} {{ post.lastName }}
       </button>
-      <li v-if="post.post || post.imageUrl" class="ms-1 mt-2 mb-2">
-        <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold fs-5">
-          <img :src="post.profileImage" class="profileImage rounded-circle border border-3 me-1" />
-          {{ post.firstName}} {{ post.lastName }}
-        </button>
-      </li>
-      <li v-if="post.post" class="postText col-10 mx-auto mb-5 mt-1">
-        {{ post.post }}
-      </li>
-      <li v-if="post.imageUrl" class="col-9 mx-auto mt-4">
-        <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" />
-      </li>
-      <div @click.prevent="addLike(post.post_id)"
-        class="seen-by mx-3 mt-4 position-relative">
-        <div class="position-absolute bottom-0 end-0 mb-2">
-          <font-awesome-icon :icon="['fa', 'thumbs-up']" />
-            {{ likes.length }}
-        </div>
+    </div>
+    <div v-if="post.post" class="postText col-10 mx-auto mb-5 mt-1">
+      {{ post.post }}
+    </div>
+    <div v-if="post.imageUrl" class="col-9 mx-auto mt-4">
+      <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" />
+    </div>
+    <div @click.prevent="addLike(post.post_id)"
+      class="seen-by mx-3 mt-4 position-relative">
+      <div class="position-absolute bottom-0 end-0 mb-2">
+        <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+          {{ likes.length }}
       </div>
-    </ul>
+    </div>
   </div>
 </template>
 

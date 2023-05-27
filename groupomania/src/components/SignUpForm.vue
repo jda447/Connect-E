@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <main class="app">
     <form id="login-form" class="col-10 col-sm-6 col-md-5 col-lg-5 mx-auto">
       <h1 class="text-center mt-4 mb-4">Sign up</h1>
       <div class="form-wrap container">
@@ -31,7 +31,7 @@
               </button>
             </span>
           </div>
-          <h6 class="mt-1 ms-2">Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</h6>
+          <span>Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</span>
           <div class="invalid-feedback">A valid password is required</div>
           <div class="form-group text-center m-4">
             <a type="submit" @click.prevent="submit" class="btn btnSignInSubmit shadow-none">Submit</a>
@@ -44,7 +44,7 @@
         Already have an account?
       </router-link>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -132,7 +132,7 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-#app {
+.app {
   color: #0d3b66;
   border: solid 10px white;
   min-height: 100vh;

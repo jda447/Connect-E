@@ -1,5 +1,6 @@
 <template>
   <div class="text-center mb-4">
+    <h1>Messages</h1>
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
@@ -19,7 +20,7 @@
         </div>
         <div v-if="post" class="text-center mt-3">
           <button class="btn sendPost mb-2 mt-2">Send</button>
-          <div id="sendErr" class="text-center mt-1 mb-3"></div>
+          <div class="sendErr text-center mt-1 mb-3"></div>
         </div>
       </div>
     </form>
@@ -49,7 +50,7 @@
           </div>
         <div v-if="image" class="text-center">
           <button class="btn sendPost mb-2 mt-2">Send</button>
-          <div id="sendErr" class="text-center mt-1 mb-3"></div>
+          <div class="sendErr text-center mt-1 mb-3"></div>
         </div>
       </div>
     </form>
@@ -106,7 +107,7 @@ export default {
       }
       if (!response.ok) {
         const message = `Error sending post: ${response.status}`;
-        document.getElementById("sendErr").innerHTML = 'Error sending post';
+        document.getElementByClass("sendErr").innerHTML = 'Error sending post';
         throw new Error(message);
       }
     },
@@ -142,7 +143,7 @@ export default {
       if (!response.ok) {
         console.log(response)
         const message = `Error sending post: ${response.status}`;
-        document.getElementById("sendErr").innerHTML = 'Error sending post';
+        document.getElementByClass("sendErr").innerHTML = 'Error sending post';
         throw new Error(message);
       }
     }
@@ -151,6 +152,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+h1 {
+  color:white;
+  font-size: 0.1rem
+}
 .sendPost {
   background-color: #0d3b66;
   color: white;
@@ -196,7 +202,7 @@ export default {
     }
 }
 
-#sendErr {
+.sendErr {
   color: #DC3545;
   font-size: 88%;
 }

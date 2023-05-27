@@ -1,6 +1,9 @@
 <template>
-  <div id="app" class="col-lg-7 mx-auto ">
-    <ProfileNav></ProfileNav>
+  <nav role="navigation">
+    <ProfileNav />
+  </nav>
+  <main class="app col-lg-7 mx-auto ">
+    <h1>Selected users' profile</h1>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
         <div class="card col-7 col-sm-6 col-md-5">
@@ -10,7 +13,10 @@
                 :key="item.user_id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="item.profileImage" class="profileImage rounded-circle border border-3 col-8 mt-4" /></li>
+                  <img :src="item.profileImage"
+                  class="profileImage rounded-circle border border-3 col-8 mt-4"
+                  alt="Selected user's profile"
+                  /></li>
                 <li class="fw-bold fs-2 mt-3">
                   {{ item.firstName }} {{ item.lastName }}</li>
                 <li class="fw-bold fs-5 mt-2">
@@ -21,7 +27,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -58,9 +64,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#app {
+.app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
+}
+
+h1 {
+  color: white;
+  font-size: 0.1rem;
 }
 .card {
   background-color: #fafafa;

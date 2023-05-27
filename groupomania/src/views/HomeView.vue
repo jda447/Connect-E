@@ -1,11 +1,14 @@
 <template>
-  <div id="app">
+  <main class="app">
+    <h1>Homepage</h1>
     <div class="container">
       <div class="row">
         <div class="text-center">
           <div class="my-5">
             <img class="shimmer col-8 col-md-6 col-lg-4"
-            src="@/assets/icon-above-font-cropped.png"/>
+            src="@/assets/icon-above-font-cropped.png"
+            alt="Groupomania logo"
+            />
           </div>
             <div class="container col-lg-6">
               <div class="row">
@@ -26,11 +29,11 @@
         </div>
       </div>
     </div>
-    <footer class="footer text-center mx-auto p-3">
-      © 2023 Copyright:
-      <a class="text-reset fw-bold" href="#">Groupomania.com</a>
-    </footer>
-  </div>
+  </main>
+  <footer class="footer text-center mx-auto p-3" role="contentinfo">
+    © 2023 Copyright:
+    <a class="text-reset fw-bold" href="#">Groupomania.com</a>
+  </footer>
 </template>
 
 <script>
@@ -50,11 +53,16 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Ubuntu&display=swap');
 
-#app {
+.app {
   font-family: Helvetica, Arial, sans-serif;
   color: #0d3b66;
   border: solid 20px white;
   height: 100vh;
+}
+
+h1 {
+  color: white;
+  font-size: 0.1rem;
 }
 .btnSignUp {
   font-family: Ubuntu, sans-serif;

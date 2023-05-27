@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
+  <div class="app">
     <div class="navbar p-0">
       <router-link to="/messages" class="col-6 col-md-4 col-sm-4">
-        <img src="@/assets/group-logo-nav.png" class="col-11 ms-3"/>
+        <img src="@/assets/group-logo-nav.png"
+        class="col-11 ms-3"
+        alt="Groupomania logo"/>
       </router-link>
       <div class="logos mt-3">
         <router-link to="/messages" class="navBtns mx-2" data-toggle="tooltip" data-placement="left" title="Messages">
@@ -54,7 +56,7 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-#app {
+.app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
   border: solid 10px white;

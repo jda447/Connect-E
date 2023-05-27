@@ -1,7 +1,11 @@
 <template>
-  <div id="app" class="col-lg-7 mx-auto ">
-    <ProfileNav></ProfileNav>
-    <ProfileInfo></ProfileInfo>
+  <div class="app col-lg-7 mx-auto ">
+    <nav role="navigation">
+      <ProfileNav />
+    </nav>
+    <main role="main">
+      <ProfileInfo />
+    </main>
   </div>
 </template>
 
@@ -21,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-#app {
+.app {
   color: #0d3b66;
   font-family: Ubuntu, sans-serif;
 }

@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="col-lg-9 mx-auto">
-    <router-link to="/" class="btn shadow-none m-3"><font-awesome-icon :icon="['fas', 'arrow-left']" class="arrow" />
+  <div class="app col-lg-9 mx-auto">
+    <router-link to="/"
+      class="btn shadow-none m-3">
+      <font-awesome-icon :icon="['fas', 'arrow-left']" class="arrow" />
     </router-link>
-    <LogInForm></LogInForm>
+    <LogInForm />
   </div>
 </template>
 
@@ -20,7 +22,7 @@ export default {
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-#app {
+.app {
   font-family: Helvetica, Arial, sans-serif;
   color: #0d3b66;
   border: solid 10px white;

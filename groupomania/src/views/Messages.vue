@@ -1,8 +1,12 @@
 <template>
-  <div id="app" class="col-lg-7 mx-auto">
-    <HomeNav></HomeNav>
-    <PostMessages></PostMessages>
-    <UserPosts></UserPosts>
+  <div class="col-lg-7 mx-auto">
+    <nav role="navigation">
+      <HomeNav />
+    </nav>
+    <main role="main">
+      <PostMessages />
+      <UserPosts />
+    </main>
   </div>
 </template>
 
