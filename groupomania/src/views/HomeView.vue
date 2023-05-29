@@ -14,7 +14,8 @@
               <div class="row">
             <div class="col">
               <router-link to="/signup"
-                class="btn btnSignUp btn-lg shadow-none m-1">
+                class="btn btnSignUp btn-lg shadow-none m-1"
+                tabIndex="0">
                 Sign up
               </router-link>
             </div>
@@ -70,11 +71,17 @@ h1 {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  border: 2px solid #0d3b66;
     &:hover {
     background-color: white;
     color: #0d3b66;
-    border: 2px solid;
+    border: 2px solid #0d3b66;
   }
+}
+.btnSignUp:focus {
+  background-color: #fafafa;
+  color: #0d3b66;
+  border: 2px solid #0d3b66;
 }
 .btnLogIn {
   font-family: Ubuntu, sans-serif;
@@ -82,11 +89,17 @@ h1 {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  border: 2px solid #0d3b66;
     &:hover {
     background-color: white;
     color: #0d3b66;
-    border: 2px solid;
+    border: 2px solid #0d3b66;
   }
+}
+.btnLogIn:focus {
+  background-color: #fafafa;
+  color: #0d3b66;
+  border: 2px solid #0d3b66;
 }
 .shimmer {
   color: grey;

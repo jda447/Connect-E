@@ -25,7 +25,9 @@
       </div>
     </div>
     <div class="text-center">
-      <router-link to="/editprofile" class="btn editBtn btn-lg text-center fw-bold mb-4 px-3">
+      <router-link to="/editprofile"
+        class="btn btn-lg editBtn text-center fw-bold mb-4 px-3"
+        tabIndex="0">
         Edit
       </router-link>
     </div>
@@ -78,22 +80,22 @@ h1 {
   padding: 0;
 }
 .editBtn {
-  background-color: #0d3b66;
+  font-family: Ubuntu, sans-serif;
   color: white;
-  border: none;
-  padding: 5px;
-  box-shadow: 0 2px 4px darkslategray;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-.editBtn:active {
   background-color: #0d3b66;
-  box-shadow: 0 0 2px darkslategray;
-  transform: translateY(2px);
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #0d3b66;
+    &:hover {
+    color: #0d3b66;
+    background-color: white;
+    border: 2px solid #0d3b66;
+  }
 }
-.btn:focus {
-  outline: none;
-  box-shadow: none;
+.editBtn:focus {
+  background-color: #fafafa;
+  color: #0d3b66;
+  border: 2px solid #0d3b66;
 }
 .profileImage {
   height: 150px;

@@ -12,7 +12,8 @@
             class="input-group-text p-0"
             data-toggle="tooltip"
             data-placement="left"
-            title="Send media post">
+            title="Send media post"
+            tabIndex="0">
             <font-awesome-icon :icon="['fa', 'image']"
               size="lg"
               class="imageToggle text-center mx-2" />
@@ -35,6 +36,7 @@
           <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
         </span>
       </div>
+      <div class="mb-3">
         <label class="btn fileUpload mt-4 mb-2">
           <font-awesome-icon :icon="['fa', 'image']" class="text-center" />
             Add image
@@ -42,11 +44,14 @@
             type="file"
             ref="file"
             name="image"
-            class="file-input col-11 my-1"
+            class="file-input col-11 my-1" 
             @change="onSelect"/>
           </label>
-          <div>
-            <img :src="image" class="rounded col-4 text-center mb-2 mt-3">
+        </div>
+          <div v-if="image">
+            <img :src="image"
+            class="rounded col-4 text-center mb-2 mt-3"
+            alt="User's post image">
           </div>
         <div v-if="image" class="text-center">
           <button class="btn sendPost mb-2 mt-2">Send</button>

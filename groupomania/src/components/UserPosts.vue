@@ -2,6 +2,7 @@
   <div v-for="post in posts.slice().reverse()"
     :key="post.post_id"
     class="list-unstyled border shadow mx-auto col-10">
+    <div tabIndex="0">
     <button @click.prevent="deletePost(post.post_id)"
       class="btn fw-bold float-end shadow-none deletePost m-1"
       data-toggle="tooltip"
@@ -9,6 +10,7 @@
       title="Delete post">
       <font-awesome-icon :icon="['fa', 'xmark']" class="text-center" />
     </button>
+    </div>  
     <div v-if="post.post || post.imageUrl" class="ms-1 mt-2 mb-2">
       <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold fs-5">
         <img :src="post.profileImage" class="profileImage rounded-circle border border-3 me-1" alt="User's profile"/>
@@ -23,7 +25,7 @@
     </div>
     <div @click.prevent="addLike(post.post_id)"
       class="seen-by mx-3 mt-4 position-relative">
-      <div class="position-absolute bottom-0 end-0 mb-2">
+      <div class="position-absolute bottom-0 end-0 mb-2" tabIndex="0">
         <font-awesome-icon :icon="['fa', 'thumbs-up']" />
           {{ likes.length }}
       </div>

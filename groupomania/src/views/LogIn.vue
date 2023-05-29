@@ -1,7 +1,8 @@
 <template>
   <div class="app col-lg-9 mx-auto">
     <router-link to="/"
-      class="btn shadow-none m-3">
+      class="arrowParent btn shadow-none m-3"
+      aria-label="Go back to the main home page">
       <font-awesome-icon :icon="['fas', 'arrow-left']" class="arrow" />
     </router-link>
     <LogInForm />
@@ -34,6 +35,11 @@ export default {
     color: #fd2500;
     transform: scale(1.8);
     transition: transform 250ms;
+  }
+}
+.arrowParent {
+  &:focus-visible {
+    border: 2px solid #0d3b66;
   }
 }
 </style>

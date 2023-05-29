@@ -2,31 +2,39 @@
   <main class="app">
     <form id="login-form" class="col-10 col-sm-6 col-md-5 col-lg-5 mx-auto">
       <h1 class="text-center mt-4 mb-4">Sign up</h1>
-      <div class="form-wrap container">
-        <div v-if="!submitted">
-          <div class="form-group mb-3">
-            <label for="email" class="mb-1 ms-2 fw-bold">Email</label>
-            <input placeholder="Please enter your email address"
-              v-model="email" 
-              v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
-              @blur="emailBlurred = true">
-            <div class="invalid-feedback">A valid email address is required (eg. valid@email.com)</div>
-            <div id="err" class="mt-1"></div>
-          </div>
-          <label for="password" class="mb-1 mt-2 ms-2 fw-bold">Password</label>
-          <div class="input-group mb-3">
-            <input v-if="showPassword" type="text" class="input"
-              v-model="password" 
-              v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
-              @blur="passwordBlurred = true"
-              placeholder="Please enter your password" />
+        <div class="form-wrap container">
+          <div v-if="!submitted">
+            <div class="form-group mb-3">
+              <label for="email" class="mb-1 ms-2 fw-bold">
+                Email
+              </label>
+              <input placeholder="Please enter your email address"
+                v-model="email" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
+                @blur="emailBlurred = true">
+                <div class="invalid-feedback">
+                  A valid email address is required (eg. valid@email.com)
+                </div>
+              <div id="err" class="mt-1"></div>
+            </div>
+            <label for="password" class="mb-1 mt-2 ms-2 fw-bold">
+              Password
+            </label>
+            <div class="input-group mb-3">
+              <input v-if="showPassword" type="text" class="input"
+                v-model="password" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                @blur="passwordBlurred = true"
+                placeholder="Please enter your password" />
               <input v-else type="password" class="input"
-              v-model="password" 
-              v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
-              @blur="passwordBlurred = true"
-              placeholder="Please enter your password" /> 
-            <span class="input-group-text eyeIcon p-0">
-              <button class="btn eyeButton" @click.prevent="toggleShow">
+                v-model="password" 
+                v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
+                @blur="passwordBlurred = true"
+                placeholder="Please enter your password" /> 
+              <span class="input-group-text eyeIcon p-0">
+                <button @click.prevent="toggleShow"
+                  class="btn eyeButton"
+                  title="View password">
                 <font-awesome-icon :icon="['falight', 'fa-eye']" />
               </button>
             </span>
@@ -34,7 +42,13 @@
           <span>Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</span>
           <div class="invalid-feedback">A valid password is required</div>
           <div class="form-group text-center m-4">
-            <a type="submit" @click.prevent="submit" class="btn btnSignInSubmit shadow-none">Submit</a>
+            <a @click.prevent="submit"
+              class="btn btn-lg btnSignInSubmit shadow-none"
+              type="submit"
+              title="Submit"
+              tabIndex="0">
+              Submit
+            </a>
           </div>    
         </div>
       </div>
@@ -149,6 +163,12 @@ export default {
     background-color: white;
     border: 2px solid #0d3b66;
   }
+}
+
+.btnSignInSubmit:focus {
+  background-color: #fafafa;
+  color: #0d3b66;
+  border: 2px solid #0d3b66;
 }
 
 h1 {

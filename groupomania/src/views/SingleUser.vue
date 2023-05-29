@@ -3,7 +3,7 @@
     <ProfileNav />
   </nav>
   <main class="app col-lg-7 mx-auto ">
-    <h1>Selected users' profile</h1>
+    <h1>Selected user's profile</h1>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
         <div class="card col-7 col-sm-6 col-md-5">

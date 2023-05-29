@@ -1,27 +1,48 @@
 <template>
   <div class="app">
     <div class="navbar p-0">
-      <router-link to="/messages" class="col-6 col-md-4 col-sm-4">
+      <router-link to="/messages"
+        class="col-6 col-md-4 col-sm-4">
         <img src="@/assets/group-logo-nav.png"
-        class="col-11 ms-3"
+        class="logo"
         alt="Groupomania logo"
-        />
+        rel="preload"
+        fetchpriority="high" />
       </router-link>
       <div class="logos mt-3">
-        <router-link to="/profile" class="navBtns mx-2" data-toggle="tooltip" data-placement="left" title="Profile">
+        <router-link to="/profile"
+          class="navBtns mx-2"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Profile">
           <font-awesome-icon :icon="['fas', 'user-large']" />
         </router-link>
-        <div class="dropdown mx-2" data-toggle="tooltip" data-placement="left" title="Settings">
-          <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown" class="navBtns dropbtn me-2" />
-          <div id="dropdown" class="dropdown-content">
-            <a href="#">About</a>
-            <router-link to="/" class="text-center fw-bold px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal">
-              Delete
-            </router-link>
-          </div>
+        <div class="dropdown mx-2"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Settings"
+          tabIndex="0">
+          <font-awesome-icon :icon="['fas', 'gear']"
+            @click="dropDown"
+            class="navBtns dropbtn me-2" />
+            <div id="dropdown" class="dropdown-content">
+              <a href="#">About</a>
+              <router-link to="/"
+                class="text-center fw-bold px-2"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteUserModal">
+                Delete
+              </router-link>
+            </div>
           <DeleteUserModal></DeleteUserModal>
         </div>
-        <router-link to="/" class="navBtns me-4" data-bs-toggle="modal" data-bs-target="#signOutModal" data-toggle="tooltip" data-placement="left" title="Sign-out">
+        <router-link to="/"
+          class="navBtns me-4"
+          data-bs-toggle="modal"
+          data-bs-target="#signOutModal"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Sign-out">
           <font-awesome-icon :icon="['fas', 'right-from-bracket']" />
         </router-link>
       </div>
@@ -68,6 +89,13 @@ export default {
     &:hover {
     color: #fd2500;
 	}
+}
+.logo {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 
 hr {

@@ -2,8 +2,12 @@
   <h1>Edit Profile</h1>
   <div class="container">
     <div class="row justify-content-around">
-      <div v-if="image && firstName && lastName && position" class="card col-6 col-sm-5 col-md-4 mb-3">
-        <img :src="image" class="profileImage rounded-circle mx-auto col-6 mt-3">
+      <div v-if="image && firstName && lastName && position"
+      class="formContainer rounded mx-auto col-5 col-lg-4">
+      <div class="text-center mt-2">
+        <img :src="image"
+          class="profileImage rounded-circle mx-auto col-6 mt-3"
+          alt="Profile image">
           <div class="card-body">
             <div class="card-title text-center">
               <div class="fw-bold fs-5">
@@ -17,39 +21,64 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
     <form @submit.prevent="updateUser"
       enctype="multipart/form-data"
-      class="mx-auto col-8 col-lg-4">
-      <div v-if="image && firstName && lastName && position" class="fields text-center mx-auto mb-3">
-        <button class="btn border border-2 uploadBtn">Upload</button>
+      class="mx-auto col-7 col-lg-5">
+      <div v-if="image && firstName && lastName && position"
+        class="text-center mx-auto mb-3 mt-3">
+        <button class="btn btn-lg uploadBtn">
+          Upload
+        </button>
       </div>
+
+        <div v-if="!firstName || !lastName || !position || !image"
+          class="formContainer col rounded">
+          <div class="text-center mt-3">
+            <label class="fw-bold">First name<br>
+              <input v-model="firstName"
+              class="col-10 text-center"
+              id="firstName"
+              type="text"
+              required/>
+            </label>
+          </div>
+          <div v-if="!firstName || !lastName || !position || !image"
+            class="text-center">
+            <label class="fw-bold">Last name<br>
+            <input v-model="lastName"
+              class="col-10 text-center"
+              id="lastName"
+              type="text"
+              required>
+            </label>
+          </div>
+          <div v-if="!firstName || !lastName || !position || !image"
+            class="text-center mb-1">
+            <label class="fw-bold">Position<br>
+              <select v-model="position"
+                id="position"
+                class="p-1 text-center"
+                required>
+                <option>Customer Service</option>
+                <option>Manager</option>
+                <option>CEO</option>
+              </select>
+            </label>
+          </div>
         <div v-if="!firstName || !lastName || !position || !image">
-          <div class="text-center">
-            <label class="fw-bold">First name</label><br>
-            <input v-model="firstName" class="col-8 col-lg-10 text-center" id="firstName" type="text" required/>
-          </div>
-          <div v-if="!firstName || !lastName || !position || !image" class="text-center">
-            <label class="fw-bold">Last name</label><br>
-            <input v-model="lastName" class="col-8 col-lg-10 text-center" id="lastName" type="text" required>
-          </div>
-          <div v-if="!firstName || !lastName || !position || !image" class="text-center mb-3">
-            <label class="fw-bold">Position</label><br>
-            <select v-model="position" id="position" class="select col-8 col-lg-10 p-1 text-center" required>
-              <option>Customer Service</option>
-              <option>Manager</option>
-              <option>CEO</option>
-            </select>
-          </div>
-          <div v-if="!firstName || !lastName || !position || !image" class="fields text-center mx-auto mt-3">
-          <label class="btn fileUpload text-center mb-4">
-            <font-awesome-icon :icon="['fa', 'user-large']" class="me-2" />Profile picture
-          <input
-            type="file"
-            ref="file"
-            name="image"
-            class="file-input col-11 my-1 mt-2"
-            @change="onSelect"/>
+          <label class="btn mb-4">
+            <div class="fileUpload col-6 mb-1 mx-auto">
+              <font-awesome-icon :icon="['fa', 'user-large']"
+              class="me-2"/>Profile picture
+            </div>
+            <input
+              type="file"
+              ref="file"
+              name="image"
+              class="my-2 col-10 mx-auto"
+              @change="onSelect"/>
           </label>
         </div>
       </div>
@@ -106,18 +135,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.uploadBtn {
-  color: white;
-  background-color: #229631;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 1s ease;
-    &:hover {
-    color:#229631;
-    background-color: white;
-    border: 1px solid #229631;
-  }
-}
 
 h1 {
   color: white;
@@ -125,29 +142,44 @@ h1 {
 }
 .card {
   background-color: #f8f8f8;
-}
-.btn:focus {
-  outline: none;
-  box-shadow: none;
-}
-.file-input {
-  display: none;
-}
-.fileUpload {
-  background-color: #0d3b66;
-  color: white;
-  font-weight: bold;
-  border: 1px solid;
-  cursor: pointer;
-  &:hover {
-    color: #0d3b66;
-    background-color: white;
-    border: 1px solid #0d3b66;
-  }
+  border: 1px solid #0d3b66;
 }
 .profileImage {
   height: 125px;
   width: 125px;
   border-radius: 50%;
+}
+.uploadBtn {
+  font-family: Ubuntu, sans-serif;
+  color: white;
+  background-color: #229631;
+  text-decoration: none;
+  font-weight: bold;
+  border: 2px solid #229631;
+    &:hover {
+    color: #229631;
+    background-color: white;
+    border: 2px solid #229631;
+  }
+}
+
+.uploadBtn:focus {
+  background-color: #fafafa;
+  color: #229631;
+  border: 2px solid #229631;
+}
+/// form css
+
+.formContainer {
+  border: 1px solid #0d3b66;
+}
+
+.fileUpload {
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    background-color: #0d3b66;
+  }
 }
 </style>
