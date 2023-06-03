@@ -14,9 +14,9 @@
                   class="profileImage rounded-circle border border-3 col-8 mt-4"
                   alt="Your profile"/>
                 </li>
-                <li class="fw-bold fs-2 mt-3">
+                <li class="fw-bold fs-2 mt-1">
                   {{ item.firstName }} {{ item.lastName }}</li>
-                <li class="fw-bold fs-5 mt-2">
+                <li class="fw-bold fs-5">
                   {{ item.position }}</li>
               </ul>
             </div>
@@ -74,7 +74,7 @@ h1 {
   background-color: #fafafa;
   background: linear-gradient(to top, #fafafa 60%, #0d3b66 40%);
   border: solid 2px #0d3b66;
-  border-radius: 15%;
+  border-radius: 10%;
 }
 .card-body {
   padding: 0;

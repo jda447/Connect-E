@@ -7,7 +7,8 @@
           <input type="text"
             class="form-control col-11"
             v-model="post"
-            placeholder="Write something...">
+            placeholder="Write something..."
+            name="postInput">
           <span @click="toggle = !toggle"
             class="input-group-text p-0"
             data-toggle="tooltip"
@@ -25,20 +26,28 @@
         </div>
       </div>
     </form>
-    <form v-if="toggle" @submit.prevent="addPostImage" enctype="multipart/form-data">
+    <form v-if="toggle" @submit.prevent="addPostImage"
+      enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
         <input type="text"
           class="form-control col-11"
           v-model="post"
           placeholder="Write something...">
-        <span class="input-group-text p-0" data-toggle="tooltip" data-placement="left" title="Send post">
-          <font-awesome-icon :icon="['fa', 'pencil']" @click="toggle = !toggle" size="lg" class="imageToggle text-center mx-2" />
+        <span class="input-group-text p-0"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Send post">
+          <font-awesome-icon :icon="['fa', 'pencil']"
+            @click="toggle = !toggle" 
+            size="lg"
+            class="imageToggle text-center mx-2" />
         </span>
       </div>
       <div class="mb-3">
         <label class="btn fileUpload mt-4 mb-2">
-          <font-awesome-icon :icon="['fa', 'image']" class="text-center" />
+          <font-awesome-icon :icon="['fa', 'image']"
+            class="text-center" />
             Add image
           <input
             type="file"

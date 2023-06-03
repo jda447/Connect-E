@@ -11,7 +11,9 @@
               <input placeholder="Please enter your email address"
                 v-model="email" 
                 v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlurred}"
-                @blur="emailBlurred = true">
+                @blur="emailBlurred = true"
+                name="emailInput"
+                id="email">
                 <div class="invalid-feedback">
                   A valid email address is required (eg. valid@email.com)
                 </div>
@@ -25,12 +27,16 @@
                 v-model="password" 
                 v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
                 @blur="passwordBlurred = true"
-                placeholder="Please enter your password" />
+                placeholder="Please enter your password"
+                name="passwordInput"
+                id="password" />
               <input v-else type="password" class="input"
                 v-model="password" 
                 v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlurred}"
                 @blur="passwordBlurred = true"
-                placeholder="Please enter your password" /> 
+                placeholder="Please enter your password"
+                name="passwordInput"
+                id="password" /> 
               <span class="input-group-text eyeIcon p-0">
                 <button @click.prevent="toggleShow"
                   class="btn eyeButton"
@@ -42,13 +48,13 @@
           <span>Must contain 6-20 characters with at least one number, one uppercase & one lowercase letter</span>
           <div class="invalid-feedback">A valid password is required</div>
           <div class="form-group text-center m-4">
-            <a @click.prevent="submit"
+            <button @click.prevent="submit"
               class="btn btn-lg btnLogInSubmit shadow-none"
               type="submit"
               title="Submit"
               tabIndex="0">
               Submit
-            </a>
+          </button>
           </div>    
         </div>
       </div>

@@ -47,7 +47,10 @@
       </div>
     </div>  
     <hr/>
-  <SignOutModal></SignOutModal>
+    <SignOutModal></SignOutModal>
+    <div class="timeStamp ms-2">
+      {{ timeStamp }}
+    </div>
   </div>
 </template>
 
@@ -73,7 +76,15 @@ export default {
     homeNavLogo() {
       this.$router.go()
     }
-  }
+  },
+  computed: {
+    timeStamp() {
+      const d = new Date()
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const date = d.toLocaleDateString(undefined, options)
+      return date
+    }
+  },
 }
 </script>
 
@@ -85,14 +96,18 @@ export default {
   color: #0d3b66;
   border: solid 10px white;
 }
+
+.timeStamp {
+  font-size: 0.9rem;
+}
 .navBtns {
   color: #0d3b66;
   font-size: 1.2rem;
+  cursor: pointer;
     &:hover {
     color: #fd2500;
 	}
 }
-
 .logo {
   object-fit: contain;
   max-width: 100%;
@@ -103,12 +118,6 @@ export default {
 
 hr {
   margin: 0
-}
-.dropbtn {
-  cursor: pointer;
-  &:hover {
-    color: #fd2500;
-  }
 }
 .dropdown {
   position: relative;
@@ -128,5 +137,4 @@ hr {
   display: block;
 }
 .dropdown-content a:hover {background-color: #ddd;}
-.show {display:block;}
 </style>

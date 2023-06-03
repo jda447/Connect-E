@@ -23,9 +23,6 @@ exports.addLike = (req, res, next) => {
 
 exports.getLikes = (req, res, next) => {
   Like.findAll({
-    where: {
-      post_id: 568
-    }
   }).then(
     (like) => {
       res.status(200).json(like)

@@ -1,12 +1,12 @@
 <template>
-  <nav role="navigation">
+  <nav role="navigation" class="col-lg-7 mx-auto">
     <ProfileNav />
   </nav>
   <main class="app col-lg-7 mx-auto ">
     <h1>Selected user's profile</h1>
     <div class="container mt-2 mb-4">
       <div class="row justify-content-around">
-        <div class="card col-7 col-sm-6 col-md-5">
+        <div class="card col-7 col-sm-6 col-md-5 col-lg-5">
           <div class="card-body">
             <div class="card-title text-center mb-4">
               <ul v-for="item in user"
@@ -17,9 +17,9 @@
                   class="profileImage rounded-circle border border-3 col-8 mt-4"
                   alt="Selected user's profile"
                   /></li>
-                <li class="fw-bold fs-2 mt-3">
+                <li class="fw-bold fs-2 mt-1">
                   {{ item.firstName }} {{ item.lastName }}</li>
-                <li class="fw-bold fs-5 mt-2">
+                <li class="fw-bold fs-5">
                   {{ item.position }}</li>
               </ul>
             </div>
@@ -77,7 +77,7 @@ h1 {
   background-color: #fafafa;
   background: linear-gradient(to top, #fafafa 65%, #0d3b66 35%);
   border: solid 2px #0d3b66;
-  border-radius: 15%;
+  border-radius: 10%;
 }
 .card-body {
   padding: 0;

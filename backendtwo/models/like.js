@@ -3,8 +3,8 @@ const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../database')
 
 class Like extends Model {
-  static associate ({ User }) {
-    this.belongsTo(User)
+  static associate ({ Post }) {
+    this.belongsTo(Post)
   }
 }
 
@@ -14,11 +14,11 @@ Like.init({
     primaryKey: true,
     autoIncrement: true
   },
-  user_id: {
+  post_id: {
     type: DataTypes.INTEGER,
     foreignKey: true
   },
-  post_id: {
+  user_id: {
     type: DataTypes.INTEGER
   }
 }, {

@@ -15,7 +15,7 @@
               </div> 
             </div>
             <div class="text-center">
-              <div class="fw-bold fs-6 mt-1">
+              <div class="fw-bold fs-6">
                 {{ position }}
               </div>
             </div>
@@ -28,7 +28,7 @@
       class="mx-auto col-7 col-lg-5">
       <div v-if="image && firstName && lastName && position"
         class="text-center mx-auto mb-3 mt-3">
-        <button class="btn btn-lg uploadBtn">
+        <button class="btn uploadBtn">
           Upload
         </button>
       </div>
@@ -170,9 +170,9 @@ h1 {
 }
 /// form css
 
-.formContainer {
-  border: 1px solid #0d3b66;
-}
+// .formContainer {
+//   border: 1px solid #0d3b66;
+// }
 
 .fileUpload {
   font-weight: bold;

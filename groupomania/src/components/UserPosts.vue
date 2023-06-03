@@ -1,33 +1,51 @@
 <template>
   <div v-for="post in posts.slice().reverse()"
     :key="post.post_id"
-    class="list-unstyled border shadow mx-auto col-10">
+    class="list-unstyled border shadow mx-auto col-10 mb-3">
     <div tabIndex="0">
-    <button @click.prevent="deletePost(post.post_id)"
-      class="btn fw-bold float-end shadow-none deletePost m-1"
-      data-toggle="tooltip"
-      data-placement="left"
-      title="Delete post">
-      <font-awesome-icon :icon="['fa', 'xmark']" class="text-center" />
-    </button>
+      <div v-if="post.user_id === getUserId">
+        <button @click.prevent="deletePost(post.post_id)"
+          class="btn fw-bold float-end shadow-none deletePost m-1"
+          data-toggle="tooltip"
+          data-placement="left"
+          title="Delete post">
+          <font-awesome-icon :icon="['fa', 'xmark']"
+            class="text-center" />
+        </button>
+      </div>
+      <button v-else class="barsBtn btn float-end m-1">
+        <font-awesome-icon :icon="['fa', 'bars']" size="sm" />
+      </button>
     </div>  
-    <div v-if="post.post || post.imageUrl" class="ms-1 mt-2 mb-2">
-      <button @click="singleUser(post.user_id)" class="nameBtn btn rounded-pill fw-bold fs-5">
-        <img :src="post.profileImage" class="profileImage rounded-circle border border-3 me-1" alt="User's profile"/>
+    <div v-if="post.post || post.imageUrl"
+      class="ms-1 mt-2 mb-2">
+      <button @click="singleUser(post.user_id)"
+        class="nameBtn btn rounded-pill fw-bold fs-5">
+        <img :src="post.profileImage"
+          class="profileImage rounded-circle border border-3 me-1"
+          alt="User's profile"/>
         {{ post.firstName}} {{ post.lastName }}
       </button>
     </div>
-    <div v-if="post.post" class="postText col-10 mx-auto mb-5 mt-1">
+    <div v-if="post.post"
+      class="postText col-10 mx-auto mb-5 mt-1">
       {{ post.post }}
     </div>
-    <div v-if="post.imageUrl" class="col-9 mx-auto mt-4">
-      <img :src="post.imageUrl" class="col-7 mx-auto rounded mb-4" />
+    <div v-if="post.imageUrl"
+      class="col-9 mx-auto mt-4">
+      <img :src="post.imageUrl"
+        class="col-7 mx-auto rounded mb-4" />
     </div>
     <div @click.prevent="addLike(post.post_id)"
       class="seen-by mx-3 mt-4 position-relative">
-      <div class="position-absolute bottom-0 end-0 mb-2" tabIndex="0">
-        <font-awesome-icon :icon="['fa', 'thumbs-up']" />
-          {{ likes.length }}
+      <div v-for="like in likes" :key="like.like_id"
+        class="position-absolute bottom-0 end-0 mb-2"
+        tabIndex="0">
+        <!-- <font-awesome-icon :icon="['fa', 'thumbs-up']" /> -->
+        <div v-if="post.post_id === like.post_id" class="likeCount">
+          <font-awesome-icon :icon="['fa', 'thumbs-up']" />
+          {{ like.like_id }}
+        </div>
       </div>
     </div>
   </div>
@@ -44,6 +62,11 @@ export default {
   created() {
     this.getPosts()
     this.getLikes()
+  },
+  computed: {
+    getUserId() {
+      return JSON.parse(sessionStorage.getItem('user'))
+    }
   },
   methods: {
     async getPosts() {
@@ -66,6 +89,7 @@ export default {
         }
       }).then(response => response.json())
       .then(data => this.likes = data)
+      console.log(this.likes)
     },
 
     singleUser(singleUserId) {
@@ -137,5 +161,14 @@ export default {
     border: solid 1px #0d3b66;
     background-color: #fafafa;
   }
+}
+.barsBtn {
+  color: #0d3b66;
+  &:hover {
+    color: #f9564f;
+  }
+}
+.likeCount {
+  color: #0d3b66;
 }
 </style>
