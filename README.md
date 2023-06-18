@@ -1,4 +1,4 @@
-Projct 6 - Full Stack Private Social Network Vue.js 3
+Projct 6 - Full Stack Private Social Network, Vue.js 3
 
 Groupomania
 
