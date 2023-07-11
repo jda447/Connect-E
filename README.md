@@ -1,4 +1,4 @@
-:computer: **Project 6 - Full-Stack Private Social Network, Vue.js 3**
+:computer: **Project 6 - Full-Stack Private Social Network**
 
 :speech_balloon: **Groupomania**
 
