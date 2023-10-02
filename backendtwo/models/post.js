@@ -37,6 +37,12 @@ Post.init({
   },
   profileImage: {
     type: DataTypes.STRING
+  },
+  seen: {
+    type: DataTypes.INTEGER
+  },
+  seenUserId: {
+    type: DataTypes.ARRAY(DataTypes.STRING)
   }
 }, {
   sequelize,

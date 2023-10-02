@@ -68,18 +68,20 @@
             </label>
           </div>
         <div v-if="!firstName || !lastName || !position || !image">
-          <label class="btn mb-4">
-            <div class="fileUpload col-6 mb-1 mx-auto">
-              <font-awesome-icon :icon="['fa', 'user-large']"
-              class="me-2"/>Profile picture
-            </div>
-            <input
-              type="file"
-              ref="file"
-              name="image"
-              class="my-2 col-10 mx-auto"
-              @change="onSelect"/>
-          </label>
+          <div class="fields text-center mx-auto mb-2">
+            <label class="btn fileUpload text-center col-8 my-2 mx-4">
+              <font-awesome-icon :icon="['fa', 'user-large']" />
+                Add image
+              <div class="mx-auto text-center">
+              <input
+                type="file"
+                ref="file"
+                name="image"
+                class="file-input col-11 my-1 mb-2"
+                @change="onSelect"/>
+              </div>
+            </label>
+          </div>
         </div>
       </div>
     </form>
@@ -170,9 +172,9 @@ h1 {
 }
 /// form css
 
-// .formContainer {
-//   border: 1px solid #0d3b66;
-// }
+.formContainer {
+  border: 1px solid #0d3b66;
+}
 
 .fileUpload {
   font-weight: bold;

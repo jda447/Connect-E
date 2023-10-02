@@ -2,14 +2,14 @@
   <div class="app">
     <div class="navbar p-0">
       <router-link to="/messages"
-        class="col-6 col-md-4 col-sm-4">
+        class="col-6 col-md-4 col-sm-4 mb-1">
         <img src="@/assets/group-logo-nav.png"
         class="logo"
         alt="Groupomania logo"
         rel="preload"
         fetchpriority="high" />
       </router-link>
-      <div class="logos mt-3">
+      <div class="logos mt-1">
         <router-link to="/messages"
           class="navBtns mx-2"
           data-toggle="tooltip"
@@ -79,7 +79,7 @@ export default {
 .app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
-  border: solid 10px white;
+  border: solid 6px white;
 }
 .navBtns {
   color: #0d3b66;

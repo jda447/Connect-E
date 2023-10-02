@@ -1,7 +1,7 @@
 <template>
   <div v-for="post in posts.slice().reverse()"
     :key="post.post_id"
-    class="list-unstyled border shadow mx-auto col-10 mb-3">
+    class="list-unstyled border rounded-3 shadow mx-auto col-10 mb-3">
     <div tabIndex="0">
       <div v-if="post.user_id === getUserId">
         <button @click.prevent="deletePost(post.post_id)"
@@ -14,7 +14,9 @@
         </button>
       </div>
       <button v-else class="barsBtn btn float-end m-1">
-        <font-awesome-icon :icon="['fa', 'bars']" size="sm" />
+        <font-awesome-icon :icon="['fa', 'ellipsis']"
+          size="sm"
+          title="Post options" />
       </button>
     </div>  
     <div v-if="post.post || post.imageUrl"
@@ -41,10 +43,9 @@
       <div v-for="like in likes" :key="like.like_id"
         class="position-absolute bottom-0 end-0 mb-2"
         tabIndex="0">
-        <!-- <font-awesome-icon :icon="['fa', 'thumbs-up']" /> -->
-        <div v-if="post.post_id === like.post_id" class="likeCount">
+        <div class="likeCount">
           <font-awesome-icon :icon="['fa', 'thumbs-up']" />
-          {{ like.like_id }}
+          {{ numberOfLikes }}
         </div>
       </div>
     </div>
@@ -56,7 +57,7 @@ export default {
   data() {
     return {
       posts: [],
-      likes: ''
+      likes: 0
     }
   },
   created() {
@@ -66,6 +67,10 @@ export default {
   computed: {
     getUserId() {
       return JSON.parse(sessionStorage.getItem('user'))
+    },
+    numberOfLikes() {
+      const result = this.likes.filter(like => like.post_id===this.posts.post_id).length
+      return result
     }
   },
   methods: {
@@ -107,6 +112,7 @@ export default {
         }).then(async response => {
           if (response.ok) {
             this.$router.go()
+          console.log(response)
           }
         }).catch(error => {
           console.log(error)

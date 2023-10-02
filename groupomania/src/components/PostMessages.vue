@@ -1,16 +1,25 @@
 <template>
   <div class="text-center mb-4">
-    <h1>Messages</h1>
+    <!-- <h1>Messages</h1> -->
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
+          <div v-for="user in user" :key="user.user_id"
+            class="my-1 mx-2">
+            <div class="imageContainer">
+              <img :src="user.profileImage"
+                class="profileImage border border-3"
+                alt="User's profile"/>
+                <div class="overlay"></div>
+            </div>
+          </div>
           <input type="text"
             class="form-control col-11"
             v-model="post"
             placeholder="Write something..."
             name="postInput">
           <span @click="toggle = !toggle"
-            class="input-group-text p-0"
+            class="input-group-text p-1"
             data-toggle="tooltip"
             data-placement="left"
             title="Send media post"
@@ -30,11 +39,20 @@
       enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
+          <div v-for="user in user" :key="user.user_id"
+            class="my-1 mx-2">
+            <div class="imageContainer">
+                <img :src="user.profileImage"
+                  class="profileImage border border-3"
+                  alt="User's profile"/>
+                  <div class="overlay"></div>
+              </div>
+          </div>
         <input type="text"
           class="form-control col-11"
           v-model="post"
           placeholder="Write something...">
-        <span class="input-group-text p-0"
+        <span class="input-group-text p-1"
           data-toggle="tooltip"
           data-placement="left"
           title="Send post">
@@ -48,7 +66,7 @@
         <label class="btn fileUpload mt-4 mb-2">
           <font-awesome-icon :icon="['fa', 'image']"
             class="text-center" />
-            Add image
+            Add image/GIF
           <input
             type="file"
             ref="file"
@@ -171,15 +189,39 @@ h1 {
   color:white;
   font-size: 0.1rem
 }
+.imageContainer {
+  position: relative;
+}
+.overlay {
+  height: 10px;
+  width: 10px;
+  background-color: rgb(27, 208, 27);
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute; 
+  right: 0;
+  bottom: 0;
+  border: 2px solid white;
+}
+.profileImage {
+  height: 38px;
+  width: 38px;
+  border-radius: 50%;
+}
 .sendPost {
   background-color: #0d3b66;
   color: white;
   text-decoration: none;
   font-weight: bold;
     &:hover {
-    color: #fd2500;
+    color: #0d3b66;
     background-color: white;
-    border: 1px solid #fd2500;
+    border: 1px solid #0d3b66;
+  }
+  &:focus {
+    color: #0d3b66;
+    background-color: white;
+    border: 1px solid #0d3b66;
   }
 }
 .btn:focus {

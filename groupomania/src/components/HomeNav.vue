@@ -3,14 +3,14 @@
     <div class="navbar p-0">
       <router-link to="/messages"
         @click="homeNavLogo"
-        class="col-6 col-md-4 col-sm-4">
+        class="col-6 col-md-4 col-sm-4 mb-1">
         <img src="@/assets/group-logo-nav.png"
           class="logo"
           alt="Groupomania logo"
           rel="preload"
           fetchpriority="high" />
       </router-link>
-      <div class="logos mt-3">
+      <div class="logos mt-1">
         <router-link to="/profile"
           class="navBtns mx-2"
           data-toggle="tooltip"
@@ -48,8 +48,13 @@
     </div>  
     <hr/>
     <SignOutModal></SignOutModal>
-    <div class="timeStamp ms-2">
-      {{ timeStamp }}
+    <div class="container timeStamp">
+      <div class="row">
+        <div class="col px-1 mb-3 ms-2">
+          <font-awesome-icon :icon="['fas', 'calendar-days']" class="me-1" size="sm" />
+            {{ timeStamp }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -66,10 +71,24 @@ export default {
   },
   data() {
     return {
-      toggle: false
+      toggle: false,
+      user: ''
     };
   },
+  created() {
+    this.getUser()
+  },
   methods: {
+    async getUser () {
+      const token = sessionStorage.getItem('token')
+      await fetch('http://localhost:3000/api/user/getUser', {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+      }).then(response => response.json())
+      .then(data => this.user = data)
+    },
     dropDown() {
       document.getElementById("dropdown").classList.toggle("show");
     },
@@ -81,7 +100,7 @@ export default {
     timeStamp() {
       const d = new Date()
       const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      const date = d.toLocaleDateString(undefined, options)
+      const date = d.toLocaleDateString('EN', options).replace(',','')
       return date
     }
   },
@@ -90,15 +109,18 @@ export default {
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
 .app {
   font-family: Ubuntu, sans-serif;
   color: #0d3b66;
-  border: solid 10px white;
+  border: solid 6px white;
 }
-
+.profileImage {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
 .timeStamp {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 .navBtns {
   color: #0d3b66;
