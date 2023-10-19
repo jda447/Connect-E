@@ -71,24 +71,10 @@ export default {
   },
   data() {
     return {
-      toggle: false,
-      user: ''
+      toggle: false
     };
   },
-  created() {
-    this.getUser()
-  },
   methods: {
-    async getUser () {
-      const token = sessionStorage.getItem('token')
-      await fetch('http://localhost:3000/api/user/getUser', {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token)
-        }
-      }).then(response => response.json())
-      .then(data => this.user = data)
-    },
     dropDown() {
       document.getElementById("dropdown").classList.toggle("show");
     },

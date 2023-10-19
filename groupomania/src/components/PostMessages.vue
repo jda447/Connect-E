@@ -1,6 +1,6 @@
 <template>
   <div class="text-center mb-4">
-    <!-- <h1>Messages</h1> -->
+    <h1>Messages</h1>
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
@@ -15,7 +15,7 @@
           </div>
           <input type="text"
             class="form-control col-11"
-            v-model="post"
+            v-model="text"
             placeholder="Write something..."
             name="postInput">
           <span @click="toggle = !toggle"
@@ -29,7 +29,7 @@
               class="imageToggle text-center mx-2" />
           </span>
         </div>
-        <div v-if="post" class="text-center mt-3">
+        <div v-if="text" class="text-center mt-3">
           <button class="btn sendPost mb-2 mt-2">Send</button>
           <div class="sendErr text-center mt-1 mb-3"></div>
         </div>
@@ -50,7 +50,7 @@
           </div>
         <input type="text"
           class="form-control col-11"
-          v-model="post"
+          v-model="text"
           placeholder="Write something...">
         <span class="input-group-text p-1"
           data-toggle="tooltip"
@@ -94,7 +94,7 @@ export default {
   data() {
     return {
       file: '',
-      post: '',
+      text: '',
       image: '',
       toggle: null,
       user: ''
@@ -125,7 +125,7 @@ export default {
             'Authorization': 'Bearer ' + JSON.parse(token)
           },
           body: JSON.stringify({ 
-            post: this.post,
+            text: this.text,
             firstName: this.user[0].firstName,
             lastName: this.user[0].lastName,
             position: this.user[0].position,
@@ -134,7 +134,7 @@ export default {
           })
         }
       )
-      if (response.ok && this.post) {
+      if (response.ok && this.text) {
         this.$router.go()
       }
       if (!response.ok) {
@@ -155,7 +155,7 @@ export default {
       const userId = sessionStorage.getItem('user')
       const formData = new FormData()
       formData.append('image', this.file)
-      formData.append('post', this.post)
+      formData.append('text', this.text)
       formData.append('firstName', this.user[0].firstName)
       formData.append('lastName', this.user[0].lastName)
       formData.append('position', this.user[0].position)

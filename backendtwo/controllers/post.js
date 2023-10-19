@@ -3,7 +3,7 @@ const Post = require('../models/post')
 exports.addPost = (req, res, next) => {
   console.log(req.body.userId)
   Post.create({
-    post: req.body.post,
+    text: req.body.text,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     position: req.body.position,
@@ -30,7 +30,7 @@ exports.addPostImage = (req, res, next) => {
     where: {
       user_id: req.body.user_id
     },
-    post: req.body.post,
+    text: req.body.text,
     imageUrl: url + '/images/' + req.file.filename,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
@@ -69,8 +69,8 @@ exports.deletePost = (req, res, next) => {
   console.log(req.params.id)
   Post.destroy({
     where: {
-      user_id: req.auth.userId,
-      post_id: req.params.id
+      id: req.params.id,
+      user_id: req.auth.userId
     }
   }).then(
     () => {

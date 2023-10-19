@@ -9,7 +9,7 @@ class Post extends Model {
 }
 
 Post.init({
-  post_id: {
+  id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
@@ -19,7 +19,7 @@ Post.init({
     foreignKey: true,
     allowNull: false
   },
-  post: {
+  text: {
     type: DataTypes.STRING
   },
   imageUrl: {
@@ -37,12 +37,6 @@ Post.init({
   },
   profileImage: {
     type: DataTypes.STRING
-  },
-  seen: {
-    type: DataTypes.INTEGER
-  },
-  seenUserId: {
-    type: DataTypes.ARRAY(DataTypes.STRING)
   }
 }, {
   sequelize,
