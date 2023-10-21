@@ -30,15 +30,22 @@
       </button>
     </div>
     <div v-if="post.text"
-      class="postText col-10 mx-auto mb-5 mt-1">
+      class="postText col-10 mx-auto mb-4 mt-1">
       {{ post.text }}
     </div>
     <div v-if="post.imageUrl"
-      class="col-9 mx-auto mt-4">
+      class="col-9 mx-auto mt-3">
       <img :src="post.imageUrl"
         class="col-7 mx-auto rounded mb-4" />
     </div>
-  </div>
+    <div class="position-relative">
+      <button @click.prevent="readUpdate(post.id)"
+        class="read btn rounded-pill position-absolute bottom-0 end-0 m-1">
+          <font-awesome-icon :icon="['fa', 'circle-check']" />
+            Read
+      </button>
+    </div>
+</div>
 </template>
 
 <script>
@@ -73,6 +80,31 @@ export default {
       this.$router.push({ path: '/singleuser' })
     },
 
+    async readUpdate(postId) {
+      const token = sessionStorage.getItem('token')
+      const userId = sessionStorage.getItem('user')
+      console.log(userId)
+      console.log(postId)
+      await fetch('http://localhost:3000/api/read/readUpdate/' + postId, {
+          method: 'POST',
+          headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(token)
+          },
+          body: JSON.stringify({ 
+            postId: postId,
+            userId: userId
+          })
+        }).then(async response => {
+          if (response.ok) {
+            this.$router.go()
+          }
+        }).catch(error => {
+          console.log(error)
+        }
+      )
+    },
+
     async deletePost(postId) {
         const token = sessionStorage.getItem('token')
         await fetch('http://localhost:3000/api/post/' + postId, {
@@ -102,10 +134,14 @@ export default {
 .postText {
   font-size: 1.2rem;
 }
-.seen-by {
+.read {
   font-size: medium;
   cursor: pointer;
   color: #0d3b66;
+  &:hover {
+    background-color: #fafafa;
+    border-color: #0d3b66;
+  }
 }
 .deletePost {
   color: #0d3b66;

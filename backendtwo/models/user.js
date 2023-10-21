@@ -4,7 +4,7 @@ const sequelize = require('../database')
 
 class User extends Model {
   static associate ({ Post }) {
-    this.hasMany(Post, { foreignKey: 'user_id', as: 'user' })
+    this.belongsToMany(Post, { through: 'hasRead' })
   }
 }
 

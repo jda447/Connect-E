@@ -65,6 +65,21 @@ exports.getPosts = (req, res, next) => {
   )
 }
 
+exports.hasRead = (req, res) => {
+  const postId = req.params.id
+  const userId = req.auth.userId
+  Post.findByPk(postId)
+    .then(post => {
+      if (!post) {
+        return res.send(404)
+      }
+      post.hasUser(userId)
+        .then(read => {
+          res.status(200).send(read)
+        })
+    })
+}
+
 exports.deletePost = (req, res, next) => {
   console.log(req.params.id)
   Post.destroy({
