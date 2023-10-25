@@ -1,14 +1,9 @@
 'use strict'
-const { Model, DataTypes } = require('sequelize')
-const sequelize = require('../database')
+const { Sequelize, DataTypes } = require('sequelize')
+const sequelize = new Sequelize(process.env.POSTGRES_URI)
+// const Post = require('./post')
 
-class User extends Model {
-  static associate ({ Post }) {
-    this.belongsToMany(Post, { through: 'hasRead' })
-  }
-}
-
-User.init({
+const User = sequelize.define('User', {
   user_id: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
@@ -42,5 +37,7 @@ User.init({
   sequelize,
   modelName: 'User'
 })
+// User.belongsToMany(Post, { through: 'hasRead' })
+// Post.belongsToMany(User, { through: 'hasRead' })
 
 module.exports = User

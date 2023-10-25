@@ -22,5 +22,3 @@ Read.init({
 })
 
 module.exports = Read
-
-console.log(Read === sequelize.models.Read)

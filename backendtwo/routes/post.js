@@ -8,8 +8,8 @@ const postCtrl = require('../controllers/post')
 
 router.post('/addPost', auth, multer, postCtrl.addPost)
 router.post('/addPostImage', auth, multer, postCtrl.addPostImage)
-router.get('/hasRead/:postId/:userId', auth, postCtrl.hasRead)
 router.get('/', auth, postCtrl.getPosts)
+router.get('/hasRead/:postId/:userId', auth, postCtrl.hasRead)
 router.delete('/:id', auth, postCtrl.deletePost)
 
 module.exports = router

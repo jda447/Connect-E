@@ -57,6 +57,7 @@ export default {
   },
   created() {
     this.getPosts()
+    this.hasRead()
   },
   computed: {
     getUserId() {
@@ -75,6 +76,18 @@ export default {
       .then(data => this.posts = data)
     },
 
+    async hasRead(postId) {
+      const token = sessionStorage.getItem('token')
+      const userId = sessionStorage.getItem('user')
+      await fetch('http://localhost:3000/api/post/hasRead/' + postId + '/' + userId, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + JSON.parse(token)
+        }
+      }).then(response => response.json())
+      .then(data => this.posts = data)
+    },
+
     singleUser(singleUserId) {
       sessionStorage.setItem('singleUser', singleUserId)
       this.$router.push({ path: '/singleuser' })
@@ -83,8 +96,6 @@ export default {
     async readUpdate(postId) {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
-      console.log(userId)
-      console.log(postId)
       await fetch('http://localhost:3000/api/read/readUpdate/' + postId, {
           method: 'POST',
           headers: {

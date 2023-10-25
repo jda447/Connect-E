@@ -16,6 +16,14 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config)
 }
 
+const User = sequelize.define('User', {})
+const Post = sequelize.define('Post', {})
+const userSchema = require('./user')
+const postSchema = require('./post')
+
+Post.belongsToMany(User, userSchema, { through: 'hasRead' })
+User.belongsToMany(Post, postSchema, { through: 'hasRead' })
+
 fs
   .readdirSync(__dirname)
   .filter(file => {
@@ -36,3 +44,5 @@ db.sequelize = sequelize
 db.Sequelize = Sequelize
 
 module.exports = db
+module.exports = Post
+module.exports = User

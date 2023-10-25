@@ -1,4 +1,26 @@
 const Post = require('../models/post')
+const User = require('../models/user')
+
+exports.hasRead = (req, res) => {
+  const postId = req.params.id
+  const userId = req.auth.userId
+  console.log(postId)
+  console.log(userId)
+  Post.findByPk(606, {
+    include: [{
+      model: User,
+      through: { hasRead: [] }
+    }]
+  }).then(post => {
+    if (!post) {
+      return res.status(404)
+    }
+    post.hasUser(userId)
+      .then(read => {
+        res.status(200).send(read)
+      })
+  })
+}
 
 exports.addPost = (req, res, next) => {
   console.log(req.body.userId)
@@ -63,21 +85,6 @@ exports.getPosts = (req, res, next) => {
       res.status(400).json(error)
     }
   )
-}
-
-exports.hasRead = (req, res) => {
-  const postId = req.params.id
-  const userId = req.auth.userId
-  Post.findByPk(postId)
-    .then(post => {
-      if (!post) {
-        return res.send(404)
-      }
-      post.hasUser(userId)
-        .then(read => {
-          res.status(200).send(read)
-        })
-    })
 }
 
 exports.deletePost = (req, res, next) => {
