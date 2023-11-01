@@ -3,11 +3,6 @@ const { DataTypes } = require('sequelize')
 const sequelize = require('../database')
 
 const Post = sequelize.define('Post', {
-  userId: {
-    type: DataTypes.INTEGER,
-    foreignKey: true,
-    allowNull: false
-  },
   text: {
     type: DataTypes.STRING
   },

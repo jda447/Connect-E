@@ -5,5 +5,4 @@ Post.belongsToMany(User, { through: 'hasRead' })
 User.hasMany(Post)
 User.belongsToMany(Post, { through: 'hasRead' })
 
-module.exports = Post
-module.exports = User
+module.exports = { Post, User }
