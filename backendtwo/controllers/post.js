@@ -1,13 +1,7 @@
-// const { User, Post } = require('../models')
-const Post = require('../models/post')
-const User = require('../models/user')
+const { Post } = require('../models/index.js')
 
 exports.readUpdate = (req, res) => {
   Post.findByPk(1, {
-    include: [{
-      model: User,
-      through: { hasRead: [] }
-    }]
   }).then(read => {
     if (!read) {
       return res.status(404)({
@@ -37,16 +31,12 @@ exports.readUpdate = (req, res) => {
 }
 
 exports.hasRead = (res) => {
-  Post.findByPk(1, {
-    include: [{
-      model: User,
-      through: { hasRead: [] }
-    }]
+  Post.findByPk(parseInt(res.query.postId), {
   }).then(post => {
     if (!post) {
       return res.status(404)
     }
-    post.hasUser(1)
+    post.hasUser(parseInt(res.query.userId))
       .then(post => {
         res.status(200).send(post)
       })
