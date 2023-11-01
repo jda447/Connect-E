@@ -109,13 +109,11 @@ export default {
     
     async updateUser () {
       const token = sessionStorage.getItem('token')
-      const userId = sessionStorage.getItem('user')
       const formData = new FormData()
       formData.append('image', this.file)
       formData.append('firstName', this.firstName)
       formData.append('lastName', this.lastName)
       formData.append('position', this.position)
-      formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/user', {
           method: 'PUT',
           headers: {

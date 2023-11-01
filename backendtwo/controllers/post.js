@@ -1,12 +1,43 @@
+// const { User, Post } = require('../models')
 const Post = require('../models/post')
 const User = require('../models/user')
 
-exports.hasRead = (req, res) => {
-  const postId = req.params.id
-  const userId = req.auth.userId
-  console.log(postId)
-  console.log(userId)
-  Post.findByPk(606, {
+exports.readUpdate = (req, res) => {
+  Post.findByPk(1, {
+    include: [{
+      model: User,
+      through: { hasRead: [] }
+    }]
+  }).then(read => {
+    if (!read) {
+      return res.status(404)({
+        error: ('Read status not found!')
+      })
+    } else if (read.hasUser(1)) {
+      read.removeUser(1)
+    } else {
+      read.createUser({
+        userId: req.auth.userId,
+        postId: req.params.postId
+      })
+    }
+  }).then(
+    (read) => {
+      res.status(201).json({
+        message: 'Success!', read
+      })
+    }
+  ).catch(
+    (error) => {
+      res.status(500).json({
+        error
+      })
+    }
+  )
+}
+
+exports.hasRead = (res) => {
+  Post.findByPk(1, {
     include: [{
       model: User,
       through: { hasRead: [] }
@@ -15,22 +46,18 @@ exports.hasRead = (req, res) => {
     if (!post) {
       return res.status(404)
     }
-    post.hasUser(userId)
-      .then(read => {
-        res.status(200).send(read)
+    post.hasUser(1)
+      .then(post => {
+        res.status(200).send(post)
       })
   })
 }
 
-exports.addPost = (req, res, next) => {
+exports.addPost = (req, res) => {
   console.log(req.body.userId)
   Post.create({
     text: req.body.text,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    position: req.body.position,
-    profileImage: req.body.profileImage,
-    user_id: req.body.userId
+    userId: req.body.userId
   }).then(
     (post) => {
       res.status(201).json({
@@ -46,7 +73,7 @@ exports.addPost = (req, res, next) => {
   )
 }
 
-exports.addPostImage = (req, res, next) => {
+exports.addPostImage = (req, res) => {
   const url = req.protocol + '://' + req.get('host')
   Post.create({
     where: {
@@ -54,11 +81,7 @@ exports.addPostImage = (req, res, next) => {
     },
     text: req.body.text,
     imageUrl: url + '/images/' + req.file.filename,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    position: req.body.position,
-    profileImage: req.body.profileImage,
-    user_id: req.body.user_id
+    userId: req.body.user_id
   }).then(
     (post) => {
       res.status(201).json({
@@ -74,7 +97,7 @@ exports.addPostImage = (req, res, next) => {
   )
 }
 
-exports.getPosts = (req, res, next) => {
+exports.getPosts = (res) => {
   Post.findAll({
   }).then(
     (post) => {
@@ -87,7 +110,7 @@ exports.getPosts = (req, res, next) => {
   )
 }
 
-exports.deletePost = (req, res, next) => {
+exports.deletePost = (req, res) => {
   console.log(req.params.id)
   Post.destroy({
     where: {

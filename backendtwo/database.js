@@ -11,4 +11,9 @@ try {
   console.error('Unable to connect to the database:', error)
 }
 
+(async () => {
+  await sequelize.sync()
+  console.log('synced')
+})()
+
 module.exports = sequelize

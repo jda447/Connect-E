@@ -1,14 +1,8 @@
 'use strict'
-const { Sequelize, DataTypes } = require('sequelize')
-const sequelize = new Sequelize(process.env.POSTGRES_URI)
-// const Post = require('./post')
+const { DataTypes } = require('sequelize')
+const sequelize = require('../database')
 
 const User = sequelize.define('User', {
-  user_id: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true
-  },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -34,10 +28,9 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING
   }
 }, {
-  sequelize,
-  modelName: 'User'
+  sequelize
 })
-// User.belongsToMany(Post, { through: 'hasRead' })
-// Post.belongsToMany(User, { through: 'hasRead' })
 
 module.exports = User
+
+console.log(User === sequelize.models.User)

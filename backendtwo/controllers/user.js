@@ -37,7 +37,7 @@ exports.signup = (req, res, next) => {
   )
 }
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
   User.findOne({
     where: {
       email: req.body.email
@@ -80,7 +80,7 @@ exports.login = (req, res, next) => {
   )
 }
 
-exports.getUser = (req, res, next) => {
+exports.getUser = (req, res) => {
   User.findAll({
     where: {
       user_id: req.auth.userId
@@ -96,7 +96,7 @@ exports.getUser = (req, res, next) => {
   )
 }
 
-exports.singleUser = (req, res, next) => {
+exports.singleUser = (req, res) => {
   User.findAll({
     where: {
       user_id: req.params.id
@@ -112,11 +112,11 @@ exports.singleUser = (req, res, next) => {
   )
 }
 
-exports.updateUser = (req, res, next) => {
+exports.updateUser = (req, res) => {
   const url = req.protocol + '://' + req.get('host')
   User.findOne({
     where: {
-      user_id: req.body.user_id
+      id: 1
     }
   }).then(
     (user) => {
@@ -127,12 +127,12 @@ exports.updateUser = (req, res, next) => {
       }
       user.update({
         where: {
-          user_id: req.body.user_id
+          id: 1
         },
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         position: req.body.position,
-        profileImage: url + '/images/' + req.file.filename
+        profileImage: url + '/images/' + req.body.filename
       }).then(
         (user) => {
           res.status(200).json(user)
@@ -146,7 +146,7 @@ exports.updateUser = (req, res, next) => {
   )
 }
 
-exports.deleteUser = (req, res, next) => {
+exports.deleteUser = (req, res) => {
   User.destroy({
     where: {
       user_id: req.auth.userId

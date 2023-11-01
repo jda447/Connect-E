@@ -115,7 +115,7 @@ export default {
       .then(data => this.user = data)
     },
 
-    async addPost () {
+    async addPost() {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
       const response = await fetch('http://localhost:3000/api/post/addPost', {
@@ -126,10 +126,6 @@ export default {
           },
           body: JSON.stringify({ 
             text: this.text,
-            firstName: this.user[0].firstName,
-            lastName: this.user[0].lastName,
-            position: this.user[0].position,
-            profileImage: this.user[0].profileImage,
             userId: userId
           })
         }
@@ -156,10 +152,6 @@ export default {
       const formData = new FormData()
       formData.append('image', this.file)
       formData.append('text', this.text)
-      formData.append('firstName', this.user[0].firstName)
-      formData.append('lastName', this.user[0].lastName)
-      formData.append('position', this.user[0].position)
-      formData.append('profileImage', this.user[0].profileImage)
       formData.append('user_id', userId)
       const response = await fetch('http://localhost:3000/api/post/addPostImage', {
           method: 'POST',
