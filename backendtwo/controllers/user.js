@@ -12,11 +12,11 @@ exports.signup = (req, res, next) => {
       }).then(
         (user) => {
           const token = jwt.sign(
-            { userId: user.user_id },
+            { userId: user.id },
             config.jwtSecret,
             { expiresIn: '24h' })
           res.status(201).json({
-            userId: user.user_id,
+            userId: user.id,
             token
           })
         }
@@ -57,11 +57,11 @@ exports.login = (req, res) => {
             })
           }
           const token = jwt.sign(
-            { userId: user.user_id },
+            { userId: user.id },
             config.jwtSecret,
             { expiresIn: '24h' })
           res.status(200).json({
-            userId: user.user_id,
+            userId: user.id,
             token
           })
         }).catch(
@@ -83,7 +83,7 @@ exports.login = (req, res) => {
 exports.getUser = (req, res) => {
   User.findAll({
     where: {
-      user_id: req.auth.userId
+      id: req.auth.userId
     }
   }).then(
     (user) => {
@@ -99,7 +99,7 @@ exports.getUser = (req, res) => {
 exports.singleUser = (req, res) => {
   User.findAll({
     where: {
-      user_id: req.params.id
+      id: req.auth.userId
     }
   }).then(
     (user) => {
@@ -116,7 +116,7 @@ exports.updateUser = (req, res) => {
   const url = req.protocol + '://' + req.get('host')
   User.findOne({
     where: {
-      id: 1
+      id: req.auth.userId
     }
   }).then(
     (user) => {
@@ -127,12 +127,12 @@ exports.updateUser = (req, res) => {
       }
       user.update({
         where: {
-          id: 1
+          id: req.auth.userId
         },
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         position: req.body.position,
-        profileImage: url + '/images/' + req.body.filename
+        profileImage: url + '/images/' + req.file.filename
       }).then(
         (user) => {
           res.status(200).json(user)
@@ -149,7 +149,7 @@ exports.updateUser = (req, res) => {
 exports.deleteUser = (req, res) => {
   User.destroy({
     where: {
-      user_id: req.auth.userId
+      id: req.auth.userId
     }
   }).then(
     () => {

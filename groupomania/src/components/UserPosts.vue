@@ -3,7 +3,7 @@
     :key="post.id"
     class="list-unstyled border rounded-3 shadow mx-auto col-10 mb-3">
     <div tabIndex="0">
-      <div v-if="post.user_id === getUserId">
+      <div v-if="post.UserId === getUserId">
         <button @click.prevent="deletePost(post.id)"
           class="btn fw-bold float-end shadow-none deletePost m-1"
           data-toggle="tooltip"
@@ -21,11 +21,11 @@
     </div>  
     <div v-if="post.text || post.imageUrl"
       class="ms-1 mt-2 mb-2">
-      <button @click="singleUser(post.user_id)"
+      <button @click="singleUser(post.UserId)"
         class="nameBtn btn rounded-pill fw-bold fs-5">
         <img :src="post.profileImage"
           class="profileImage rounded-circle border border-3 me-1"
-          alt="User's profile"/>
+          alt="User"/>
         {{ post.firstName}} {{ post.lastName }}
       </button>
     </div>
@@ -39,20 +39,35 @@
         class="col-7 mx-auto rounded mb-4" />
     </div>
     <div class="position-relative">
-      <button @click.prevent="readUpdate(post.id)"
+      <button @click="readUpdate(post.id)"
         class="read btn rounded-pill position-absolute bottom-0 end-0 m-1">
           <font-awesome-icon :icon="['fa', 'circle-check']" />
             Read
       </button>
     </div>
-</div>
+      <div v-if="hasRead(post.id)">
+        <div v-for="read in reads"
+          :key="read.PostId">
+        </div>
+        <div v-bind:reads="true"></div>
+        <div v-bind:reads="false"></div>
+        <div v-if="reads">
+          <code>reads</code> is true!
+        </div>
+        <div v-else>
+          <code>reads</code> is false!
+        </div>
+        <!-- {{ reads ? 'True' : 'False' }} -->
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      posts: []
+      posts: [],
+      reads: Boolean
     }
   },
   created() {
@@ -79,32 +94,30 @@ export default {
     async hasRead(postId) {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
+      console.log(postId)
       await fetch('http://localhost:3000/api/post/hasRead/' + postId + '/' + userId, {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(token)
         }
       }).then(response => response.json())
-      .then(data => this.posts = data)
-    },
-
-    singleUser(singleUserId) {
-      sessionStorage.setItem('singleUser', singleUserId)
-      this.$router.push({ path: '/singleuser' })
+      .then(data => this.reads = data)
+      .then(console.log(this.reads))
     },
 
     async readUpdate(postId) {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
-      await fetch('http://localhost:3000/api/read/readUpdate/' + postId, {
+      console.log(postId)
+      await fetch('http://localhost:3000/api/post/readUpdate/' + postId + '/' + userId, {
           method: 'POST',
           headers: {
             'Content-type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(token)
           },
           body: JSON.stringify({ 
-            postId: postId,
-            userId: userId
+            PostId: postId,
+            UserId: userId
           })
         }).then(async response => {
           if (response.ok) {
@@ -114,6 +127,11 @@ export default {
           console.log(error)
         }
       )
+    },
+
+    singleUser(singleUserId) {
+      sessionStorage.setItem('singleUser', singleUserId)
+      this.$router.push({ path: '/singleuser' })
     },
 
     async deletePost(postId) {

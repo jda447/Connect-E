@@ -1,53 +1,42 @@
-const { Post } = require('../models/index.js')
+const { Post } = require('../models/index')
 
-exports.readUpdate = (req, res) => {
-  Post.findByPk(1, {
-  }).then(read => {
-    if (!read) {
-      return res.status(404)({
-        error: ('Read status not found!')
-      })
-    } else if (read.hasUser(1)) {
-      read.removeUser(1)
-    } else {
-      read.createUser({
-        userId: req.auth.userId,
-        postId: req.params.postId
-      })
-    }
-  }).then(
-    (read) => {
-      res.status(201).json({
-        message: 'Success!', read
-      })
-    }
-  ).catch(
-    (error) => {
-      res.status(500).json({
-        error
-      })
-    }
-  )
-}
-
-exports.hasRead = (res) => {
-  Post.findByPk(parseInt(res.query.postId), {
+exports.hasRead = (req, res) => {
+  Post.findByPk((req.query.postId), {
   }).then(post => {
     if (!post) {
       return res.status(404)
     }
-    post.hasUser(parseInt(res.query.userId))
+    post.hasUser(parseInt(req.query.userId))
       .then(post => {
         res.status(200).send(post)
       })
   })
 }
 
+exports.readUpdate = (req, res) => {
+  Post.findByPk((req.query.postId), {
+  }).then(post => {
+    if (!post) {
+      return res.status(404)
+    }
+    if (post.hasUser(parseInt(req.query.userId))) {
+      post.removeUser(parseInt(req.query.userId))
+    } else {
+      post.addUser(parseInt(req.query.userId))
+    }
+  }).then(post => {
+    res.sendStatus(200).send(post)
+  }).catch(
+    (error) => {
+      res.status(400).json(error)
+    }
+  )
+}
+
 exports.addPost = (req, res) => {
-  console.log(req.body.userId)
   Post.create({
     text: req.body.text,
-    userId: req.body.userId
+    UserId: req.body.userId
   }).then(
     (post) => {
       res.status(201).json({
@@ -67,11 +56,11 @@ exports.addPostImage = (req, res) => {
   const url = req.protocol + '://' + req.get('host')
   Post.create({
     where: {
-      user_id: req.body.user_id
+      id: req.body.userId
     },
     text: req.body.text,
     imageUrl: url + '/images/' + req.file.filename,
-    userId: req.body.user_id
+    UserId: req.auth.userId
   }).then(
     (post) => {
       res.status(201).json({
@@ -87,7 +76,7 @@ exports.addPostImage = (req, res) => {
   )
 }
 
-exports.getPosts = (res) => {
+exports.getPosts = (req, res) => {
   Post.findAll({
   }).then(
     (post) => {
@@ -105,7 +94,7 @@ exports.deletePost = (req, res) => {
   Post.destroy({
     where: {
       id: req.params.id,
-      user_id: req.auth.userId
+      UserId: req.auth.userId
     }
   }).then(
     () => {

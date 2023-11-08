@@ -4,12 +4,12 @@
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
-          <div v-for="user in user" :key="user.user_id"
+          <div v-for="user in user" :key="user.id"
             class="my-1 mx-2">
             <div class="imageContainer">
               <img :src="user.profileImage"
                 class="profileImage border border-3"
-                alt="User's profile"/>
+                alt="User" />
                 <div class="overlay"></div>
             </div>
           </div>
@@ -39,12 +39,12 @@
       enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
-          <div v-for="user in user" :key="user.user_id"
+          <div v-for="user in user" :key="user.id"
             class="my-1 mx-2">
             <div class="imageContainer">
                 <img :src="user.profileImage"
                   class="profileImage border border-3"
-                  alt="User's profile"/>
+                  alt="User" />
                   <div class="overlay"></div>
               </div>
           </div>
@@ -104,7 +104,7 @@ export default {
     this.getUser()
   },
   methods: {
-    async getUser () {
+    async getUser() {
       const token = sessionStorage.getItem('token')
       await fetch('http://localhost:3000/api/user/getUser', {
         method: 'GET',

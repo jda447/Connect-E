@@ -107,7 +107,7 @@ export default {
       this.file = file;
     },
     
-    async updateUser () {
+    async updateUser() {
       const token = sessionStorage.getItem('token')
       const formData = new FormData()
       formData.append('image', this.file)

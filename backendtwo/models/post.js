@@ -15,5 +15,3 @@ const Post = sequelize.define('Post', {
 })
 
 module.exports = Post
-
-console.log(Post === sequelize.models.Post)

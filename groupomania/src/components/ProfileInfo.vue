@@ -6,18 +6,18 @@
         <div class="card col-7 col-sm-6 col-md-5 col-lg-8">
           <div class="card-body">
             <div class="card-title text-center mb-4">
-              <ul v-for="item in user"
-                :key="item.user_id"
+              <ul v-for="user in user"
+                :key="user.id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="item.profileImage"
+                  <img :src="user.profileImage"
                   class="profileImage rounded-circle border border-3 col-8 mt-4"
                   alt="Your profile"/>
                 </li>
                 <li class="fw-bold fs-2 mt-1">
-                  {{ item.firstName }} {{ item.lastName }}</li>
+                  {{ user.firstName }} {{ user.lastName }}</li>
                 <li class="fw-bold fs-5">
-                  {{ item.position }}</li>
+                  {{ user.position }}</li>
               </ul>
             </div>
           </div>
