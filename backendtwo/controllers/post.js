@@ -1,12 +1,12 @@
 const { Post } = require('../models/index')
 
 exports.hasRead = (req, res) => {
-  Post.findByPk((req.query.postId), {
+  Post.findByPk((req.params.postId), {
   }).then(post => {
     if (!post) {
       return res.status(404)
     }
-    post.hasUser(parseInt(req.query.userId))
+    post.hasUser(parseInt(req.params.userId))
       .then(post => {
         res.status(200).send(post)
       })
@@ -14,18 +14,25 @@ exports.hasRead = (req, res) => {
 }
 
 exports.readUpdate = (req, res) => {
-  Post.findByPk((req.query.postId), {
+  Post.findByPk((req.params.postId), {
   }).then(post => {
     if (!post) {
       return res.status(404)
     }
-    if (post.hasUser(parseInt(req.query.userId))) {
-      post.removeUser(parseInt(req.query.userId))
-    } else {
-      post.addUser(parseInt(req.query.userId))
-    }
-  }).then(post => {
-    res.sendStatus(200).send(post)
+    post.hasUser(parseInt(req.params.userId))
+      .then(read => {
+        if (read) {
+          post.removeUser(parseInt(req.params.userId))
+            .then(() => {
+              res.status(200).send({ message: 'Removed' })
+            })
+        } else {
+          post.addUser(parseInt(req.params.userId))
+            .then(() => {
+              res.status(200).send({ message: 'Updated' })
+            })
+        }
+      })
   }).catch(
     (error) => {
       res.status(400).json(error)
