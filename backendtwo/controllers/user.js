@@ -99,7 +99,7 @@ exports.getUser = (req, res) => {
 exports.singleUser = (req, res) => {
   User.findAll({
     where: {
-      id: req.auth.userId
+      id: req.params.id
     }
   }).then(
     (user) => {

@@ -4,10 +4,10 @@
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
-          <div v-for="user in user" :key="user.id"
+          <div v-for="i in user" :key="i.id"
             class="my-1 mx-2">
             <div class="imageContainer">
-              <img :src="user.profileImage"
+              <img :src="i.profileImage"
                 class="profileImage border border-3"
                 alt="User" />
                 <div class="overlay"></div>
@@ -39,10 +39,10 @@
       enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
-          <div v-for="user in user" :key="user.id"
+          <div v-for="i in user" :key="i.id"
             class="my-1 mx-2">
             <div class="imageContainer">
-                <img :src="user.profileImage"
+                <img :src="i.profileImage"
                   class="profileImage border border-3"
                   alt="User" />
                   <div class="overlay"></div>
@@ -66,7 +66,7 @@
         <label class="btn fileUpload mt-4 mb-2">
           <font-awesome-icon :icon="['fa', 'image']"
             class="text-center" />
-            Add image/GIF
+            Add image or GIF
           <input
             type="file"
             ref="file"
@@ -104,9 +104,9 @@ export default {
     this.getUser()
   },
   methods: {
-    async getUser() {
+    getUser() {
       const token = sessionStorage.getItem('token')
-      await fetch('http://localhost:3000/api/user/getUser', {
+      fetch('http://localhost:3000/api/user/getUser', {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(token)
@@ -146,7 +146,7 @@ export default {
       this.file = file;
     },
 
-    async addPostImage () {
+    async addPostImage() {
       const token = sessionStorage.getItem('token')
       const userId = sessionStorage.getItem('user')
       const formData = new FormData()
@@ -246,12 +246,11 @@ h1 {
   font-weight: bold;
   cursor: pointer;
     &:hover {
-      color: #fd2500;
+      color: #FF3131;
     }
 }
-
 .sendErr {
-  color: #DC3545;
+  color: #FF3131;
   font-size: 88%;
 }
 </style>

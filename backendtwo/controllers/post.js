@@ -7,10 +7,13 @@ exports.hasRead = (req, res) => {
       return res.status(404)
     }
     post.hasUser(parseInt(req.params.userId))
-      .then(post => {
-        res.status(200).send(post)
+      .then(hasRead => {
+        res.status(200).send({ hasRead })
       })
-  })
+  }).catch(
+    (error) => {
+      res.status(400).json(error)
+    })
 }
 
 exports.readUpdate = (req, res) => {

@@ -94,9 +94,11 @@ export default {
     toggleShow() {
       this.showPassword = !this.showPassword;
     },
+
     clearStorage: function() {
     sessionStorage.clear()
     },
+
     validate : function(){
       this.emailBlurred = true;
       if( this.validEmail(this.email)){
@@ -107,14 +109,17 @@ export default {
         this.passwordValid = true;
       }
     },
+
     validEmail : function(email) {
       let re = /(.+)@(.+){2,}\.(.+){2,}/;
       return re.test(email);
     },
+
     validPassword : function(password) {
       let re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
       return re.test(password);
     },
+    
     submit : function(){                   
       this.validate();
         fetch('http://localhost:3000/api/user/signup', {
@@ -170,7 +175,6 @@ export default {
     border: 2px solid #0d3b66;
   }
 }
-
 .btnSignInSubmit:focus {
   background-color: #fafafa;
   color: #0d3b66;

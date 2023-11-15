@@ -140,10 +140,6 @@ h1 {
   color: white;
   font-size: 0.1rem;
 }
-.card {
-  background-color: #f8f8f8;
-  border: 1px solid #0d3b66;
-}
 .profileImage {
   height: 125px;
   width: 125px;
@@ -162,18 +158,14 @@ h1 {
     border: 2px solid #229631;
   }
 }
-
 .uploadBtn:focus {
   background-color: #fafafa;
   color: #229631;
   border: 2px solid #229631;
 }
-/// form css
-
 .formContainer {
   border: 1px solid #0d3b66;
 }
-
 .fileUpload {
   font-weight: bold;
   cursor: pointer;

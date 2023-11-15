@@ -28,15 +28,17 @@
             class="navBtns dropbtn me-2" />
             <div id="dropdown" class="dropdown-content">
               <a href="#">About</a>
-              <router-link to="/" class="text-center fw-bold px-2"
+              <router-link to="/"
+                class="text-center fw-bold px-2"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteUserModal">
                 Delete
               </router-link>
             </div>
-          <DeleteUserModal></DeleteUserModal>
+          <DeleteUserModal />
         </div>
-        <router-link to="/" class="navBtns me-4"
+        <router-link to="/"
+          class="navBtns me-4"
           data-bs-toggle="modal"
           data-bs-target="#signOutModal"
           data-toggle="tooltip"
@@ -47,7 +49,7 @@
       </div>
     </div>  
     <hr/>
-    <SignOutModal></SignOutModal>
+    <SignOutModal />
     <div class="container timeStamp">
       <div class="row">
         <div class="col px-1 mb-3 ms-2">
@@ -78,18 +80,20 @@ export default {
     dropDown() {
       document.getElementById("dropdown").classList.toggle("show");
     },
+
     homeNavLogo() {
       this.$router.go()
     }
   },
+
   computed: {
     timeStamp() {
       const d = new Date()
-      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
       const date = d.toLocaleDateString('EN', options).replace(',','')
       return date
     }
-  },
+  }
 }
 </script>
 
@@ -100,11 +104,6 @@ export default {
   color: #0d3b66;
   border: solid 6px white;
 }
-.profileImage {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-}
 .timeStamp {
   font-size: 0.8rem;
 }
@@ -113,7 +112,7 @@ export default {
   font-size: 1.2rem;
   cursor: pointer;
     &:hover {
-    color: #fd2500;
+    color: #FF3131;
 	}
 }
 .logo {
@@ -145,4 +144,5 @@ hr {
   display: block;
 }
 .dropdown-content a:hover {background-color: #ddd;}
+.show {display:block;}
 </style>

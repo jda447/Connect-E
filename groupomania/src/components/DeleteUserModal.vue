@@ -23,16 +23,16 @@
   export default {
     name: 'DeleteUserModal',
     methods: {
-      deleteUser : async function() {
+      deleteUser : function() {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('user')
-        await fetch('http://localhost:3000/api/user', {
+        fetch('http://localhost:3000/api/user', {
           method: 'DELETE',
           body: JSON.parse(userId),
           headers: {
             'Authorization': 'Bearer ' + JSON.parse(token)
           }
-        }).then(async response => {
+        }).then(response => {
           if (!response.ok) {
             const error = (response.status)
             return Promise.reject(error);

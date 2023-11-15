@@ -2,194 +2,55 @@
   <div v-for="post in posts.slice().reverse()"
     :key="post.id"
     class="list-unstyled border rounded-3 shadow mx-auto col-10 mb-3">
-    <div tabIndex="0">
-      <div v-if="post.UserId === getUserId">
-        <button @click.prevent="deletePost(post.id)"
-          class="btn fw-bold float-end shadow-none deletePost m-1"
-          data-toggle="tooltip"
-          data-placement="left"
-          title="Delete post">
-          <font-awesome-icon :icon="['fa', 'xmark']"
-            class="text-center" />
-        </button>
-      </div>
-      <button v-else class="barsBtn btn float-end m-1">
-        <font-awesome-icon :icon="['fa', 'ellipsis']"
-          size="sm"
-          title="Post options" />
-      </button>
-    </div>  
-    <div v-if="post.text || post.imageUrl"
-      class="ms-1 mt-2 mb-2">
-      <button @click="singleUser(post.UserId)"
-        class="nameBtn btn rounded-pill fw-bold fs-5">
-        <img :src="post.profileImage"
-          class="profileImage rounded-circle border border-3 me-1"
-          alt="User"/>
-        {{ post.firstName}} {{ post.lastName }}
-      </button>
-    </div>
-    <div v-if="post.text"
-      class="postText col-10 mx-auto mb-4 mt-1">
-      {{ post.text }}
-    </div>
-    <div v-if="post.imageUrl"
-      class="col-9 mx-auto mt-3">
-      <img :src="post.imageUrl"
-        class="col-7 mx-auto rounded mb-4" />
-    </div>
-    <div class="position-relative">
-      <button @click="readUpdate(post.id)"
-        class="read btn rounded-pill position-absolute bottom-0 end-0 m-1">
-          <font-awesome-icon :icon="['fa', 'circle-check']" />
-            Read
-      </button>
-    </div>
-      <div v-if="hasRead(post.id)">
-        <div v-for="read in reads"
-          :key="read.PostId">
-        </div>
-        <div v-bind:reads="true"></div>
-        <div v-bind:reads="false"></div>
-        <div v-if="reads">
-          <code>reads</code> is true!
-        </div>
-        <div v-else>
-          <code>reads</code> is false!
-        </div>
-        <!-- {{ reads ? 'True' : 'False' }} -->
-    </div>
+    <UserPost
+      :userId="userId"
+      :postUserId="post.UserId"
+      :postId="post.id"
+      :text="post.text"
+      :imageUrl="post.imageUrl"
+      @delete-post="removePost">
+    </UserPost>
   </div>
 </template>
 
 <script>
+import UserPost from '../components/UserPost.vue'
+
 export default {
   data() {
     return {
-      posts: [],
-      reads: Boolean
+      posts: []
     }
+  },
+  components: {
+    UserPost
   },
   created() {
     this.getPosts()
-    this.hasRead()
   },
   computed: {
-    getUserId() {
-      return JSON.parse(sessionStorage.getItem('user'))
+    userId() {
+      return parseInt(sessionStorage.getItem('user'))
     }
   },
   methods: {
-    async getPosts() {
+    removePost(payload) {
+      this.posts = this.posts.filter(post => post.id !== payload.postId)
+    },
+
+    getPosts() {
       const token = sessionStorage.getItem('token')
-      await fetch('http://localhost:3000/api/post', {
+      fetch('http://localhost:3000/api/post', {
         method: 'GET',
         headers: {
           'Authorization': 'Bearer ' + JSON.parse(token)
         }
       }).then(response => response.json())
       .then(data => this.posts = data)
-    },
-
-    async hasRead(postId) {
-      const token = sessionStorage.getItem('token')
-      const userId = sessionStorage.getItem('user')
-      console.log(postId)
-      await fetch('http://localhost:3000/api/post/hasRead/' + postId + '/' + userId, {
-        method: 'GET',
-        headers: {
-          'Authorization': 'Bearer ' + JSON.parse(token)
-        }
-      }).then(response => response.json())
-      .then(data => this.reads = data)
-      .then(console.log(this.reads))
-    },
-
-    async readUpdate(postId) {
-      const token = sessionStorage.getItem('token')
-      const userId = sessionStorage.getItem('user')
-      console.log(postId)
-      await fetch('http://localhost:3000/api/post/readUpdate/' + postId + '/' + userId, {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json',
-            'Authorization': 'Bearer ' + JSON.parse(token)
-          },
-          body: JSON.stringify({ 
-            PostId: postId,
-            UserId: userId
-          })
-        }).then(async response => {
-          if (response.ok) {
-            this.$router.go()
-          }
-        }).catch(error => {
-          console.log(error)
-        }
-      )
-    },
-
-    singleUser(singleUserId) {
-      sessionStorage.setItem('singleUser', singleUserId)
-      this.$router.push({ path: '/singleuser' })
-    },
-
-    async deletePost(postId) {
-        const token = sessionStorage.getItem('token')
-        await fetch('http://localhost:3000/api/post/' + postId, {
-          method: 'DELETE',
-          headers: {
-            'Authorization': 'Bearer ' + JSON.parse(token)
-          }
-        }).then(async response => {
-          if (response.ok) {
-            this.$router.go()
-          }
-        }).catch(error => {
-          console.log(error)
-        }
-      )
+      .catch(error => {
+        console.log(error)
+      })
     }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.profileImage {
-  height: 66px;
-  width: 66px;
-  border-radius: 50%;
-}
-.postText {
-  font-size: 1.2rem;
-}
-.read {
-  font-size: medium;
-  cursor: pointer;
-  color: #0d3b66;
-  &:hover {
-    background-color: #fafafa;
-    border-color: #0d3b66;
-  }
-}
-.deletePost {
-  color: #0d3b66;
-  &:hover {
-    color: #f9564f;
-  }
-}
-.nameBtn {
-  color: #0d3b66;
-  font-family: Ubuntu, sans-serif;
-  &:hover {
-    border: solid 1px #0d3b66;
-    background-color: #fafafa;
-  }
-}
-.barsBtn {
-  color: #0d3b66;
-  &:hover {
-    color: #f9564f;
-  }
-}
-</style>

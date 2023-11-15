@@ -5,7 +5,9 @@
     </nav>
     <main role="main">
       <PostMessages />
-      <UserPosts />
+      <UserPosts>
+        <UserPost />
+      </UserPosts>
     </main>
   </div>
 </template>
@@ -14,13 +16,15 @@
 import HomeNav from '../components/HomeNav.vue'
 import PostMessages from '../components/PostMessages.vue'
 import UserPosts from '../components/UserPosts.vue'
+import UserPost from '../components/UserPost.vue'
 
 export default {
   name: 'App',
   components: {
     HomeNav,
     PostMessages,
-    UserPosts
+    UserPosts,
+    UserPost
   }
 }
 </script>

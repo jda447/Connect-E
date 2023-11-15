@@ -34,7 +34,7 @@
                 Delete
               </router-link>
             </div>
-          <DeleteUserModal></DeleteUserModal>
+          <DeleteUserModal />
         </div>
         <router-link to="/"
           class="navBtns me-4"
@@ -48,7 +48,7 @@
       </div>
     </div>  
     <hr/>
-  <SignOutModal></SignOutModal>
+  <SignOutModal />
   </div>
 </template>
 
@@ -87,7 +87,7 @@ export default {
   color: #0d3b66;
   font-size: 1.2rem;
     &:hover {
-    color: #fd2500;
+    color: #FF3131;
 	}
 }
 .logo {
@@ -104,7 +104,7 @@ hr {
 .dropbtn {
   cursor: pointer;
   &:hover {
-    color: #fd2500;
+    color: #FF3131;
   }
 }
 .dropdown {
