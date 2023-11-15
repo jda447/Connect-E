@@ -50,7 +50,6 @@ export default {
     singleUser() {
       const token = sessionStorage.getItem('token')
       const singleUser = sessionStorage.getItem('singleUser')
-      console.log(singleUser)
       fetch('http://localhost:3000/api/user/singleUser/' + singleUser, {
         method: 'GET',
         headers: {

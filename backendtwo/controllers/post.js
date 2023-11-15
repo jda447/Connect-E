@@ -100,7 +100,6 @@ exports.getPosts = (req, res) => {
 }
 
 exports.deletePost = (req, res) => {
-  console.log(req.params.id)
   Post.destroy({
     where: {
       id: req.params.id,
