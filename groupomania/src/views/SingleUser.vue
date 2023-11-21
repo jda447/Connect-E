@@ -9,18 +9,17 @@
         <div class="card col-7 col-sm-6 col-md-5 col-lg-5">
           <div class="card-body">
             <div class="card-title text-center mb-4">
-              <ul v-for="i in user"
-                :key="i.id"
+              <ul v-for="user in user"
+                :key="user.id"
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
-                  <img :src="i.profileImage"
-                  class="profileImage rounded-circle border border-3 col-8 mt-4"
-                  alt="Selected user's profile"
-                  /></li>
+                  <img :src="user.profileImage"
+                  class="profileImage rounded-circle border border-3 col-8 mt-4" />
+                </li>
                 <li class="fw-bold fs-2 mt-1">
-                  {{ i.firstName }} {{ i.lastName }}</li>
+                  {{ user.firstName }} {{ user.lastName }}</li>
                 <li class="fw-bold fs-5">
-                  {{ i.position }}</li>
+                  {{ user.position }}</li>
               </ul>
             </div>
           </div>

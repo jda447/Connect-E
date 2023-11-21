@@ -88,8 +88,7 @@ exports.getUser = (req, res) => {
   }).then(
     (user) => {
       res.status(200).json(user)
-    }
-  ).catch(
+    }).catch(
     (error) => {
       res.status(400).json(error)
     }
@@ -104,8 +103,7 @@ exports.singleUser = (req, res) => {
   }).then(
     (user) => {
       res.status(200).json(user)
-    }
-  ).catch(
+    }).catch(
     (error) => {
       res.status(400).json(error)
     }

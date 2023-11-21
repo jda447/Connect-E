@@ -1,17 +1,35 @@
 <template>
   <div class="app">
-    <div class="modal fade" id="deleteUserModal" tabindex="-1" aria-labelledby="deleteUserModalLabel" aria-hidden="true">
+    <div class="modal fade"
+      id="deleteUserModal"
+      tabindex="-1"
+      aria-labelledby="deleteUserModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <button type="button" class="btn-close mt-3 ms-3" data-bs-dismiss="modal" aria-label="Close"></button>
-          <div class="modal-body text-center">
-            This will delete your user account.<br>
-            Do you want to continue?
-          </div>
-          <div class="modal-footer mx-auto">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-            <a @click.prevent="deleteUser" type="submit" role="button" class="btn btn-success">Yes</a>
-          </div>
+            <button type="button"
+              class="btn-close mt-3 ms-3"
+              data-bs-dismiss="modal"
+              aria-label="Close">
+            </button>
+            <div class="modal-body text-center">
+              This will delete your user account.<br>
+              Do you want to continue?
+            </div>
+            <div class="modal-footer mx-auto">
+              <button type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+                  No
+              </button>
+              <a @click.prevent="deleteUser"
+                type="submit"
+                role="button"
+                class="btn btn-success"
+                data-bs-dismiss="modal">
+                  Yes
+              </a>
+            </div>
           <div class="err text-center mb-3"></div>
         </div>
       </div>
@@ -54,7 +72,6 @@
   font-family: Helvetica, Arial, sans-serif;
   border: solid 10px white;
 }
-
 .err {
   color: #DC3545;
   font-size: 88%;

@@ -4,13 +4,18 @@
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
-          <div v-for="i in user" :key="i.id"
+          <div v-for="user in user" :key="user.id"
             class="my-1 mx-2">
             <div class="imageContainer">
-              <img :src="i.profileImage"
-                class="profileImage border border-3"
-                alt="User" />
+              <div v-if="user.profileImage === null">
+                <font-awesome-icon :icon="['fas', 'user-secret']"
+                class="secretImage mx-1 my-1" size="xl" />
+              </div>
+              <div v-else>
+              <img :src="user.profileImage"
+                class="profileImage border border-3" />
                 <div class="overlay"></div>
+              </div>
             </div>
           </div>
           <input type="text"
@@ -30,22 +35,25 @@
           </span>
         </div>
         <div v-if="text" class="text-center mt-3">
-          <button class="btn sendPost mb-2 mt-2">Send</button>
+          <button class="btn sendPost mb-2 mt-2">
+            Send
+          </button>
           <div class="sendErr text-center mt-1 mb-3"></div>
         </div>
       </div>
     </form>
+
     <form v-if="toggle" @submit.prevent="addPostImage"
       enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
-          <div v-for="i in user" :key="i.id"
+          <div v-for="user in user" :key="user.id"
             class="my-1 mx-2">
             <div class="imageContainer">
-                <img :src="i.profileImage"
-                  class="profileImage border border-3"
-                  alt="User" />
-                  <div class="overlay"></div>
+              <img :src="user.profileImage"
+                class="profileImage border border-3"
+                alt="User" />
+                <div class="overlay"></div>
               </div>
           </div>
         <input type="text"
@@ -66,7 +74,7 @@
         <label class="btn fileUpload mt-4 mb-2">
           <font-awesome-icon :icon="['fa', 'image']"
             class="text-center" />
-            Add image or GIF
+            Add media
           <input
             type="file"
             ref="file"
@@ -81,7 +89,9 @@
             alt="User's post image">
           </div>
         <div v-if="image" class="text-center">
-          <button class="btn sendPost mb-2 mt-2">Send</button>
+          <button class="btn sendPost mb-2 mt-2">
+              Send
+          </button>
           <div class="sendErr text-center mt-1 mb-3"></div>
         </div>
       </div>
@@ -131,7 +141,8 @@ export default {
         }
       )
       if (response.ok && this.text) {
-        this.$router.go()
+        this.$emit('add-post')
+        this.text = ''
       }
       if (!response.ok) {
         const message = `Error sending post: ${response.status}`;
@@ -162,7 +173,9 @@ export default {
         }
       )
       if (response.ok) {
-        this.$router.go()
+        this.$emit('add-post')
+        this.text = ''
+        this.image = ''
       }
       if (!response.ok) {
         console.log(response)
@@ -199,6 +212,10 @@ h1 {
   height: 38px;
   width: 38px;
   border-radius: 50%;
+}
+
+.secretImage {
+  color: #0d3b66;
 }
 .sendPost {
   background-color: #0d3b66;

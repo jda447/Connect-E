@@ -11,8 +11,7 @@
                 class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
                   <img :src="user.profileImage"
-                  class="profileImage rounded-circle border border-3 col-8 mt-4"
-                  alt="Your profile"/>
+                  class="profileImage rounded-circle border border-3 col-8 mt-4" />
                 </li>
                 <li class="fw-bold fs-2 mt-1">
                   {{ user.firstName }} {{ user.lastName }}</li>

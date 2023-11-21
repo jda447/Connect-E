@@ -1,20 +1,36 @@
 <template>
-<div class="app">
-  <div class="modal fade" id="signOutModal" tabindex="-1" aria-labelledby="signOutModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-          <button type="button" class="btn-close mt-3 ms-3" data-bs-dismiss="modal" aria-label="Close"></button>
-        <div class="modal-body text-center">
-          Are you sure you want to sign out?
-        </div>
-        <div class="modal-footer mx-auto">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-          <a href="/" role="button" class="btn btn-success">Yes</a>
+  <div class="app">
+    <div class="modal fade"
+      id="signOutModal"
+      tabindex="-1"
+      aria-labelledby="signOutModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <button type="button"
+            class="btn-close mt-3 ms-3"
+            data-bs-dismiss="modal"
+            aria-label="Close">
+          </button>
+          <div class="modal-body text-center">
+            Are you sure you want to sign out?
+          </div>
+          <div class="modal-footer mx-auto">
+            <button type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal">
+                No
+            </button>
+            <a href="/"
+              role="button"
+              class="btn btn-success">
+              Yes
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>

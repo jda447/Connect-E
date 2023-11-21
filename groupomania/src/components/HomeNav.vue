@@ -27,9 +27,10 @@
             @click="dropDown"
             class="navBtns dropbtn me-2" />
             <div id="dropdown" class="dropdown-content">
-              <a href="#">About</a>
+              <a title="About">About</a>
               <router-link to="/"
                 class="text-center fw-bold px-2"
+                title="Delete"
                 data-bs-toggle="modal"
                 data-bs-target="#deleteUserModal">
                 Delete
@@ -50,13 +51,11 @@
     </div>  
     <hr/>
     <SignOutModal />
-    <div class="container timeStamp">
-      <div class="row">
-        <div class="col px-1 mb-3 ms-2">
-          <font-awesome-icon :icon="['fas', 'calendar-days']" class="me-1" size="sm" />
-            {{ timeStamp }}
-        </div>
-      </div>
+    <div class="timeStamp ms-2 mb-2">
+      <font-awesome-icon :icon="['fas', 'calendar-days']"
+        class="me-1"
+        size="sm" />
+        {{ timeStamp }}
     </div>
   </div>
 </template>

@@ -25,9 +25,10 @@
           <font-awesome-icon :icon="['fas', 'gear']" @click="dropDown"
             class="navBtns dropbtn me-2" />
           <div id="dropdown" class="dropdown-content">
-            <a href="#">About</a>
+            <a title="About">About</a>
             <router-link to="/" 
-              class="text-center fw-bold px-2" 
+              class="text-center fw-bold px-2"
+              title="Delete"
               data-bs-toggle="modal"
               data-bs-target="#deleteUserModal">
               Delete

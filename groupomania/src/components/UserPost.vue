@@ -21,15 +21,21 @@
       class="ms-1 mt-2 mb-2">
       <button @click="singleUser(postUserId)"
         class="nameBtn btn rounded-pill fw-bold fs-5">
-        <img :src="user.profileImage"
-          class="profileImage rounded-circle border border-3 me-1"
-          alt="User"/>
-        {{ user.firstName }} {{ user.lastName }}
+        <div v-if="user.profileImage === null">
+          <font-awesome-icon :icon="['fas', 'user-secret']"
+          class="ms-2 mx-auto pe-2" size="xl" />
+          User
+        </div>
+        <div v-else>
+          <img :src="user.profileImage"
+            class="profileImage rounded-circle border border-3 me-1" />
+          {{ user.firstName }} {{ user.lastName }}
+        </div>
       </button>
     </div>
   </div>
   <div v-if="text"
-    class="postText col-10 mx-auto mb-4 mt-1">
+    class="postText col-10 mx-auto mb-5 mt-3">
     {{ text }}
   </div>
   <div v-if="imageUrl"

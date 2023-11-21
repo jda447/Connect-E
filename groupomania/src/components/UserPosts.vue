@@ -1,4 +1,7 @@
 <template>
+  <PostMessages
+    @add-post="getPosts">
+  </PostMessages>
   <div v-for="post in posts.slice().reverse()"
     :key="post.id"
     class="list-unstyled border rounded-3 shadow mx-auto col-10 mb-3">
@@ -15,6 +18,7 @@
 
 <script>
 import UserPost from '../components/UserPost.vue'
+import PostMessages from '../components/PostMessages.vue'
 
 export default {
   data() {
@@ -23,7 +27,8 @@ export default {
     }
   },
   components: {
-    UserPost
+    UserPost,
+    PostMessages
   },
   created() {
     this.getPosts()
