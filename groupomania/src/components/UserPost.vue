@@ -16,7 +16,6 @@
         title="Post options" />
     </button>
   </div>
-  <div v-for="user in user" :key="user.id">
     <div v-if="text || imageUrl"
       class="ms-1 mt-2 mb-2">
       <button @click="singleUser(postUserId)"
@@ -33,7 +32,6 @@
         </div>
       </button>
     </div>
-  </div>
   <div v-if="text"
     class="postText col-10 mx-auto mb-5 mt-3">
     {{ text }}

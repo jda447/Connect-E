@@ -81,14 +81,12 @@ exports.login = (req, res) => {
 }
 
 exports.getUser = (req, res) => {
-  User.findAll({
-    where: {
-      id: req.auth.userId
-    }
-  }).then(
-    (user) => {
-      res.status(200).json(user)
-    }).catch(
+  User.findByPk(req.auth.userId)
+    .then(
+      (user) => {
+        res.status(200).json(user)
+      })
+    .catch(
     (error) => {
       res.status(400).json(error)
     }
@@ -96,18 +94,16 @@ exports.getUser = (req, res) => {
 }
 
 exports.singleUser = (req, res) => {
-  User.findAll({
-    where: {
-      id: req.params.id
-    }
-  }).then(
-    (user) => {
-      res.status(200).json(user)
-    }).catch(
-    (error) => {
-      res.status(400).json(error)
-    }
-  )
+  User.findByPk(req.params.id)
+    .then(
+      (user) => {
+        res.status(200).json(user)
+      })
+    .catch(
+      (error) => {
+        res.status(400).json(error)
+      }
+    )
 }
 
 exports.updateUser = (req, res) => {

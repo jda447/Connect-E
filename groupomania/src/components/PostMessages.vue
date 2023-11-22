@@ -4,8 +4,7 @@
     <form v-if="!toggle" @submit.prevent="addPost">
       <div class="border border-2 rounded-3 col-10 mx-auto mb-3">
         <div class="input-group">
-          <div v-for="user in user" :key="user.id"
-            class="my-1 mx-2">
+          <div class="my-1 mx-2">
             <div class="imageContainer">
               <div v-if="user.profileImage === null">
                 <font-awesome-icon :icon="['fas', 'user-secret']"
@@ -50,8 +49,7 @@
       enctype="multipart/form-data">
       <div class="border border-2 rounded-3 col-10 mx-auto">
         <div class="input-group">
-          <div v-for="user in user" :key="user.id"
-            class="my-1 mx-2">
+          <div class="my-1 mx-2">
             <div class="imageContainer">
               <img :src="user.profileImage"
                 class="profileImage border border-3"

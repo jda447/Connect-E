@@ -6,9 +6,7 @@
         <div class="card col-7 col-sm-6 col-md-5 col-lg-8">
           <div class="card-body">
             <div class="card-title text-center mb-4">
-              <ul v-for="user in user"
-                :key="user.id"
-                class="list-unstyled mx-auto">
+              <ul class="list-unstyled mx-auto">
                 <li class="col-10 mx-auto">
                   <img :src="user.profileImage"
                   class="profileImage rounded-circle border border-3 col-8 mt-4" />
