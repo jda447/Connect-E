@@ -34,11 +34,11 @@
       </div>
 
         <div v-if="!firstName || !lastName || !position || !image"
-          class="formContainer col rounded">
+          class="formContainer col rounded mt-4">
           <div class="text-center mt-3">
             <label class="fw-bold">First name<br>
               <input v-model="firstName"
-              class="col-10 text-center"
+              class="col-9 text-center"
               id="firstName"
               type="text"
               required/>
@@ -48,7 +48,7 @@
             class="text-center">
             <label class="fw-bold">Last name<br>
             <input v-model="lastName"
-              class="col-10 text-center"
+              class="col-9 text-center"
               id="lastName"
               type="text"
               required>
@@ -69,7 +69,7 @@
           </div>
         <div v-if="!firstName || !lastName || !position || !image">
           <div class="fields text-center mx-auto mb-2">
-            <label class="btn fileUpload text-center col-8 my-2 mx-4">
+            <label class="btn fileUpload text-center border border-2 col-6 my-3">
               <font-awesome-icon :icon="['fa', 'user-large']" />
                 Add image
               <div class="mx-auto text-center">
@@ -78,6 +78,7 @@
                 ref="file"
                 name="image"
                 class="file-input col-11 my-1 mb-2"
+                style="display:none"
                 @change="onSelect"/>
               </div>
             </label>

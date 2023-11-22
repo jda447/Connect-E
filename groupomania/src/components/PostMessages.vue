@@ -12,9 +12,11 @@
                 class="secretImage mx-1 my-1" size="xl" />
               </div>
               <div v-else>
-              <img :src="user.profileImage"
-                class="profileImage border border-3" />
-                <div class="overlay"></div>
+                <router-link to="/profile">
+                  <img :src="user.profileImage"
+                    class="profileImage border border-3" />
+                    <div class="overlay"></div>
+                </router-link>
               </div>
             </div>
           </div>
@@ -38,7 +40,8 @@
           <button class="btn sendPost mb-2 mt-2">
             Send
           </button>
-          <div class="sendErr text-center mt-1 mb-3"></div>
+          <div class="text-center mt-1 mb-3"
+            id="sendErr"></div>
         </div>
       </div>
     </form>
@@ -92,7 +95,8 @@
           <button class="btn sendPost mb-2 mt-2">
               Send
           </button>
-          <div class="sendErr text-center mt-1 mb-3"></div>
+          <div class="text-center mt-1 mb-3"
+            id="sendErr"></div>
         </div>
       </div>
     </form>
@@ -146,7 +150,7 @@ export default {
       }
       if (!response.ok) {
         const message = `Error sending post: ${response.status}`;
-        document.getElementByClass("sendErr").innerHTML = 'Error sending post';
+        document.getElementById("sendErr").innerHTML = 'Not authorized to post';
         throw new Error(message);
       }
     },
@@ -180,7 +184,7 @@ export default {
       if (!response.ok) {
         console.log(response)
         const message = `Error sending post: ${response.status}`;
-        document.getElementByClass("sendErr").innerHTML = 'Error sending post';
+        document.getElementById("sendErr").innerHTML = 'Not authorized to post';
         throw new Error(message);
       }
     }
@@ -266,7 +270,7 @@ h1 {
       color: #FF3131;
     }
 }
-.sendErr {
+#sendErr {
   color: #FF3131;
   font-size: 88%;
 }
